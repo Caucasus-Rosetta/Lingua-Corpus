@@ -1,1 +1,1 @@
-# Parallel-corpus-ab-ru
+# Parallel corpus abkhazian russian
