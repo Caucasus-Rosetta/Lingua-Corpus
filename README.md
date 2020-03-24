@@ -4,7 +4,7 @@
 -	Braveheart - the Braveheart movie.
 -	Declaration of Human Rights. 
 -	Novyi_Zavet - the new testament (Bible)
--	abaza.org  - english, russian, turkish, arabic, Abaza.
+-	abaza.org  - english, russian, turkish, arabic, abaza.
 -	koran - the islamic holy book (Quran)
 
 #### Current Multilingual Corpuses:
