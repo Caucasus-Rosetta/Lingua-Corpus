@@ -161,7 +161,7 @@ def extract_parallel_text(boldspan, boldspans):
                     ab_output.write(ab_translation+"\n")
                     comparable_output.write(ru_word + "\t:\t" + ab_translation+"\n")
     else:
-        if not ru_word.isdigit():
+        if not ru_word.isdigit() and not ru_word in dictionary_prescript:
             skipped_translations.write(ru_word + "\n")
 
 

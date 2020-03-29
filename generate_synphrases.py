@@ -8,7 +8,7 @@ abkhazian_word_list = []
 #read the russian word into the list
 with open('draft/dictionary_prescript.ru', 'r+',encoding=cyrillic_encoding) as f:
     russian_word_list = f.read().splitlines()
-with open('dictionary.ru', 'r+',encoding=cyrillic_encoding) as f:
+with open('draft/dictionary.ru', 'r+',encoding=cyrillic_encoding) as f:
     russian_word_list += f.read().splitlines()
 
 # read also the abkhazian translations
@@ -63,7 +63,7 @@ def generate_paraphrases(sentence):
         if len(paraphrases) > 0:
             abkhazian_paraphrases[sentence] = paraphrases
 
-with open('parliament ab', 'r+',encoding=cyrillic_encoding) as f:
+with open('ab/parliament ab', 'r+',encoding=cyrillic_encoding) as f:
     abkhazian_sentences = f.read().splitlines()
     for sentence in abkhazian_sentences:
         generate_paraphrases(sentence)
