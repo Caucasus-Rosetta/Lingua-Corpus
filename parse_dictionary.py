@@ -21,13 +21,13 @@ ru_list = []
 ab_list = []
 cyrillic_encoding = 'utf-8' #"windows-1251"
 with open('draft/dictionary_prescript.ru', 'r+',encoding=cyrillic_encoding) as f:
-    dictionary_prescript = f.readlines()
+    dictionary_prescript = f.read().splitlines()
 
 ru_output = open('draft/dictionary.ru', 'w+',encoding=cyrillic_encoding)
 ab_output = open('draft/dictionary.ab', 'w+',encoding=cyrillic_encoding)
 
-test_output = open('comparable_dictionary_output.txt', 'w+',encoding=cyrillic_encoding)
-test_output = open('searchable_unaccented_dictionary.txt', 'w+',encoding=cyrillic_encoding)
+comparable_output = open('comparable_dictionary_output.txt', 'w+',encoding=cyrillic_encoding)
+searchable_output = open('searchable_unaccented_dictionary.txt', 'w+',encoding=cyrillic_encoding)
 # the script will not match all translations
 skipped_translations = open('skipped_translations.txt', 'w+',encoding=cyrillic_encoding)
 
@@ -49,7 +49,7 @@ numbers = ["1","2","3","4","5","6","7","8","9","- ", "."]
 # ignore messy pairs, mostly missmatched synonyms or bad formation
 messy_russian_words = ["звучание)","нава́ривать","обдава́ть","обдава́ться",
 "дуре́нь","мину́тка","навари́ть","навёртываться","и́ркымпылны","льный","тный",
-"гательный"]
+"гательный","– в –","– з –","на вкус"]
 
 # convert the pdfs into html files
 # Specify how much a horizontal and vertical position of a text matters when determining the order of text boxes.
@@ -149,17 +149,17 @@ def extract_parallel_text(boldspan, boldspans):
                 '''
                 if ab_translation and len(ab_translation)>3 and len(ab_translation.split(" "))<=2 and not ru_word in messy_russian_words:# and not [ru_word, ab_translation] in messy_pairs:
                     # we leave the accents for comparison with the original
-                    test_output.write(ru_word_accent + "\t:\t" + ab_translation+"\n")
+                    searchable_output.write(ru_word_accent + "\t:\t" + ab_translation+"\n")
                     # we try to convert the accents
                     ab_translation = strip_accents(ab_translation)
 
-                    #print(ru_word + "\t:\t" + ab_translation)
                     #write the extracted translation to the files
 
                     ru_list.append(ru_word)
                     ab_list.append(ab_translation)
                     ru_output.write(ru_word+"\n")
                     ab_output.write(ab_translation+"\n")
+                    comparable_output.write(ru_word + "\t:\t" + ab_translation+"\n")
     else:
         if not ru_word.isdigit():
             skipped_translations.write(ru_word + "\n")
@@ -185,7 +185,8 @@ for boldspan in boldspansTom3:
 
 ru_output.close()
 ab_output.close()
-test_output.close()
+comparable_output.close()
+searchable_output.close()
 skipped_translations.close()
 print("extracted entries:")
 print(len(ru_list))
