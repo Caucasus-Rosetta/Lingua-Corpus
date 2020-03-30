@@ -1,5 +1,8 @@
 # -*- coding: utf_8 -*-
 
+outputfile = 'output paraphrase.txt'
+output = open(outputfile,"w+")
+
 cyrillic_encoding = "utf-8"
 
 russian_word_list = []
@@ -41,9 +44,12 @@ for translations in dictionary_ru_ab.values():
         for translation in translations:
             #we save the other words as synonym values for the translation
             synonym_list = translations.copy()
-            synonym_list.remove(translation)
             #the translation shouldn't be in list
-            synonyms[translation] = synonym_list
+            synonym_list.remove(translation)
+            if translation in synonyms.keys():
+                synonyms[translation].update(synonym_list)
+            else:
+                synonyms[translation] = set(synonym_list)
 # there could be even more synonyms, if the translation word occurs in different pairs
 
 abkhazian_paraphrases = {}
@@ -58,14 +64,19 @@ def generate_paraphrases(sentence):
         # the search space could be advanced to the start and end of the sentence
         # how can we make this case sensitive?
         if " "+synonym_key+" " in sentence:
+            # we have found a match
+            output.write("\n"+sentence+"\n")
             for i,synonym in enumerate(synonyms[synonym_key]):
                 if len(paraphrases) == i:
                     paraphrases.append(sentence[:])
-                paraphrases[i] = paraphrases[i].replace(" "+synonym_key+" ", " "+synonym+" ")
+                if " "+synonym_key+" " in paraphrases[i]:
+                    paraphrases[i] = paraphrases[i].replace(" "+synonym_key+" ", " "+synonym+" ")
+                    #write the exchanhe to the output_type
+                    output.write("\t"+synonym_key+" --> "+synonym+"\n")
         if len(paraphrases) > 0:
             abkhazian_paraphrases[sentence] = paraphrases
 
-with open('ab/abaza.org ab', 'r+',encoding=cyrillic_encoding) as f:
+with open('ab/parliament ab', 'r+',encoding=cyrillic_encoding) as f:
     abkhazian_sentences = f.read().splitlines()
     for sentence in abkhazian_sentences:
         generate_paraphrases(sentence)
@@ -78,8 +89,9 @@ print("synonym count:")
 print(len(synonyms))
 print("paraphrase count:")
 print(sum([len(abkhazian_paraphrases[sentence]) for sentence in abkhazian_paraphrases.keys()]))
-outputfile = 'output paraphrase.txt'
-output = open(outputfile,"w+")
+
+'''
 for paraphrases_key in list(abkhazian_paraphrases.keys()):
     for paraphrase in abkhazian_paraphrases[paraphrases_key]:
         output.write(paraphrase+"\n")
+'''
