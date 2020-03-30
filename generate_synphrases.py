@@ -76,3 +76,7 @@ print("synonym count:")
 print(len(synonyms))
 print("paraphrase count:")
 print(sum([len(abkhazian_paraphrases[sentence]) for sentence in abkhazian_paraphrases.keys()]))
+outputfile = 'output paraphrase.txt'
+output = open(outputfile,"w+")
+for key in list(abkhazian_paraphrases.keys()):
+        output.write(key+"\n"+abkhazian_paraphrases[key][0]+"\n")
