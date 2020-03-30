@@ -63,7 +63,7 @@ def generate_paraphrases(sentence):
         if len(paraphrases) > 0:
             abkhazian_paraphrases[sentence] = paraphrases
 
-with open('ab/parliament ab', 'r+',encoding=cyrillic_encoding) as f:
+with open('ab/abaza.org ab', 'r+',encoding=cyrillic_encoding) as f:
     abkhazian_sentences = f.read().splitlines()
     for sentence in abkhazian_sentences:
         generate_paraphrases(sentence)
@@ -78,5 +78,6 @@ print("paraphrase count:")
 print(sum([len(abkhazian_paraphrases[sentence]) for sentence in abkhazian_paraphrases.keys()]))
 outputfile = 'output paraphrase.txt'
 output = open(outputfile,"w+")
-for key in list(abkhazian_paraphrases.keys()):
-        output.write(key+"\n"+abkhazian_paraphrases[key][0]+"\n")
+for paraphrases_key in list(abkhazian_paraphrases.keys()):
+    for paraphrase in abkhazian_paraphrases[paraphrases_key]:
+        output.write(paraphrase+"\n")
