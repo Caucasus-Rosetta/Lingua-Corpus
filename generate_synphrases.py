@@ -48,6 +48,8 @@ for translations in dictionary_ru_ab.values():
 
 abkhazian_paraphrases = {}
 # Let's generate paraphrases
+# and store them like
+# abkhazian_paraphrases = {"original sentence":["paraphrase1","paraphrase2"]}
 
 def generate_paraphrases(sentence):
     for synonym_key in synonyms.keys():
