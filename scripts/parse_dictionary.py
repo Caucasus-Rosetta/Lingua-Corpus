@@ -53,11 +53,14 @@ messy_russian_words = ["звучание)","навaривать","обдавaт�
 "опорожнять","опорожнить","опорожняться","опорожниться",
 "зыбко; зыбче","зыбко","зыбче",
 "инжирный и инжировый","инжирный","инжировый",
+"лю́тый и люто́й",
+"лютый и лютой",
 "лютый и лютoй","лютый","лютoй",
 "навряд","навряд ли","вряд ли",
 "стaртер","стартёр","стaртер и стартёр",
 "стaртерный и стартёрный","стaртерный","стартёрный",
-"чeрви и чeрвы","чeрви","чeрвы"
+"чeрви и чeрвы","чeрви","чeрвы",
+"игрeц"
 ]
 
 # convert the pdfs into html files
@@ -141,7 +144,7 @@ def extract_parallel_text(boldspan, boldspans):
     ru_word = boldspan.text.replace("\n","").strip()
     ru_word_accent = ru_word
     ru_word = strip_accents(ru_word)
-    if ru_word and len(ru_word)>3 and not ru_word.isdigit() and not "..." in ru_word and not "◊" in ru_word and not "," in ru_word and not "." in ru_word and not ru_word in dictionary_prescript:
+    if ru_word and len(ru_word)>3 and not ru_word.isdigit() and not "..." in ru_word and not "◊" in ru_word and not "," in ru_word and not "." in ru_word and not ru_word in dictionary_prescript and not (ru_word in messy_russian_words):
         word_translations = get_following_text(boldspan, boldspans)
         word_translations  = re.split(';|;|,|,|,|1|2|3|4|5|6|7|8|9|0',word_translations)
         #print(word_translations)
@@ -156,7 +159,7 @@ def extract_parallel_text(boldspan, boldspans):
                 if not len(ab_translation)>3:
                     print(ab_translation)
                 '''
-                if ab_translation and len(ab_translation)>3 and len(ab_translation.split(" "))<=2 and not ru_word in messy_russian_words:# and not [ru_word, ab_translation] in messy_pairs:
+                if ab_translation and len(ab_translation)>3 and len(ab_translation.split(" "))<=2 and not (ru_word in messy_russian_words):# and not [ru_word, ab_translation] in messy_pairs:
                     # we leave the accents for comparison with the original
                     searchable_output.write(ru_word_accent + "\t:\t" + ab_translation+"\n")
                     # we try to convert the accents
