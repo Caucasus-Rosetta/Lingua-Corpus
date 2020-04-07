@@ -60,7 +60,8 @@ messy_russian_words = ["звучание)","навaривать","обдавaт�
 "стaртер","стартёр","стaртер и стартёр",
 "стaртерный и стартёрный","стaртерный","стартёрный",
 "чeрви и чeрвы","чeрви","чeрвы",
-"игрeц"
+"игрeц","трaпеза",
+"трёхлeток","у́ксусник","полюбовник"
 ]
 
 # convert the pdfs into html files
@@ -135,7 +136,8 @@ def get_following_text(node, boldspans):
             break
 
         # we filter the empty and cursiv texts
-        if sibling.text and not "Italic" in sibling.attrib['style']:
+        # we leave the synonyms with "см." to filter them completly
+        if sibling.text and (not "Italic" in sibling.attrib['style'] or "см." in sibling.text):
             node_translation += " "+sibling.text_content()
 
     return strip_clips(node_translation)
