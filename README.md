@@ -15,3 +15,8 @@
 - https://www.masakhane.io/ low resource, african NMT
 - https://glosbe.com/ab/ru/ multilingual dictionary api
 - https://babelnet.org/ multilingual semantic network
+- https://iconictranslation.com/2020/02/sequence-to-sequence-pre-training-for-neural-mt/
+- Research for paraphrasing in NMT:
+  https://www.aclweb.org/anthology/W17-5703.pdf
+  https://iconictranslation.com/2020/02/issue-69-using-paraphrases-in-multilingual-neural-mt/
+
