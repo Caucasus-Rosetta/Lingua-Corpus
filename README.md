@@ -3,7 +3,7 @@
 #### Multilingual sources:
 -	Braveheart - the Braveheart movie.
 -	Declaration of Human Rights. 
--	Novyi_Zavet - the new testament (Bible) Possible alignment with https://github.com/christos-c/bible-corpus ?
+-	Novyi_Zavet - the new testament (Bible) Possible alignment with the russian, new testament in https://github.com/christos-c/bible-corpus ?
 -	abaza.org  - english, russian, turkish, arabic, abaza.
 -	koran - the islamic holy book (Quran)
 
