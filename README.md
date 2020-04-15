@@ -12,7 +12,7 @@
 
 #### Further resources
 - https://paperswithcode.com/task/low-resource-neural-machine-translation
-- https://www.masakhane.io/ low resource, african NMT
+- https://www.masakhane.io/ https://github.com/masakhane-io/masakhane/blob/master/MT4LRL.md low resource, african NMT
 - https://glosbe.com/ab/ru/ multilingual dictionary api
 - https://babelnet.org/ multilingual semantic network
 - https://iconictranslation.com/2020/02/sequence-to-sequence-pre-training-for-neural-mt/
