@@ -6,6 +6,8 @@
 -	Novyi_Zavet - the new testament (Bible) Possible alignment with the russian, new testament in https://github.com/christos-c/bible-corpus ?
 -	abaza.org  - english, russian, turkish, arabic, abaza.
 -	koran - the islamic holy book (Quran)
+- http://opus.nlpl.eu/
+- https://tatoeba.org/
 
 #### Current Multilingual Corpuses:
 1. Abkhazian Russian Parallel corpus (22473 lines).
