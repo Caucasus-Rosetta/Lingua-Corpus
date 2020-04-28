@@ -12,6 +12,8 @@ ru_tokenizer = nltk.data.load("russian.pickle")
 
 ab_files = sorted(listdir('../ab'))
 ru_files = sorted(listdir('../ru'))
+total_match = 0
+total_mismatch = 0
 
 try:
     if path.exists('../splitted'):
@@ -84,15 +86,18 @@ def correct_sentences(sentences):
 
 
 def split_parallel_list(file_name,parallel_list):
-    unmatched_paragraphs = 0
+    global total_mismatch
+    global total_match
+    mismatched_paragraphs = 0
+    matched_paragraphs = 0
     splitted_list = []
     for i, translation_tuple in enumerate(parallel_list):
         ab_sentences = correct_sentences(ab_tokenizer.tokenize(translation_tuple[0]))
         ru_sentences = correct_sentences(ru_tokenizer.tokenize(translation_tuple[1]))
 
         if len(ab_sentences) != len(ru_sentences):
-            # the paragraphs are missmatched
-            unmatched_paragraphs += 1
+            # the paragraphs are mismatched
+            mismatched_paragraphs += 1
             '''
             print("\n")
             print(ab_sentences)
@@ -100,40 +105,44 @@ def split_parallel_list(file_name,parallel_list):
             '''
         else:
             # the paragraph should be well splitted
+            matched_paragraphs += 1
             splitted_list.extend(list(zip(ab_sentences, ru_sentences)))
-    print(file_name+" unmatched "+str(unmatched_paragraphs))
+    print(file_name+" mismatched "+str(mismatched_paragraphs)+" out of "+str(matched_paragraphs) \
+         +" ("+str(round(mismatched_paragraphs*100/(matched_paragraphs+mismatched_paragraphs)))+"%)")
+    total_mismatch+=mismatched_paragraphs
+    total_match+=matched_paragraphs
     return splitted_list
     '''
-	open_file = io.open(folder_name+'/'+file_name,'r',encoding="utf-8")
-	contents = open_file.read()
-	write_file = io.open(folder_name+'/'+file_name,'w',encoding="utf-8")
-	for paragraph in change_hypen(contents).split("\n"):
-		sentences = tokenizer.tokenize(paragraph)
-		for i,sentence in enumerate(sentences[:]):
-			if sentence.startswith("!»"):
-				#the newline should start after "!»"
-				#so we delete the start from the sentence
-				sentences[i] = sentence[2:]
-				sentence = sentence[2:]
-				# and put it to the sentence before
-				sentences[i-1] += "!»"
-			# the sentence should not end with an acronym
-			if i+1<len(sentences) and ends_with_acronym(sentence):
-				# let us combine those sentences
-				sentences[i] = sentence + sentences[i+1]
-				# and empty the following sentence in the list
-				sentences[i+1] = ""
-			if sentence.startswith(speech_tokenset):
-				# we combine the speech with the post word of the speech
-				sentences[i-1] += sentence
-				# and empty the post word
-				sentences[i] = ""
+    open_file = io.open(folder_name+'/'+file_name,'r',encoding="utf-8")
+    contents = open_file.read()
+    write_file = io.open(folder_name+'/'+file_name,'w',encoding="utf-8")
+    for paragraph in change_hypen(contents).split("\n"):
+        sentences = tokenizer.tokenize(paragraph)
+        for i,sentence in enumerate(sentences[:]):
+            if sentence.startswith("!»"):
+                #the newline should start after "!»"
+                #so we delete the start from the sentence
+                sentences[i] = sentence[2:]
+                sentence = sentence[2:]
+                # and put it to the sentence before
+                sentences[i-1] += "!»"
+            # the sentence should not end with an acronym
+            if i+1<len(sentences) and ends_with_acronym(sentence):
+                # let us combine those sentences
+                sentences[i] = sentence + sentences[i+1]
+                # and empty the following sentence in the list
+                sentences[i+1] = ""
+            if sentence.startswith(speech_tokenset):
+                # we combine the speech with the post word of the speech
+                sentences[i-1] += sentence
+                # and empty the post word
+                sentences[i] = ""
 
-		for sentence in sentences:
-		    sentence = remHyphen.sub('', sentence)
-		    #To do, this should capitalize the first word of a string and the rest is lower case
-		    sentence = upper_lower.sub(lambda m: m.group(0).lower(), sentence)
-		    write_file.write(sentence.strip()+"\n")
+        for sentence in sentences:
+            sentence = remHyphen.sub('', sentence)
+            #To do, this should capitalize the first word of a string and the rest is lower case
+            sentence = upper_lower.sub(lambda m: m.group(0).lower(), sentence)
+            write_file.write(sentence.strip()+"\n")
     '''
 
 def open_parallel_file(file_number):
@@ -165,3 +174,5 @@ for i, file_name in enumerate(ab_files):
         save_file_ru.write(translation_tuple[1])
         if not translation_tuple[1].endswith("\n"):
             save_file_ru.write("\n")
+print("Total mismatched "+str(total_mismatch)+" out of "+str(total_match) \
+         +" ("+str(round(total_mismatch*100/(total_match+total_mismatch)))+"%)")
