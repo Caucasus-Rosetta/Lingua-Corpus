@@ -132,8 +132,8 @@ for i, file_name in enumerate(ab_files):
     parallel_list = open_parallel_file(i)
     splitted_list = split_parallel_list(file_name, parallel_list)
 
-    save_file_ru = io.open('../splitted/ab/'+ab_files[i],'w+', encoding="utf-8")
-    save_file_ab = io.open('../splitted/ru/'+ru_files[i],'w+', encoding="utf-8")
+    save_file_ab = io.open('../splitted/ab/'+ab_files[i],'w+', encoding="utf-8")
+    save_file_ru = io.open('../splitted/ru/'+ru_files[i],'w+', encoding="utf-8")
 
     for translation_tuple in splitted_list:
         save_file_ab.write(translation_tuple[0])
