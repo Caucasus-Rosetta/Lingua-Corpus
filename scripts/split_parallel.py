@@ -112,38 +112,6 @@ def split_parallel_list(file_name,parallel_list):
     total_mismatch+=mismatched_paragraphs
     total_match+=matched_paragraphs
     return splitted_list
-    '''
-    open_file = io.open(folder_name+'/'+file_name,'r',encoding="utf-8")
-    contents = open_file.read()
-    write_file = io.open(folder_name+'/'+file_name,'w',encoding="utf-8")
-    for paragraph in change_hypen(contents).split("\n"):
-        sentences = tokenizer.tokenize(paragraph)
-        for i,sentence in enumerate(sentences[:]):
-            if sentence.startswith("!»"):
-                #the newline should start after "!»"
-                #so we delete the start from the sentence
-                sentences[i] = sentence[2:]
-                sentence = sentence[2:]
-                # and put it to the sentence before
-                sentences[i-1] += "!»"
-            # the sentence should not end with an acronym
-            if i+1<len(sentences) and ends_with_acronym(sentence):
-                # let us combine those sentences
-                sentences[i] = sentence + sentences[i+1]
-                # and empty the following sentence in the list
-                sentences[i+1] = ""
-            if sentence.startswith(speech_tokenset):
-                # we combine the speech with the post word of the speech
-                sentences[i-1] += sentence
-                # and empty the post word
-                sentences[i] = ""
-
-        for sentence in sentences:
-            sentence = remHyphen.sub('', sentence)
-            #To do, this should capitalize the first word of a string and the rest is lower case
-            sentence = upper_lower.sub(lambda m: m.group(0).lower(), sentence)
-            write_file.write(sentence.strip()+"\n")
-    '''
 
 def open_parallel_file(file_number):
     abkhaz_list = []
