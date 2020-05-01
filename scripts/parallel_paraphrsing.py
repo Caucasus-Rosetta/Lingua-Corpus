@@ -11,7 +11,8 @@ The dictionary abkhazian_paraphrases is structured like {
 '''
 
 # we exlude the validation and test set
-exclude_text = ["parliament ru","parliament ab","constitution ab","constitution ru"]
+#exclude_text = ["parliament ru","parliament ab","constitution ab","constitution ru"]
+exclude_text = ["shuffled_abkhaz.test","shuffled_abkhaz.valid", "shuffled_russian.test", "shuffled_russian.valid"]
 parallel_corpus = [] #list of translation tuples
 parallel_paraphrases = {} # dictionary of paraphrases with translation tuples as keys
 
@@ -41,19 +42,19 @@ def generate_paraphrases(translation_tuple):
     for synonym_key in russian_synonyms.keys():
         exchange_synonym(synonym_key, russian_synonyms, translation_tuple, 0, "russian")
 
-
+source_folder = "../cleaned"
 def open_parallel_corpus():
     global parallel_corpus
     abkhaz_list = []
-    for file_name in sorted(listdir('../splitted/ab')):
+    for file_name in sorted(listdir(source_folder+'/ab')):
         if file_name not in exclude_text:
-            file = io.open('../splitted/ab/'+file_name,'r', encoding="utf-8")
+            file = io.open(source_folder+'/ab/'+file_name,'r', encoding="utf-8")
             abkhaz_list.extend(file.readlines())
 
     russian_list = []
-    for file_name in sorted(listdir('../ru')):
+    for file_name in sorted(listdir(source_folder+'/ru')):
         if file_name not in exclude_text:
-            file = io.open('../ru/'+file_name,'r', encoding="utf-8")
+            file = io.open(source_folder+'/ru/'+file_name,'r', encoding="utf-8")
             russian_list.extend(file.readlines())
 
     parallel_corpus = list(zip(russian_list, abkhaz_list))
