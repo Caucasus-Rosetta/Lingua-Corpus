@@ -14,7 +14,7 @@ ab_files = sorted(listdir('../ab'))
 ru_files = sorted(listdir('../ru'))
 total_match = 0
 total_mismatch = 0
-
+total_tokenized_sentences = 0
 try:
     if path.exists('../splitted'):
         shutil.rmtree('../splitted')
@@ -88,6 +88,7 @@ def correct_sentences(sentences):
 def split_parallel_list(file_name,parallel_list):
     global total_mismatch
     global total_match
+    global total_tokenized_sentences
     mismatched_paragraphs = 0
     matched_paragraphs = 0
     splitted_list = []
@@ -107,10 +108,11 @@ def split_parallel_list(file_name,parallel_list):
             # the paragraph should be well splitted
             matched_paragraphs += 1
             splitted_list.extend(list(zip(ab_sentences, ru_sentences)))
-    print(file_name+" mismatched "+str(mismatched_paragraphs)+" out of "+str(matched_paragraphs) \
+    print(file_name+" mismatched "+str(mismatched_paragraphs)+", matched "+str(matched_paragraphs) \
          +" ("+str(round(mismatched_paragraphs*100/(matched_paragraphs+mismatched_paragraphs)))+"%)")
     total_mismatch+=mismatched_paragraphs
     total_match+=matched_paragraphs
+    total_tokenized_sentences = total_tokenized_sentences + len(splitted_list)
     return splitted_list
 
 def open_parallel_file(file_number):
@@ -127,7 +129,7 @@ def open_parallel_file(file_number):
     parallel_corpus = list(zip(abkhaz_list, russian_list))
     return parallel_corpus
 
-
+print("PARAGRAPHS:")
 for i, file_name in enumerate(ab_files):
     parallel_list = open_parallel_file(i)
     splitted_list = split_parallel_list(file_name, parallel_list)
@@ -142,5 +144,6 @@ for i, file_name in enumerate(ab_files):
         save_file_ru.write(translation_tuple[1])
         if not translation_tuple[1].endswith("\n"):
             save_file_ru.write("\n")
-print("Total mismatched "+str(total_mismatch)+" out of "+str(total_match) \
+print("Total mismatched "+str(total_mismatch)+", total matched "+str(total_match) \
          +" ("+str(round(total_mismatch*100/(total_match+total_mismatch)))+"%)")
+print("SIZE OF PARALLEL CORPUS AFTER TOKENIZING AND FILTERING: "+str(total_tokenized_sentences))
