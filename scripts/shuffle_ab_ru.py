@@ -1,4 +1,5 @@
 import io
+import os
 import random
 import re
 import sys, getopt
@@ -6,20 +7,13 @@ from zipfile import ZipFile
 import sentencepiece as spm
 import time
 from tqdm import tqdm
-from os import path
 
 sp_ab = spm.SentencePieceProcessor()
 sp_ru = spm.SentencePieceProcessor()
-if not path.exists("ab.model"):
-    spm.SentencePieceTrainer.Train('--input=ab.txt --model_prefix=ab --vocab_size=8000 --model_type=BPE')
-    sp_ab.load("ab.model")
-else:
-    sp_ab.load("ab.model")
-if not path.exists("ru.model"):
-    spm.SentencePieceTrainer.Train('--input=ru.txt --model_prefix=ru --vocab_size=8000 --model_type=BPE')
-    sp_ru.load("ru.model")
-else:
-    sp_ru.load("ru.model")
+spm.SentencePieceTrainer.Train('--input=ab.txt --model_prefix=ab --vocab_size=16000 --model_type=BPE')
+sp_ab.load("ab.model")
+spm.SentencePieceTrainer.Train('--input=ru.txt --model_prefix=ru --vocab_size=16000 --model_type=BPE')
+sp_ru.load("ru.model")
 
 def open_parallel_file():
     abkhaz_list = []
@@ -31,32 +25,35 @@ def open_parallel_file():
     russian_list.extend(in_ru.readlines())
 
     parallel_corpus = list(zip(abkhaz_list, russian_list))
-    def get_first(tuple):
-        return len(tuple[0])
+    # def get_first(tuple):
+        # return len(tuple[0])
 #    import pdb; pdb.set_trace()
     parallel_corpus = list(dict.fromkeys(parallel_corpus))
-    parallel_corpus = sorted(parallel_corpus,key=get_first)
-    random.shuffle(parallel_corpus)
-    dirty_sym = re.compile('[0-9-\.№○●:\[\*a-z"▪\?+“\(\)\n]+')
+    # parallel_corpus = sorted(parallel_corpus,key=get_first)
+    dirty_ab = re.compile('[^ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ]+')
+    dirty_ru = re.compile('[^ёйцукенгшщзхъфывапролджэячсмитьбю]+')
     alphabet_ab = re.compile('[ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ]+',re.I)
     alphabet_ru = re.compile('[ёйцукенгшщзхъфывапролджэячсмитьбю]+',re.I)
     def is_dirty(tuple):
         dirty = False
-        if (len(dirty_sym.findall(translation_tuple[0])) > 0 and len(alphabet_ab.findall(translation_tuple[0])) == 0) \
-        or (len(dirty_sym.findall(translation_tuple[1])) > 0 and len(alphabet_ru.findall(translation_tuple[1])) == 0) \
-        or (len(translation_tuple[0])/len(translation_tuple[1]) <= 0.7) \
-        or (len(translation_tuple[0])/len(translation_tuple[1]) >= 1.2):
+        if (len(dirty_ab.findall(tuple[0])) > 0 and len(alphabet_ab.findall(tuple[0])) == 0) \
+        or (len(dirty_ru.findall(tuple[1])) > 0 and len(alphabet_ru.findall(tuple[1])) == 0) \
+        or (len(tuple[0])/len(tuple[1]) <= 0.7) \
+        or (len(tuple[0])/len(tuple[1]) >= 1.2):
             dirty = True
 #            import pdb; pdb.set_trace()
         return dirty
+    temp = list(parallel_corpus)
     for translation_tuple in tqdm(parallel_corpus):
         if is_dirty(translation_tuple):
-            parallel_corpus.remove(translation_tuple)
-    text_ab = ""
-    text_ru = ""
+            temp.remove(translation_tuple)
+    parallel_corpus = temp
+    random.shuffle(parallel_corpus)
     archive_ab = ZipFile('ab_ru_'+str(int(len(parallel_corpus)/1000))+'k.zip', 'w')
     archive_ru = ZipFile('ru_ab_'+str(int(len(parallel_corpus)/1000))+'k.zip', 'w')
-    for translation_tuple in tqdm(parallel_corpus[0:-2000]):
+    text_ab = ""
+    text_ru = ""
+    for translation_tuple in tqdm(parallel_corpus):
             text_ab = text_ab + " ".join(sp_ab.EncodeAsPieces(translation_tuple[0].strip()))+"\n"
             text_ru = text_ru + " ".join(sp_ru.EncodeAsPieces(translation_tuple[1].strip()))+"\n"
     ab = io.StringIO(text_ab)
@@ -87,7 +84,20 @@ def open_parallel_file():
     archive_ab.writestr("tgt-test.txt", ru.getvalue())
     archive_ru.writestr("src-test.txt", ru.getvalue())
     archive_ru.writestr("tgt-test.txt", ab.getvalue())
+
+    archive_ab.write("ab.model")
+    archive_ab.write("ru.model")
+    archive_ru.write("ab.model")
+    archive_ru.write("ru.model")
+    archive_ab.write("ab.vocab")
+    archive_ab.write("ru.vocab")
+    archive_ru.write("ab.vocab")
+    archive_ru.write("ru.vocab")
     archive_ab.close()
     archive_ru.close()
+    os.remove("ab.model")
+    os.remove("ru.model")
+    os.remove("ab.vocab")
+    os.remove("ru.vocab")
 
 open_parallel_file()
