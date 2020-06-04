@@ -10,9 +10,13 @@ from tqdm import tqdm
 
 sp_ab = spm.SentencePieceProcessor()
 sp_ru = spm.SentencePieceProcessor()
-spm.SentencePieceTrainer.Train('--input=ab.txt --model_prefix=ab --vocab_size=16000 --model_type=BPE')
+spm.SentencePieceTrainer.Train('--input=ab.txt,dictionary.ab --model_prefix=ab --vocab_size=32000 --model_type=BPE \
+                                --normalization_rule_name=nmt_nfkc_cf --max_sentence_length=20000 \
+                                --character_coverage=1')
 sp_ab.load("ab.model")
-spm.SentencePieceTrainer.Train('--input=ru.txt --model_prefix=ru --vocab_size=16000 --model_type=BPE')
+spm.SentencePieceTrainer.Train('--input=ru.txt,dictionary.ru --model_prefix=ru --vocab_size=32000 --model_type=BPE \
+                                --normalization_rule_name=nmt_nfkc_cf --max_sentence_length=20000 \
+                                --character_coverage=1')
 sp_ru.load("ru.model")
 
 def open_parallel_file():
