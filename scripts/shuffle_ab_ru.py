@@ -36,6 +36,14 @@ def open_parallel_file():
     dic_ru = io.open('dictionary.ru','r', encoding="utf-8")
     dic_ru_list.extend(dic_ru.readlines())
 
+    para_ab_list = []
+    para_ab = io.open('paraphrases.ab','r', encoding="utf-8")
+    para_ab_list.extend(para_ab.readlines())
+
+    para_ru_list = []
+    para_ru = io.open('paraphrases.ru','r', encoding="utf-8")
+    para_ru_list.extend(para_ru.readlines())
+
     parallel_corpus = list(zip(abkhaz_list, russian_list))
     # def get_first(tuple):
         # return len(tuple[0])
@@ -65,26 +73,34 @@ def open_parallel_file():
     archive_ab = ZipFile('ab_ru_'+str(int(len(parallel_corpus)/1000))+'k.zip', 'w')
     archive_ru = ZipFile('ru_ab_'+str(int(len(parallel_corpus)/1000))+'k.zip', 'w')
     print("Processing abkhazian dictionary:")
-    text_dic_ab = ""    
+    text_dic_ab = ""
     for line in tqdm(dic_ab_list):
         text_dic_ab = text_dic_ab + " ".join(sp_ab.EncodeAsPieces(line.strip()))+"\n"
-    text_dic_ru = ""     
     print("Processing russian dictionary:")
+    text_dic_ru = ""
     for line in tqdm(dic_ru_list):
-        text_dic_ru = text_dic_ru + " ".join(sp_ab.EncodeAsPieces(line.strip()))+"\n"
-    print("Processing training data:")    
+        text_dic_ru = text_dic_ru + " ".join(sp_ru.EncodeAsPieces(line.strip()))+"\n"
+    print("Processing abkhazian paraphrases:")
+    text_para_ab = ""
+    for line in tqdm(para_ab_list):
+        text_para_ab = text_para_ab + " ".join(sp_ab.EncodeAsPieces(line.strip()))+"\n"
+    print("Processing russian paraphrases:")
+    text_para_ru = ""
+    for line in tqdm(para_ru_list):
+        text_para_ru = text_para_ru + " ".join(sp_ru.EncodeAsPieces(line.strip()))+"\n"
+    print("Processing training data:")
     text_ab = ""
     text_ru = ""
-    for translation_tuple in tqdm(parallel_corpus):
+    for translation_tuple in tqdm(parallel_corpus[0:-2000]):
             text_ab = text_ab + " ".join(sp_ab.EncodeAsPieces(translation_tuple[0].strip()))+"\n"
-            text_ru = text_ru + " ".join(sp_ru.EncodeAsPieces(translation_tuple[1].strip()))+"\n"    
-    ab = io.StringIO(text_dic_ab+text_ab)
-    ru = io.StringIO(text_dic_ru+text_ru)
+            text_ru = text_ru + " ".join(sp_ru.EncodeAsPieces(translation_tuple[1].strip()))+"\n"
+    ab = io.StringIO(text_dic_ab+text_ab+text_para_ab)
+    ru = io.StringIO(text_dic_ru+text_ru+text_para_ru)
     archive_ab.writestr("src-train.txt", ab.getvalue())
     archive_ab.writestr("tgt-train.txt", ru.getvalue())
     archive_ru.writestr("src-train.txt", ru.getvalue())
     archive_ru.writestr("tgt-train.txt", ab.getvalue())
-    print("Processing validation data:")    
+    print("Processing validation data:")
     text_ab = ""
     text_ru = ""
     for translation_tuple in tqdm(parallel_corpus[-2000:-500]):
@@ -96,7 +112,7 @@ def open_parallel_file():
     archive_ab.writestr("tgt-val.txt", ru.getvalue())
     archive_ru.writestr("src-val.txt", ru.getvalue())
     archive_ru.writestr("tgt-val.txt", ab.getvalue())
-    print("Processing testing data:")      
+    print("Processing testing data:")
     text_ab = ""
     text_ru = ""
     for translation_tuple in tqdm(parallel_corpus[-500:-1]):
