@@ -11,7 +11,7 @@
 - https://wol.jw.org/ab/wol/lv/r358/lp-abk/0
 
 #### Current Multilingual Corpuses:
-1. Abkhazian Russian Parallel corpus (140273 lines).
+1. Abkhazian Russian Parallel corpus (173445 lines).
 
 #### Further resources
 - Tools and resources for open translation services: https://github.com/Helsinki-NLP/Opus-MT
