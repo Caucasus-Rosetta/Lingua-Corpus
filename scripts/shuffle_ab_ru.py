@@ -5,17 +5,18 @@ import re
 import sys, getopt
 from zipfile import ZipFile
 import sentencepiece as spm
+from mosestokenizer import *
 import time
 from tqdm import tqdm
 
 sp_ab = spm.SentencePieceProcessor()
 sp_ru = spm.SentencePieceProcessor()
 spm.SentencePieceTrainer.Train('--input=ab.txt,dictionary.ab --model_prefix=ab --vocab_size=32000 --model_type=BPE \
-                                --normalization_rule_name=nmt_nfkc_cf --max_sentence_length=20000 \
+                                --max_sentence_length=20000 \
                                 --character_coverage=1')
 sp_ab.load("ab.model")
 spm.SentencePieceTrainer.Train('--input=ru.txt,dictionary.ru --model_prefix=ru --vocab_size=32000 --model_type=BPE \
-                                --normalization_rule_name=nmt_nfkc_cf --max_sentence_length=20000 \
+                                --max_sentence_length=20000 \
                                 --character_coverage=1')
 sp_ru.load("ru.model")
 
@@ -62,8 +63,22 @@ def open_parallel_file():
         or (len(tuple[0])/len(tuple[1]) >= 1.2):
             dirty = True
         return dirty
+    normalize = MosesPunctuationNormalizer('ru')
+    tokenize = MosesTokenizer('ru')
+    def moses_ab(sent):
+        sent = normalize(sent)
+        temp = tokenize(sent)
+        for i, item in enumerate(temp):
+            temp[i] = " ".join(sp_ab.EncodeAsPieces(item))
+        return " ".join(temp)+"\n"
+    def moses_ru(sent):
+        sent = normalize(sent)
+        temp = tokenize(sent)
+        for i, item in enumerate(temp):
+            temp[i] = " ".join(sp_ru.EncodeAsPieces(item))
+        return " ".join(temp)+"\n"
     temp = list(parallel_corpus)
-    print("Filtering data:")
+    print("\nFiltering data:")
     for translation_tuple in tqdm(parallel_corpus):
         if is_dirty(translation_tuple):
             temp.remove(translation_tuple)
@@ -72,52 +87,52 @@ def open_parallel_file():
     print("-----------------------")
     archive_ab = ZipFile('ab_ru_'+str(int(len(parallel_corpus)/1000))+'k.zip', 'w')
     archive_ru = ZipFile('ru_ab_'+str(int(len(parallel_corpus)/1000))+'k.zip', 'w')
-    print("Processing abkhazian dictionary:")
+    print("\nProcessing abkhazian dictionary:")
     text_dic_ab = ""
     for line in tqdm(dic_ab_list):
-        text_dic_ab = text_dic_ab + " ".join(sp_ab.EncodeAsPieces(line.strip()))+"\n"
-    print("Processing russian dictionary:")
+        text_dic_ab = text_dic_ab + moses_ab(line)
+    print("\nProcessing russian dictionary:")
     text_dic_ru = ""
     for line in tqdm(dic_ru_list):
-        text_dic_ru = text_dic_ru + " ".join(sp_ru.EncodeAsPieces(line.strip()))+"\n"
-    print("Processing abkhazian paraphrases:")
+        text_dic_ru = text_dic_ru + moses_ru(line)
+    print("\nProcessing abkhazian paraphrases:")
     text_para_ab = ""
     for line in tqdm(para_ab_list):
-        text_para_ab = text_para_ab + " ".join(sp_ab.EncodeAsPieces(line.strip()))+"\n"
-    print("Processing russian paraphrases:")
+        text_para_ab = text_para_ab + moses_ab(line)
+    print("\nProcessing russian paraphrases:")
     text_para_ru = ""
     for line in tqdm(para_ru_list):
-        text_para_ru = text_para_ru + " ".join(sp_ru.EncodeAsPieces(line.strip()))+"\n"
-    print("Processing training data:")
+        text_para_ru = text_para_ru + moses_ru(line)
+    print("\nProcessing training data:")
     text_ab = ""
     text_ru = ""
     for translation_tuple in tqdm(parallel_corpus[0:-2000]):
-            text_ab = text_ab + " ".join(sp_ab.EncodeAsPieces(translation_tuple[0].strip()))+"\n"
-            text_ru = text_ru + " ".join(sp_ru.EncodeAsPieces(translation_tuple[1].strip()))+"\n"
+            text_ab = text_ab + moses_ab(translation_tuple[0])
+            text_ru = text_ru + moses_ru(translation_tuple[1])
     ab = io.StringIO(text_dic_ab+text_ab+text_para_ab)
     ru = io.StringIO(text_dic_ru+text_ru+text_para_ru)
     archive_ab.writestr("src-train.txt", ab.getvalue())
     archive_ab.writestr("tgt-train.txt", ru.getvalue())
     archive_ru.writestr("src-train.txt", ru.getvalue())
     archive_ru.writestr("tgt-train.txt", ab.getvalue())
-    print("Processing validation data:")
+    print("\nProcessing validation data:")
     text_ab = ""
     text_ru = ""
     for translation_tuple in tqdm(parallel_corpus[-2000:-500]):
-            text_ab = text_ab + " ".join(sp_ab.EncodeAsPieces(translation_tuple[0].strip()))+"\n"
-            text_ru = text_ru + " ".join(sp_ru.EncodeAsPieces(translation_tuple[1].strip()))+"\n"
+            text_ab = text_ab + moses_ab(translation_tuple[0])
+            text_ru = text_ru + moses_ru(translation_tuple[1])
     ab = io.StringIO(text_ab)
     ru = io.StringIO(text_ru)
     archive_ab.writestr("src-val.txt", ab.getvalue())
     archive_ab.writestr("tgt-val.txt", ru.getvalue())
     archive_ru.writestr("src-val.txt", ru.getvalue())
     archive_ru.writestr("tgt-val.txt", ab.getvalue())
-    print("Processing testing data:")
+    print("\nProcessing testing data:")
     text_ab = ""
     text_ru = ""
     for translation_tuple in tqdm(parallel_corpus[-500:-1]):
-            text_ab = text_ab + " ".join(sp_ab.EncodeAsPieces(translation_tuple[0].strip()))+"\n"
-            text_ru = text_ru + " ".join(sp_ru.EncodeAsPieces(translation_tuple[1].strip()))+"\n"
+            text_ab = text_ab + moses_ab(translation_tuple[0])
+            text_ru = text_ru + moses_ru(translation_tuple[1])
     ab = io.StringIO(text_ab)
     ru = io.StringIO(text_ru)
     archive_ab.writestr("src-test.txt", ab.getvalue())
