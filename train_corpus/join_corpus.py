@@ -8,18 +8,20 @@ dirty_ru = re.compile('[^ёйцукенгшщзхъфывапролджэячс�
 alphabet_ab = re.compile('[ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ\.\:,;\ 0-9-\(\)"!?]+',re.I)
 alphabet_ru = re.compile('[ёйцукенгшщзхъфывапролджэячсмитьбю\.\:,;\ 0-9-\(\)"!?]+',re.I)
 
-def filter_out(tuple, min_word_ratio, max_word_ratio, min_length, max_words):
+def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words):
     ru_words = 1.0*len(tuple[0].split(" "))
     ab_words = 1.0*len(tuple[1].split(" "))
+    ru_length = 1.0*len(tuple[0])
+    ab_length = 1.0*len(tuple[1])
     # There should be at last one letter of the alphabet
     if (len(dirty_ab.findall(tuple[0].lower())) > 0 and len(alphabet_ab.findall(tuple[0].lower())) == 0) \
     or (len(dirty_ru.findall(tuple[1].lower())) > 0 and len(alphabet_ru.findall(tuple[1].lower())) == 0):
         print("\nno letter:")
         print(tuple)
         return True
-    if ru_words/ab_words < min_word_ratio \
-    or ru_words/ab_words > max_word_ratio:
-        print("\n"+str(ru_words/ab_words)+" is not in the word_ratio scope with "+str(ru_words)+" russian and "+str(ab_words)+ " abkhazian words.")
+    if ru_length/ab_length < min_length_ratio \
+    or ru_length/ab_length > max_length_ratio:
+        print("\n"+str(ru_length/ab_length)+" is not in the langth ratio scope with "+str(ru_length)+" russian and "+str(ab_length)+ " abkhazian words.")
         print(tuple)
         return True
     if len(tuple[0].split(" ")) > max_words or len(tuple[1].split(" ")) > max_words \
@@ -30,9 +32,6 @@ def filter_out(tuple, min_word_ratio, max_word_ratio, min_length, max_words):
     return False
 
 parallel_text = io.open('ru-ab-parallel-juni-sorted-date.bifixed',"r+").readlines()
-
-# shuffled_list = parallel_text
-# random.shuffle(shuffled_list)
 
 ab_text_train = io.open('corpus_shuffled_abkhaz.train',"w+", encoding="utf-8")
 ab_train_list = []
