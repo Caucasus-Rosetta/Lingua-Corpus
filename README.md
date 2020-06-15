@@ -14,6 +14,7 @@
 1. Abkhazian Russian Parallel corpus (173445 lines).
 
 #### Further resources
+- A Review of Past Work and Future Challenges https://arxiv.org/pdf/2006.07264.pdf
 - Tools and resources for open translation services: https://github.com/Helsinki-NLP/Opus-MT
 - https://paperswithcode.com/task/low-resource-neural-machine-translation
 - https://www.masakhane.io/ https://github.com/masakhane-io/masakhane/blob/master/MT4LRL.md low resource, african NMT
