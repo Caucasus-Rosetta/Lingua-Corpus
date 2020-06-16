@@ -11,12 +11,12 @@ from tqdm import tqdm
 
 sp_ab = spm.SentencePieceProcessor()
 sp_ru = spm.SentencePieceProcessor()
-spm.SentencePieceTrainer.Train('--input=ab.txt,dictionary.ab --model_prefix=ab --vocab_size=32000 --model_type=BPE \
-                                --max_sentence_length=20000 \
+spm.SentencePieceTrainer.Train('--input=ab.txt,dictionary.ab --model_prefix=ab --vocab_size=4000 --model_type=BPE \
+                                --max_sentence_length=20000 --normalization_rule_name=nmt_nfkc_cf \
                                 --character_coverage=1')
 sp_ab.load("ab.model")
-spm.SentencePieceTrainer.Train('--input=ru.txt,dictionary.ru --model_prefix=ru --vocab_size=32000 --model_type=BPE \
-                                --max_sentence_length=20000 \
+spm.SentencePieceTrainer.Train('--input=ru.txt,dictionary.ru --model_prefix=ru --vocab_size=4000 --model_type=BPE \
+                                --max_sentence_length=20000 --normalization_rule_name=nmt_nfkc_cf \
                                 --character_coverage=1')
 sp_ru.load("ru.model")
 
@@ -63,20 +63,16 @@ def open_parallel_file():
         or (len(tuple[0])/len(tuple[1]) >= 1.2):
             dirty = True
         return dirty
-    normalize = MosesPunctuationNormalizer('ru')
     tokenize = MosesTokenizer('ru')
+    detokenize = MosesDetokenizer('ru')
     def moses_ab(sent):
-        sent = normalize(sent)
         temp = tokenize(sent)
-        for i, item in enumerate(temp):
-            temp[i] = " ".join(sp_ab.EncodeAsPieces(item))
-        return " ".join(temp)+"\n"
+        sent = detokenize(temp)
+        return " ".join(sp_ab.encode(sent, out_type=str, enable_sampling=True, alpha=0.1, nbest=64))+"\n"
     def moses_ru(sent):
-        sent = normalize(sent)
         temp = tokenize(sent)
-        for i, item in enumerate(temp):
-            temp[i] = " ".join(sp_ru.EncodeAsPieces(item))
-        return " ".join(temp)+"\n"
+        sent = detokenize(temp)
+        return " ".join(sp_ru.encode(sent, out_type=str, enable_sampling=True, alpha=0.1, nbest=64))+"\n"
     temp = list(parallel_corpus)
     print("\nFiltering data:")
     for translation_tuple in tqdm(parallel_corpus):
