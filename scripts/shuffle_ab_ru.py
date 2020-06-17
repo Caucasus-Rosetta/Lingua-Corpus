@@ -9,17 +9,6 @@ from mosestokenizer import *
 import time
 from tqdm import tqdm
 
-sp_ab = spm.SentencePieceProcessor()
-sp_ru = spm.SentencePieceProcessor()
-spm.SentencePieceTrainer.Train('--input=ab.txt,dictionary.ab --model_prefix=ab --vocab_size=4000 --model_type=BPE \
-                                --max_sentence_length=20000 --normalization_rule_name=nmt_nfkc_cf \
-                                --character_coverage=1')
-sp_ab.load("ab.model")
-spm.SentencePieceTrainer.Train('--input=ru.txt,dictionary.ru --model_prefix=ru --vocab_size=4000 --model_type=BPE \
-                                --max_sentence_length=20000 --normalization_rule_name=nmt_nfkc_cf \
-                                --character_coverage=1')
-sp_ru.load("ru.model")
-
 def open_parallel_file():
     abkhaz_list = []
     in_ab = io.open('ab.txt','r', encoding="utf-8")
@@ -68,11 +57,11 @@ def open_parallel_file():
     def moses_ab(sent):
         temp = tokenize(sent)
         sent = detokenize(temp)
-        return " ".join(sp_ab.encode(sent, out_type=str, enable_sampling=True, alpha=0.1, nbest=64))+"\n"
+        return sent + "\n"
     def moses_ru(sent):
         temp = tokenize(sent)
         sent = detokenize(temp)
-        return " ".join(sp_ru.encode(sent, out_type=str, enable_sampling=True, alpha=0.1, nbest=64))+"\n"
+        return sent + "\n"
     temp = list(parallel_corpus)
     print("\nFiltering data:")
     for translation_tuple in tqdm(parallel_corpus):
@@ -81,16 +70,22 @@ def open_parallel_file():
     parallel_corpus = temp
     random.shuffle(parallel_corpus)
     print("-----------------------")
-    archive_ab = ZipFile('ab_ru_'+str(int(len(parallel_corpus)/1000))+'k.zip', 'w')
-    archive_ru = ZipFile('ru_ab_'+str(int(len(parallel_corpus)/1000))+'k.zip', 'w')
+    archive_ab = ZipFile('ab_ru_'+str(int(len(parallel_corpus)/1000))+'k.zip', 'w', zipfile.ZIP_DEFLATED)
+    archive_ru = ZipFile('ru_ab_'+str(int(len(parallel_corpus)/1000))+'k.zip', 'w', zipfile.ZIP_DEFLATED)
     print("\nProcessing abkhazian dictionary:")
     text_dic_ab = ""
+    f_dic_ab = open("ab_sp_dic.txt","w+")
     for line in tqdm(dic_ab_list):
-        text_dic_ab = text_dic_ab + moses_ab(line)
+        tok = moses_ab(line)
+        text_dic_ab = text_dic_ab + tok
+        f_dic_ab.writelines(tok)
     print("\nProcessing russian dictionary:")
     text_dic_ru = ""
+    f_dic_ru = open("ru_sp_dic.txt","w+")
     for line in tqdm(dic_ru_list):
-        text_dic_ru = text_dic_ru + moses_ru(line)
+        tok = moses_ru(line)
+        text_dic_ru = text_dic_ru + tok
+        f_dic_ru.writelines(tok)
     print("\nProcessing abkhazian paraphrases:")
     text_para_ab = ""
     for line in tqdm(para_ab_list):
@@ -99,6 +94,23 @@ def open_parallel_file():
     text_para_ru = ""
     for line in tqdm(para_ru_list):
         text_para_ru = text_para_ru + moses_ru(line)
+    f_ab = open("ab_sp_train.txt","w+")
+    f_ru = open("ru_sp_train.txt","w+")
+    for i, translation_tuple in tqdm(enumerate(parallel_corpus)):
+            tok_ab = moses_ab(translation_tuple[0])
+            tok_ru = moses_ru(translation_tuple[1])
+            f_ab.writelines(tok_ab)
+            f_ru.writelines(tok_ru)
+    sp_ab = spm.SentencePieceProcessor()
+    sp_ru = spm.SentencePieceProcessor()
+    spm.SentencePieceTrainer.Train('--input=ab_sp_train.txt,ab_sp_dic.txt --model_prefix=ab --vocab_size=4000 --model_type=BPE \
+                                    --max_sentence_length=20000 --normalization_rule_name=nmt_nfkc_cf \
+                                    --character_coverage=1')
+    sp_ab.load("ab.model")
+    spm.SentencePieceTrainer.Train('--input=ru_sp_train.txt,ru_sp_dic.txt --model_prefix=ru --vocab_size=4000 --model_type=BPE \
+                                    --max_sentence_length=20000 --normalization_rule_name=nmt_nfkc_cf \
+                                    --character_coverage=1')
+    sp_ru.load("ru.model")
     print("\nProcessing training data:")
     text_ab = ""
     text_ru = ""
@@ -151,4 +163,4 @@ def open_parallel_file():
     os.remove("ab.vocab")
     os.remove("ru.vocab")
 
-open_parallel_file()
+# open_parallel_file()
