@@ -41,7 +41,7 @@ def tokenize_moses(corpus):
     temp = []    
     print("\nTokenizing corpus with moses:")
     for i, tuple in enumerate(tqdm(corpus)):
-        temp.append((tokenize(tuple[0]),tokenize(tuple[1])))
+        temp.append((' '.join(tokenize(tuple[0])),' '.join(tokenize(tuple[1]))))
     return temp
 
 def detokenize_moses(corpus):
@@ -49,40 +49,51 @@ def detokenize_moses(corpus):
     temp = []    
     print("\nDetokenizing corpus with moses:")
     for i, tuple in enumerate(tqdm(corpus)):
-        temp.append((detokenize(tuple[0]),detokenize(tuple[1])))
+        temp.append((detokenize(tuple[0].split(' ')),detokenize(tuple[1].split(' '))))
     return temp
 
-# TODO
 def train_sentencepiece(corpus):
-    spm.SentencePieceTrainer.Train('--input=ab_sp_train.txt,ab_sp_dic.txt --model_prefix=ab --vocab_size=4000 --model_type=BPE \
-                                    --max_sentence_length=20000 --normalization_rule_name=nmt_nfkc_cf \
-                                    --character_coverage=1')
-    spm.SentencePieceTrainer.Train('--input=ru_sp_train.txt,ru_sp_dic.txt --model_prefix=ru --vocab_size=4000 --model_type=BPE \
-                                    --max_sentence_length=20000 --normalization_rule_name=nmt_nfkc_cf \
-                                    --character_coverage=1')
+    corpus_src, corpus_tgt = zip(*corpus)
+    with open('src.txt','w+') as f:
+        for t in corpus_src:
+            f.write(''.join(str(s) for s in t))
+    with open('tgt.txt','w+') as f:
+        for t in corpus_tgt:
+            f.write(''.join(str(s) for s in t))
+    spm.SentencePieceTrainer.Train(input='src.txt', model_prefix='src',vocab_size=32000, model_type='BPE', max_sentence_length=20000, \
+                                    normalization_rule_name='nmt_nfkc_cf', character_coverage=1)
+    spm.SentencePieceTrainer.Train(input='tgt.txt', model_prefix='tgt',vocab_size=32000, model_type='BPE', max_sentence_length=20000, \
+                                    normalization_rule_name='nmt_nfkc_cf', character_coverage=1)
+    with ZipFile('sentencepiece_models', 'w') as archive:
+        archive.write("src.model")
+        archive.write("tgt.model")
+        archive.write("src.vocab")
+        archive.write("tgt.vocab")
+        os.remove("src.txt")
+        os.remove("tgt.txt")
 
-    archive.write("ab.model")
-    archive.write("ru.model")
-    archive.write("ab.vocab")
-    archive.write("ru.vocab")
-    os.remove("ab.model")
-    os.remove("ru.model")
-    os.remove("ab.vocab")
-    os.remove("ru.vocab")
-
-# TODO
 def tokenize_sentencepiece(corpus):
-    sp_ab = spm.SentencePieceProcessor()
-    sp_ru = spm.SentencePieceProcessor()
-    sp_ab.load("ab.model")
-    sp_ru.load("ru.model")
+    corpus_src, corpus_tgt = zip(*corpus)
+    sp_src = spm.SentencePieceProcessor()
+    sp_tgt = spm.SentencePieceProcessor()
+    sp_src.load("src.model")
+    sp_tgt.load("tgt.model")
+    print("\nTokenizing corpus with sentencepiece:")
+    corpus_src = sp_src.encode(list(corpus_src), out_type=str)
+    corpus_tgt = sp_tgt.encode(list(corpus_tgt), out_type=str)
+#    out = sp.encode(abkhaz_list, enable_sampling=True, alpha=0.1, nbest_size=-1, out_type=str)
+    return list(zip(corpus_src, corpus_tgt))
 
-# TODO
 def detokenize_sentencepiece(corpus):
-    sp_ab = spm.SentencePieceProcessor()
-    sp_ru = spm.SentencePieceProcessor()
-    sp_ab.load("ab.model")
-    sp_ru.load("ru.model")
+    corpus_src, corpus_tgt = zip(*corpus)
+    sp_src = spm.SentencePieceProcessor()
+    sp_tgt = spm.SentencePieceProcessor()
+    sp_src.load("src.model")
+    sp_tgt.load("tgt.model")
+    print("\nDetokenizing corpus with sentencepiece:")
+    corpus_src = sp_src.decode(list(corpus_src))
+    corpus_tgt = sp_tgt.decode(list(corpus_tgt))
+    return list(zip(corpus_src, corpus_tgt))
 
 def zip_data(title,train_list,val_list,test_list):
     with ZipFile(title, 'w') as archive:
@@ -113,19 +124,21 @@ def zip_data(title,train_list,val_list,test_list):
     archive.close()   
 
 def process():
-    file_tuple_list = [("ab.txt","ru.txt"),("dictionary.ab","dictionary.ru"),("paraphrases.ab","paraphrases.ru")]
-    parallel_corpus = open_list(file_tuple_list[0])
-    dictionary_corpus = open_list(file_tuple_list[1])
-    paraphrase_corpus = open_list(file_tuple_list[2])
-#    random.shuffle(clean(parallel_corpus))
-#    parallel_corpus = tokenize_moses(parallel_corpus)
-#    parallel_corpus = detokenize_moses(parallel_corpus)
-#    dictionary_corpus = tokenize_moses(dictionary_corpus)
-#    dictionary_corpus = detokenize_moses(dictionary_corpus)
-#    paraphrase_corpus = tokenize_moses(paraphrase_corpus)
-#    paraphrase_corpus = detokenize_moses(paraphrase_corpus)
-    zip_data('ab_ru_dev.zip',parallel_corpus[0:7000],\
-        parallel_corpus[7000:10000],parallel_corpus[10000:11000])
+    parallel_corpus = open_list(("ab.txt","ru.txt"))
+    dictionary_corpus = open_list(("dictionary.ab","dictionary.ru"))
+    paraphrase_corpus = open_list(("paraphrases.ab","paraphrases.ru"))
+    parallel_corpus = clean(parallel_corpus[0:4000])    
+#    random.shuffle(parallel_corpus)
+    parallel_corpus_src, parallel_corpus_tgt = zip(*parallel_corpus)
+    dictionary_corpus_src, dictionary_corpus_tgt = zip(*dictionary_corpus)
+    paraphrase_corpus_src, paraphrase_corpus_tgt = zip(*paraphrase_corpus)
+#    dictionary_corpus_src.extend(parallel_corpus_src)
     import pdb; pdb.set_trace()
+    train_sentencepiece()
+    train_corpus = tokenize_sentencepiece(dictionary_corpus.extend(parallel_corpus[:-2000]).extend(paraphrase_corpus))
+    val_corpus = tokenize_sentencepiece(parallel_corpus[-2000:-500])
+    test_corpus = tokenize_sentencepiece(parallel_corpus[-500:-1])
+    import pdb; pdb.set_trace()
+    zip_data('ab_ru_dev.zip',train_corpus, val_corpus, test_corpus)
 
 process()
