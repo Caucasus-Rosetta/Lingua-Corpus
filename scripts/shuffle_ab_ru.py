@@ -25,7 +25,7 @@ def clean(corpus):
     dirty_ru = re.compile('[^ёйцукенгшщзхъфывапролджэячсмитьбю]+')
     alphabet_ab = re.compile('[ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ]+',re.I)
     alphabet_ru = re.compile('[ёйцукенгшщзхъфывапролджэячсмитьбю]+',re.I)
-    corpus = list(dict.fromkeys(corpus))    
+    corpus = list(dict.fromkeys(corpus))
     temp = list(corpus)
     print("\nData filtering:")
     for tuple in tqdm(corpus):
@@ -34,11 +34,11 @@ def clean(corpus):
         or (len(tuple[0])/len(tuple[1]) <= 0.7) \
         or (len(tuple[0])/len(tuple[1]) >= 1.2):
             temp.remove(tuple)
-    return temp    
-    
+    return temp
+
 def tokenize_moses(corpus):
-    tokenize = MosesTokenizer('ru')    
-    temp = []    
+    tokenize = MosesTokenizer('ru')
+    temp = []
     print("\nTokenizing corpus with moses:")
     for i, tuple in enumerate(tqdm(corpus)):
         temp.append((' '.join(tokenize(tuple[0])),' '.join(tokenize(tuple[1]))))
@@ -46,7 +46,7 @@ def tokenize_moses(corpus):
 
 def detokenize_moses(corpus):
     detokenize = MosesDetokenizer('ru')
-    temp = []    
+    temp = []
     print("\nDetokenizing corpus with moses:")
     for i, tuple in enumerate(tqdm(corpus)):
         temp.append((detokenize(tuple[0].split(' ')),detokenize(tuple[1].split(' '))))
@@ -72,16 +72,26 @@ def train_sentencepiece(corpus):
         os.remove("src.txt")
         os.remove("tgt.txt")
 
-def tokenize_sentencepiece(corpus):
+def tokenize_sentencepiece(corpus,**kwargs):
+    dropout = False
+    for key, value in kwargs.items():
+      if key in ['corpus']:
+        corpus = value
+      elif key in ['dropout']:
+        dropout = value
     corpus_src, corpus_tgt = zip(*corpus)
     sp_src = spm.SentencePieceProcessor()
     sp_tgt = spm.SentencePieceProcessor()
     sp_src.load("src.model")
     sp_tgt.load("tgt.model")
-    print("\nTokenizing corpus with sentencepiece:")
-    corpus_src = sp_src.encode(list(corpus_src), out_type=str)
-    corpus_tgt = sp_tgt.encode(list(corpus_tgt), out_type=str)
-#    out = sp.encode(abkhaz_list, enable_sampling=True, alpha=0.1, nbest_size=-1, out_type=str)
+    if dropout:
+      print("\nTokenizing corpus with sentencepiece(dropout):")
+      corpus_src = sp_src.encode(list(corpus_src), enable_sampling=True, alpha=0.1, nbest_size=64, out_type=str)
+      corpus_tgt = sp_tgt.encode(list(corpus_tgt), enable_sampling=True, alpha=0.1, nbest_size=64, out_type=str)
+    else:
+      print("\nTokenizing corpus with sentencepiece:")
+      corpus_src = sp_src.encode(list(corpus_src), out_type=str)
+      corpus_tgt = sp_tgt.encode(list(corpus_tgt), out_type=str)
     return list(zip(corpus_src, corpus_tgt))
 
 def detokenize_sentencepiece(corpus):
@@ -103,31 +113,31 @@ def zip_data(title,train_list,val_list,test_list):
         archive.write('src-train.txt')
         os.remove("src-train.txt")
         with open('tgt-train.txt','w') as file:
-            for tuple in train_list:            
+            for tuple in train_list:
                 file.writelines(' '.join(tuple[1])+'\n')
         archive.write('tgt-train.txt')
         os.remove("tgt-train.txt")
         with open('src-val.txt','w') as file:
-            for tuple in val_list:            
+            for tuple in val_list:
                 file.writelines(' '.join(tuple[0])+'\n')
         archive.write('src-val.txt')
         os.remove("src-val.txt")
         with open('tgt-val.txt','w') as file:
-            for tuple in val_list:            
+            for tuple in val_list:
                 file.writelines(' '.join(tuple[1])+'\n')
         archive.write('tgt-val.txt')
         os.remove("tgt-val.txt")
         with open('src-test.txt','w') as file:
-            for tuple in test_list:            
+            for tuple in test_list:
                 file.writelines(' '.join(tuple[0])+'\n')
         archive.write('src-test.txt')
         os.remove("src-test.txt")
         with open('tgt-test.txt','w') as file:
-            for tuple in test_list:            
+            for tuple in test_list:
                 file.writelines(' '.join(tuple[1])+'\n')
         archive.write('tgt-test.txt')
         os.remove("tgt-test.txt")
-    archive.close()   
+    archive.close()
 
 def process():
     parallel_corpus = open_list(("ab.txt","ru.txt"))
