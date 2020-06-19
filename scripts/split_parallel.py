@@ -59,24 +59,38 @@ upper_lower = re.compile('([ҞЦУКЕНГШӘЗХҾФЫВАПРОЛДЖҼЏЧС
 
 def correct_sentences(sentences):
     for i,sentence in enumerate(sentences[:]):
-    	if sentence.startswith("!»"):
-    		#the newline should start after "!»"
-    		#so we delete the start from the sentence
-    		sentences[i] = sentence[2:]
-    		sentence = sentence[2:]
-    		# and put it to the sentence before
-    		sentences[i-1] += "!»"
-    	# the sentence should not end with an acronym
-    	if i+1<len(sentences) and ends_with_acronym(sentence):
-    		# let us combine those sentences
-    		sentences[i] = sentence + sentences[i+1]
-    		# and empty the following sentence in the list
-    		sentences[i+1] = ""
-    	if sentence.startswith(speech_tokenset):
-    		# we combine the speech with the post word of the speech
-    		sentences[i-1] += sentence
-    		# and empty the post word
-    		sentences[i] = ""
+        if sentence.startswith(".>>"):
+            #the newline should start after ".>>"
+            #so we delete the start from the sentence
+            sentences[i] = sentence[3:]
+            sentence = sentence[3:]
+            # and put it to the sentence before
+            sentences[i-1] += ".>>"
+        if sentence.startswith(">>"):
+            #the newline should start after ">>"
+            #so we delete the start from the sentence
+            sentences[i] = sentence[2:]
+            sentence = sentence[2:]
+            # and put it to the sentence before
+            sentences[i-1] += ">>"
+        if sentence.startswith("!»"):
+            #the newline should start after "!»"
+            #so we delete the start from the sentence
+            sentences[i] = sentence[2:]
+            sentence = sentence[2:]
+            # and put it to the sentence before
+            sentences[i-1] += "!»"
+        # the sentence should not end with an acronym
+        if i+1<len(sentences) and ends_with_acronym(sentence):
+            # let us combine those sentences
+            sentences[i] = sentence + sentences[i+1]
+            # and empty the following sentence in the list
+            sentences[i+1] = ""
+        if sentence.startswith(speech_tokenset):
+            # we combine the speech with the post word of the speech
+            sentences[i-1] += sentence
+            # and empty the post word
+            sentences[i] = ""
 
     for i,sentence in enumerate(sentences[:]):
         sentences[i] = remHyphen.sub('', sentence)
