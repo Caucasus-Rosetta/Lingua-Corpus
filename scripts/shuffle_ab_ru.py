@@ -32,7 +32,7 @@ def clean(corpus):
         if (len(dirty_ab.findall(tuple[0])) > 0 and len(alphabet_ab.findall(tuple[0])) == 0) \
         or (len(dirty_ru.findall(tuple[1])) > 0 and len(alphabet_ru.findall(tuple[1])) == 0) \
         or (len(tuple[0])/len(tuple[1]) <= 0.7) \
-        or (len(tuple[0])/len(tuple[1]) >= 1.3):
+        or (len(tuple[0])/len(tuple[1]) >= 1.2):
             temp.remove(tuple)
     return temp    
     
@@ -64,7 +64,7 @@ def train_sentencepiece(corpus):
                                     normalization_rule_name='nmt_nfkc_cf', character_coverage=1)
     spm.SentencePieceTrainer.Train(input='tgt.txt', model_prefix='tgt',vocab_size=32000, model_type='BPE', max_sentence_length=20000, \
                                     normalization_rule_name='nmt_nfkc_cf', character_coverage=1)
-    with ZipFile('sentencepiece_models', 'w') as archive:
+    with ZipFile('sentencepiece_models.zip', 'w') as archive:
         archive.write("src.model")
         archive.write("tgt.model")
         archive.write("src.vocab")
@@ -99,46 +99,46 @@ def zip_data(title,train_list,val_list,test_list):
     with ZipFile(title, 'w') as archive:
         with open('src-train.txt','w') as file:
             for tuple in train_list:
-                file.writelines(tuple[0])
+                file.writelines(' '.join(tuple[0])+'\n')
         archive.write('src-train.txt')
+        os.remove("src-train.txt")
         with open('tgt-train.txt','w') as file:
             for tuple in train_list:            
-                file.writelines(tuple[1])
+                file.writelines(' '.join(tuple[1])+'\n')
         archive.write('tgt-train.txt')
+        os.remove("tgt-train.txt")
         with open('src-val.txt','w') as file:
             for tuple in val_list:            
-                file.writelines(tuple[0])
+                file.writelines(' '.join(tuple[0])+'\n')
         archive.write('src-val.txt')
+        os.remove("src-val.txt")
         with open('tgt-val.txt','w') as file:
             for tuple in val_list:            
-                file.writelines(tuple[1])
+                file.writelines(' '.join(tuple[1])+'\n')
         archive.write('tgt-val.txt')
+        os.remove("tgt-val.txt")
         with open('src-test.txt','w') as file:
             for tuple in test_list:            
-                file.writelines(tuple[0])
+                file.writelines(' '.join(tuple[0])+'\n')
         archive.write('src-test.txt')
+        os.remove("src-test.txt")
         with open('tgt-test.txt','w') as file:
             for tuple in test_list:            
-                file.writelines(tuple[1])
+                file.writelines(' '.join(tuple[1])+'\n')
         archive.write('tgt-test.txt')
+        os.remove("tgt-test.txt")
     archive.close()   
 
 def process():
     parallel_corpus = open_list(("ab.txt","ru.txt"))
     dictionary_corpus = open_list(("dictionary.ab","dictionary.ru"))
     paraphrase_corpus = open_list(("paraphrases.ab","paraphrases.ru"))
-    parallel_corpus = clean(parallel_corpus[0:4000])    
-#    random.shuffle(parallel_corpus)
-    parallel_corpus_src, parallel_corpus_tgt = zip(*parallel_corpus)
-    dictionary_corpus_src, dictionary_corpus_tgt = zip(*dictionary_corpus)
-    paraphrase_corpus_src, paraphrase_corpus_tgt = zip(*paraphrase_corpus)
-#    dictionary_corpus_src.extend(parallel_corpus_src)
-    import pdb; pdb.set_trace()
-    train_sentencepiece()
-    train_corpus = tokenize_sentencepiece(dictionary_corpus.extend(parallel_corpus[:-2000]).extend(paraphrase_corpus))
+    parallel_corpus = clean(parallel_corpus)
+    random.shuffle(parallel_corpus)
+    train_sentencepiece(dictionary_corpus+parallel_corpus)
+    train_corpus = tokenize_sentencepiece(dictionary_corpus+parallel_corpus[:-2000]+paraphrase_corpus)
     val_corpus = tokenize_sentencepiece(parallel_corpus[-2000:-500])
     test_corpus = tokenize_sentencepiece(parallel_corpus[-500:-1])
-    import pdb; pdb.set_trace()
-    zip_data('ab_ru_dev.zip',train_corpus, val_corpus, test_corpus)
+    zip_data('ab_ru_'+str(int(len(parallel_corpus)/1000))+'k.zip',train_corpus, val_corpus, test_corpus)
 
 process()
