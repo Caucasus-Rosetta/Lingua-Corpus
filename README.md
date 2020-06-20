@@ -10,10 +10,10 @@ We can compose a specific training corpus and separate test files with the joine
 
     positional arguments:
       ll            the lengths for dictionary lists
-      min_ratio     We only use translation with this minimum ratio
-      max_ratio     We only use translation with this maximum ratio
-      min_length    We only use translation with this minimum length
-      max_words     We only use translation with this maximum words
+      min_ratio     We only use translations with this minimum, parallel ratio
+      max_ratio     We only use translations with this maximum, parallel ratio
+      min_length    We only use translations with this minimum length
+      max_words     We only use translations with this maximum words
 
     optional arguments:
       --dictionary  We use the dictionary as translation source
