@@ -1,6 +1,10 @@
-#### Due to copyright, the material can't be shared publicly. If you want access to the material, contact us via email: daniel.abzakh@gmail.com, 	kalle@hilsenbek.de
+### For data scientists, developers and whom it may concern: 
+##### Some of the text materials are copyrighted, check out the multilingual sources section that links to the source, please be sure to obide the authors restrictions and limitaions. 
+### For copyright owners:
+##### The text materials here are used for research, if there is any concerns regarding having your text material on this repo, please contact us via email: daniel.abzakh@gmail.com, kalle@hilsenbek.de.
 
-#### Composition of a training corpus
+### Tools:
+##### Composition of a training corpus
 We can compose a specific training corpus and separate test files with the joined corpus script in the training directory:
 
     usage: join_corpus.py [-h] [--dictionary] [--numerate] [--paraphrase]
@@ -23,14 +27,15 @@ We can compose a specific training corpus and separate test files with the joine
 For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50` results in the commited `06-19-2020_corpus` with a minimum range of 10 letters, max 50 words, a min ratio of 0,7 and max ratio of 2.25. The paraphrases are based on the filtered, training copus and are joined with the plain dictionary.
 
 #### Multilingual sources:
+-	koran - the islamic holy book (Quran)
 -	Braveheart - the Braveheart movie.
 -	Declaration of Human Rights.
 -	Novyi_Zavet - the new testament (Bible) Possible alignment with the russian, new testament in https://github.com/christos-c/bible-corpus ?
--	abaza.org  - english, russian, turkish, arabic, abaza.
--	koran - the islamic holy book (Quran)
-- http://opus.nlpl.eu/
-- https://tatoeba.org/
-- https://wol.jw.org/ab/wol/lv/r358/lp-abk/0
+-	http://abaza.org/  - russian, abkhazian
+-   http://apsnyteka.org/ 
+-   http://apsnypress.info/
+-   https://tatoeba.org/
+-   https://wol.jw.org/
 
 #### Current Multilingual Corpuses:
 1. Abkhazian Russian Parallel corpus (173445 lines).
