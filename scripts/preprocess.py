@@ -19,6 +19,24 @@ def open_list(file_tuple):
         tuple1.extend(f.readlines())
     return list(zip(tuple0, tuple1))
 
+def save_list(title, corpus, **kwargs):
+    join = False
+    for key, value in kwargs.items():
+      if key in ['join']:
+        join = value
+    corpus_src, corpus_tgt = zip(*corpus)
+    if not join:
+        with open(title,'w') as file:
+            for i, line in tqdm(enumerate(corpus)):
+                file.writelines(line[0].strip()+'\t'+line[1])
+    else:
+        with open('1_'+title,'w') as file:
+            for i, line in tqdm(enumerate(corpus)):
+                file.writelines(line[0])
+        with open('2_'+title,'w') as file:
+            for i, line in tqdm(enumerate(corpus)):
+                file.writelines(line[1])
+
 # a function to clean the text from duplicates and noise
 def clean(corpus):
     dirty_ab = re.compile('[^ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ]+')
