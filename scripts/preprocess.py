@@ -3,7 +3,7 @@ import os
 import random
 import re
 import sys, getopt
-from zipfile import ZipFile
+from zipfile import ZipFile, ZIP_DEFLATED
 import sentencepiece as spm
 from mosestokenizer import *
 import time
@@ -82,7 +82,7 @@ def train_sentencepiece(corpus):
                                     normalization_rule_name='nmt_nfkc_cf', character_coverage=1)
     spm.SentencePieceTrainer.Train(input='tgt.txt', model_prefix='tgt',vocab_size=32000, model_type='BPE', max_sentence_length=20000, \
                                     normalization_rule_name='nmt_nfkc_cf', character_coverage=1)
-    with ZipFile('sentencepiece_models.zip', 'w') as archive:
+    with ZipFile('sentencepiece_models.zip', 'w', compression=ZIP_DEFLATED) as archive:
         archive.write("src.model")
         archive.write("tgt.model")
         archive.write("src.vocab")
@@ -133,35 +133,35 @@ def detokenize_sentencepiece(corpus):
 
 def zip_data(title,train_list,val_list,test_list):
     print("\nZipping data:")
-    with ZipFile(title, 'w') as archive:
+    with ZipFile(title, 'w', compression=ZIP_DEFLATED) as archive:
         with open('src-train.txt','w') as file:
             for tuple in train_list:
-                file.writelines(tuple[0]+'\n')
+                file.writelines(tuple[0].strip()+'\n')
         archive.write('src-train.txt')
         os.remove("src-train.txt")
         with open('tgt-train.txt','w') as file:
             for tuple in train_list:
-                file.writelines(tuple[1]+'\n')
+                file.writelines(tuple[1].strip()+'\n')
         archive.write('tgt-train.txt')
         os.remove("tgt-train.txt")
         with open('src-val.txt','w') as file:
             for tuple in val_list:
-                file.writelines(tuple[0]+'\n')
+                file.writelines(tuple[0].strip()+'\n')
         archive.write('src-val.txt')
         os.remove("src-val.txt")
         with open('tgt-val.txt','w') as file:
             for tuple in val_list:
-                file.writelines(tuple[1]+'\n')
+                file.writelines(tuple[1].strip()+'\n')
         archive.write('tgt-val.txt')
         os.remove("tgt-val.txt")
         with open('src-test.txt','w') as file:
             for tuple in test_list:
-                file.writelines(tuple[0]+'\n')
+                file.writelines(tuple[0].strip()+'\n')
         archive.write('src-test.txt')
         os.remove("src-test.txt")
         with open('tgt-test.txt','w') as file:
             for tuple in test_list:
-                file.writelines(tuple[1]+'\n')
+                file.writelines(tuple[1].strip()+'\n')
         archive.write('tgt-test.txt')
         os.remove("tgt-test.txt")
     archive.close()
