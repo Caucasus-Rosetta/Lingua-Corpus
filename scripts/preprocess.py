@@ -20,12 +20,12 @@ def open_list(file_tuple):
     return list(zip(tuple0, tuple1))
 
 def save_list(title, corpus, **kwargs):
-    join = False
+    join = True
     for key, value in kwargs.items():
       if key in ['join']:
         join = value
     corpus_src, corpus_tgt = zip(*corpus)
-    if not join:
+    if join:
         with open(title,'w') as file:
             for i, line in tqdm(enumerate(corpus)):
                 file.writelines(line[0].strip()+'\t'+line[1])
