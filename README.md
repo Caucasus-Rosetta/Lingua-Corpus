@@ -29,7 +29,7 @@ For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50` 
 #### Multilingual sources:
 -	100 text book: http://apsua.tk/upload/iblock/54c/54cfde81abd369cdffa6512d9fdbea1e.pdf
 -   Declaration of Human Rights: https://www.ohchr.org/EN/UDHR/Documents/UDHR_Translations/abk.pdf
--	Braveheart: the Braveheart movie transcript.
+-	Braveheart: https://www.opensubtitles.org/en/subtitles/7977089/braveheart-ab
 -	The new testament book: http://apsnyteka.org/3009-Novy_zavet_2015_abh.html
 -	Abaza site articles: http://abaza.org/
 -   Apsnypress articles: http://apsnypress.info/
