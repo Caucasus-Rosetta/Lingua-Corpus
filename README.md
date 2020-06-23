@@ -36,10 +36,10 @@ For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50` 
 -   Tatoeba: https://tatoeba.org/eng/sentences/search?query=&from=rus&to=abk
 -   JW: https://wol.jw.org/
 -   JW300: http://opus.nlpl.eu/JW300.php
--   Constitution: https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B8%D1%82%D1%83%D1%86%D0%B8%D1%8F_%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B8_%D0%90%D0%B1%D1%85%D0%B0%D0%B7%D0%B8%D1%8F
+-   Constitution: https://ru.wikipedia.org/wiki/Конституция_Республики_Абхазия
 -   Criminal codex: http://presidentofabkhazia.org/doc/codecs/
 -   Family codex: http://presidentofabkhazia.org/doc/codecs/
--   Quran: https://github.com/danielinux7/Abkhazian-books-in-Public-Domain/tree/master/%D0%90%D2%9F%D3%99%D1%8B%D1%80%D2%9F%D0%B0%D0%BD
+-   Quran: https://github.com/danielinux7/Abkhazian-books-in-Public-Domain/tree/master/Аҟәырҟан
 -   The president's cat: (Одишариа, Гәырам: Апрезидент ицгәы) http://clarino.uib.no/abnc/text-list
 #### Current Multilingual Corpuses:
 1. Abkhazian Russian Parallel corpus (173445 lines).
