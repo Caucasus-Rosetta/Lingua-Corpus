@@ -2,7 +2,6 @@
 ###### Some of the text materials are copyrighted, check out the multilingual sources section that links to the source, please be sure to obide the authors restrictions and limitations. Beside this, the repo is under CC0 (public domain) license. 
 ##### For copyright owners:
 ###### The text materials here are used for research, if there are any concerns regarding having your text material on this repo, please contact us via email(s): daniel.abzakh@gmail.com, kalle@hilsenbek.de.
-
 ##### Tools:
 ###### Composition of a training corpus
 We can compose a specific training corpus and separate test files with the joined corpus script in the training directory:
@@ -42,9 +41,6 @@ For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50` 
 -   Family codex: http://presidentofabkhazia.org/doc/codecs/
 -   Quran: https://github.com/danielinux7/Abkhazian-books-in-Public-Domain/tree/master/Аҟәырҟан
 -   The president's cat: (Одишариа, Гәырам: Апрезидент ицгәы) http://clarino.uib.no/abnc/text-list
-#### Current Multilingual Corpuses:
-1. Abkhazian Russian Parallel corpus (173445 lines).
-
 #### Further resources
 - https://github.com/christos-c/bible-corpus
 - A Review of Past Work and Future Challenges https://arxiv.org/pdf/2006.07264.pdf
