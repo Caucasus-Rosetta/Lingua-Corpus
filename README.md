@@ -27,20 +27,25 @@ We can compose a specific training corpus and separate test files with the joine
 For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50` results in the commited `06-19-2020_corpus` with a minimum range of 10 letters, max 50 words, a min ratio of 0,7 and max ratio of 2.25. The paraphrases are based on the filtered, training copus and are joined with the plain dictionary.
 
 #### Multilingual sources:
--	koran - the islamic holy book (Quran)
--	Braveheart - the Braveheart movie.
--	Declaration of Human Rights.
--	Novyi_Zavet - the new testament (Bible) Possible alignment with the russian, new testament in https://github.com/christos-c/bible-corpus ?
--	http://abaza.org/  - russian, abkhazian
--   http://apsnyteka.org/ 
--   http://apsnypress.info/
--   https://tatoeba.org/
--   https://wol.jw.org/
-
+-	100 text book: http://apsua.tk/upload/iblock/54c/54cfde81abd369cdffa6512d9fdbea1e.pdf
+-   Declaration of Human Rights: https://www.ohchr.org/EN/UDHR/Documents/UDHR_Translations/abk.pdf
+-	Braveheart: the Braveheart movie transcript.
+-	The new testament book: http://apsnyteka.org/3009-Novy_zavet_2015_abh.html
+-	Abaza site articles: http://abaza.org/
+-   Apsnypress articles: http://apsnypress.info/
+-   Tatoeba: https://tatoeba.org/eng/sentences/search?query=&from=rus&to=abk
+-   JW: https://wol.jw.org/
+-   JW300: http://opus.nlpl.eu/JW300.php
+-   Constitution: https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B8%D1%82%D1%83%D1%86%D0%B8%D1%8F_%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B8_%D0%90%D0%B1%D1%85%D0%B0%D0%B7%D0%B8%D1%8F
+-   Criminal codex: http://presidentofabkhazia.org/doc/codecs/
+-   Family codex: http://presidentofabkhazia.org/doc/codecs/
+-   Quran: https://github.com/danielinux7/Abkhazian-books-in-Public-Domain/tree/master/%D0%90%D2%9F%D3%99%D1%8B%D1%80%D2%9F%D0%B0%D0%BD
+-   The president's cat: (Одишариа, Гәырам: Апрезидент ицгәы) http://clarino.uib.no/abnc/text-list
 #### Current Multilingual Corpuses:
 1. Abkhazian Russian Parallel corpus (173445 lines).
 
 #### Further resources
+- https://github.com/christos-c/bible-corpus
 - A Review of Past Work and Future Challenges https://arxiv.org/pdf/2006.07264.pdf
 - Tools and resources for open translation services: https://github.com/Helsinki-NLP/Opus-MT
 - https://paperswithcode.com/task/low-resource-neural-machine-translation
