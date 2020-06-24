@@ -72,12 +72,12 @@ def detokenize_moses(corpus):
 
 def train_sentencepiece(corpus):
     corpus_src, corpus_tgt = zip(*corpus)
-    with open('src.txt','w+') as f:
-        for t in corpus_src:
-            f.write(''.join(str(s) for s in t))
-    with open('tgt.txt','w+') as f:
-        for t in corpus_tgt:
-            f.write(''.join(str(s) for s in t))
+    with open('src.txt','w+') as file:
+        for line in corpus_src:
+            file.writelines(line.strip()+'\n')
+    with open('tgt.txt','w+') as file:
+        for line in corpus_tgt:
+            file.writelines(line.strip()+'\n')
     spm.SentencePieceTrainer.Train(input='src.txt', model_prefix='src',vocab_size=32000, model_type='BPE', max_sentence_length=20000, \
                                     normalization_rule_name='nmt_nfkc_cf', character_coverage=1)
     spm.SentencePieceTrainer.Train(input='tgt.txt', model_prefix='tgt',vocab_size=32000, model_type='BPE', max_sentence_length=20000, \
