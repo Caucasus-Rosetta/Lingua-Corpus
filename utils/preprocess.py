@@ -54,6 +54,17 @@ def clean(corpus):
             temp.remove(tuple)
     return temp
 
+def remove_duplicate(test,train):
+  temp = list(test)
+  for line_test in tqdm(test):
+    for line_train in train:
+      if line_test[0] == line_train[0] or line_test[1] == line_train[1]:
+        try:
+          temp.remove(line_test)
+        except ValueError:
+          pass  # do nothing!        
+  return temp
+
 def tokenize_moses(corpus):
     tokenize = MosesTokenizer('ru')
     temp = []
