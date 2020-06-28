@@ -25,7 +25,7 @@ We can compose a specific training corpus and separate test files with the joine
 
 For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50` results in the commited `06-19-2020_corpus` with a minimum range of 10 letters, max 50 words, a min ratio of 0,7 and max ratio of 2.25. The paraphrases are based on the filtered, training copus and are joined with the plain dictionary.
 #### Current Multilingual Corpuses:
-1. Abkhazian Russian Parallel corpus (173445 lines).
+1. Abkhazian Russian Parallel corpus (~121k lines).
 #### Multilingual sources:
 -	100 text book: http://apsua.tk/upload/iblock/54c/54cfde81abd369cdffa6512d9fdbea1e.pdf
 -   Declaration of Human Rights: https://www.ohchr.org/EN/UDHR/Documents/UDHR_Translations/abk.pdf
