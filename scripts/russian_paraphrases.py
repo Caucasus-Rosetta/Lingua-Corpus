@@ -1,4 +1,5 @@
 import json
+from os import listdir
 
 cyrillic_encoding = "utf-8"
 with open('dictionary.json', 'r+',encoding=cyrillic_encoding) as f:
@@ -16,15 +17,8 @@ for word in word_list:
             synonyms[word["name"]].update(word["synonyms"])
         else:
             synonyms[word["name"]] = set(word["synonyms"])
-        '''
-        for synonym in word["synonyms"]:
-            if synonym in synonyms.keys():
-                synonyms[synonym].update(word["synonyms"])
-                synonyms[synonym].update(word["name"])
-            else:
-                synonyms[synonym] = set(word["synonyms"])
-                synonyms[synonym].update(word["name"])
-        '''
+
+print("amount of russian synonyms:")
 print(len(synonyms))
 
 russian_paraphrases = {}
@@ -51,7 +45,11 @@ def generate_paraphrases(sentence):
         if len(paraphrases) > 0:
             russian_paraphrases[sentence] = paraphrases
 
-with open('../ru/parliament ru', 'r+',encoding=cyrillic_encoding) as f:
-    russian_sentences = f.read().splitlines()
-    for sentence in russian_sentences:
-        generate_paraphrases(sentence)
+for file_name in listdir('../ru'):
+    with open('../ru/'+file_name, 'r+',encoding="utf-8") as f:
+        russian_sentences = f.read().splitlines()
+        for sentence in russian_sentences:
+            generate_paraphrases(sentence)
+
+print("amount of russian paraphrases:")
+print(sum([len(russian_paraphrases[sentence]) for sentence in russian_paraphrases.keys()]))

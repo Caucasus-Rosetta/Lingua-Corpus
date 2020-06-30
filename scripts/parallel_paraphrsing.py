@@ -9,9 +9,10 @@ The dictionary abkhazian_paraphrases is structured like {
 "original sentence2":["paraphrase sentence2","second paraphrase"]
 }
 '''
+source_folder = "../cleaned"
 
 # we exlude the validation and test set
-#exclude_text = ["parliament ru","parliament ab","constitution ab","constitution ru"]
+# if you didn't know which files you should use then have a look at the joined_corpus script
 exclude_text = ["shuffled_abkhaz.test","shuffled_abkhaz.valid", "shuffled_russian.test", "shuffled_russian.valid"]
 parallel_corpus = [] #list of translation tuples
 parallel_paraphrases = {} # dictionary of paraphrases with translation tuples as keys
@@ -40,9 +41,8 @@ def generate_paraphrases(translation_tuple):
 
     parallel_paraphrases[translation_tuple]["russian"] = []
     for synonym_key in russian_synonyms.keys():
-        exchange_synonym(synonym_key, russian_synonyms, translation_tuple, 0, "russian")
+        exchange_synonym(synonym_key, russian_synonyms, translation_tuple, 1, "russian")
 
-source_folder = "../cleaned"
 def open_parallel_corpus():
     global parallel_corpus
     abkhaz_list = []
@@ -57,7 +57,7 @@ def open_parallel_corpus():
             file = io.open(source_folder+'/ru/'+file_name,'r', encoding="utf-8")
             russian_list.extend(file.readlines())
 
-    parallel_corpus = list(zip(russian_list, abkhaz_list))
+    parallel_corpus = list(zip(abkhaz_list,russian_list))
 
 def fill_list(list_to_fill, filler, length_to_align, max_length=3):
     length_to_fill = min(length_to_align, max_length)
@@ -66,8 +66,8 @@ def fill_list(list_to_fill, filler, length_to_align, max_length=3):
     return list_to_fill[:length_to_fill]
 
 def save_paraphrases():
-    russian_outputfile = open('../draft/paraphrases ru',"w+")
-    abkhaz_outputfile = open('../draft/paraphrases ab',"w+")
+    russian_outputfile = open('../draft/paraphrases-end-may.ru',"w+")
+    abkhaz_outputfile = open('../draft/paraphrases-end-may.ab',"w+")
     for translation_tuple in parallel_paraphrases:
         abkhazian_paraphrases = parallel_paraphrases[translation_tuple]["abkhaz"] or []
         russian_paraphrases = parallel_paraphrases[translation_tuple]["russian"] or []
@@ -80,11 +80,11 @@ def save_paraphrases():
         random.shuffle(russian_paraphrases)
 
         '''
-        # we only take the minimal amount of paraphrases
+        # we could only take the minimal amount of paraphrases
         # this only works if there many paraphrases on both sides for one translation
         # min_paraphrases = min(len(abkhazian_paraphrases), len(russian_paraphrases))
+        # print(str(len(russian_paraphrases))+" : "+str(len(abkhazian_paraphrases)))
         '''
-        print(str(len(russian_paraphrases))+" : "+str(len(abkhazian_paraphrases)))
         russian_outputfile.writelines(russian_paraphrases)
         abkhaz_outputfile.writelines(abkhazian_paraphrases)
 
