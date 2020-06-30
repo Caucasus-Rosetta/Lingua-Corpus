@@ -88,7 +88,7 @@ dirty_ru = re.compile('[^ёйцукенгшщзхъфывапролджэячс�
 alphabet_ab = re.compile('[ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ\.\:,;\ 0-9-\(\)"!?]+',re.I)
 alphabet_ru = re.compile('[ёйцукенгшщзхъфывапролджэячсмитьбю\.\:,;\ 0-9-\(\)"!?]+',re.I)
 
-def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words):
+def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words, verbose):
     ru_words = 1.0*len(tuple[0].split(" "))
     ab_words = 1.0*len(tuple[1].split(" "))
     ru_length = 1.0*len(tuple[0])
@@ -96,43 +96,47 @@ def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words)
     # There should be at last one letter of the alphabet
     if (len(dirty_ab.findall(tuple[0].lower())) > 0 and len(alphabet_ab.findall(tuple[0].lower())) == 0) \
     or (len(dirty_ru.findall(tuple[1].lower())) > 0 and len(alphabet_ru.findall(tuple[1].lower())) == 0):
-        print("\nno letter:")
-        print(tuple)
+        if verbose:
+            print("\nno letter:")
+            print(tuple)
         return True
     if ru_length/ab_length < min_length_ratio \
     or ru_length/ab_length > max_length_ratio:
-        print("\n"+str(ru_length/ab_length)+" is not in the langth ratio scope with "+str(ru_length)+" russian and "+str(ab_length)+ " abkhazian letters.")
-        print(tuple)
+        if verbose:
+            print("\n"+str(ru_length/ab_length)+" is not in the langth ratio scope with "+str(ru_length)+" russian and "+str(ab_length)+ " abkhazian letters.")
+            print(tuple)
         return True
     if len(tuple[0].split(" ")) > max_words or len(tuple[1].split(" ")) > max_words \
     or len(tuple[0]) < min_length or len(tuple[1]) < min_length:
-        print("\ntoo long or too short:")
-        print(tuple)
+        if verbose:
+            print("\ntoo long or too short:")
+            print(tuple)
         return True
     return False
 
 now = datetime.datetime.now()
 current_date = now.strftime('%m-%d-%Y')
+folder = "joined_translation_data/"
 
 parallel_text = io.open('ru-ab-parallel-juni-sorted-date.bifixed',"r+").readlines()
 
-ab_text_train = io.open(current_date+'_corpus_abkhaz.train',"w+", encoding="utf-8")
+ab_text_train = io.open(folder+current_date+'_corpus_abkhaz.train',"w+", encoding="utf-8")
 ab_train_list = []
-ab_text_valid = io.open(current_date+'_corpus_abkhaz.valid',"w+", encoding="utf-8")
-ab_text_test = io.open(current_date+'_corpus_abkhaz.test',"w+", encoding="utf-8")
+ab_text_valid = io.open(folder+current_date+'_corpus_abkhaz.valid',"w+", encoding="utf-8")
+ab_text_test = io.open(folder+current_date+'_corpus_abkhaz.test',"w+", encoding="utf-8")
 
-ru_text_train = io.open(current_date+'_corpus_russian.train',"w+", encoding="utf-8")
+ru_text_train = io.open(folder+current_date+'_corpus_russian.train',"w+", encoding="utf-8")
 ru_train_list = []
-ru_text_valid = io.open(current_date+'_corpus_russian.valid',"w+", encoding="utf-8")
-ru_text_test = io.open(current_date+'_corpus_russian.test',"w+", encoding="utf-8")
+ru_text_valid = io.open(folder+current_date+'_corpus_russian.valid',"w+", encoding="utf-8")
+ru_text_test = io.open(folder+current_date+'_corpus_russian.test',"w+", encoding="utf-8")
 
 ignored_count = 0
 
-def read_splitted_corpus(min_length_ratio, max_length_ratio, min_length, max_words):
+def read_splitted_corpus(min_length_ratio, max_length_ratio, min_length, max_words, verbose):
     global ignored_count
     for i,sentences in enumerate(parallel_text):
         splitted =  sentences.split("\t")
-        if len(splitted) == 2 and not filter_out(splitted, min_length_ratio, max_length_ratio, min_length, max_words):
+        if len(splitted) == 2 and not filter_out(splitted, min_length_ratio, max_length_ratio, min_length, max_words, verbose):
             ru_sentence = splitted[0]
             ab_sentence = splitted[1]
             if i <= 500:
@@ -243,22 +247,29 @@ if __name__ == "__main__":
                         help='We only use translation with this maximum words')
     parser.add_argument('--paraphrase', action='store_true',
                         help='We paraphrase the filtered corpus')
+    parser.add_argument('--verbose', action='store_true',
+                        help='We print the filtered lines to the terminal')
+    parser.add_argument('--random-test', action='store_true',
+                        help='We randomize the corpus before splitting it into the training, validation and test sets.')
 
     args = parser.parse_args()
 
-    read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words)
+    if args.random-test:
+        random.shuffle(parallel_text)
+
+    read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose)
 
     parallel_corpus = list(zip(ru_train_list,ab_train_list))
     original_corpus_lines = len(parallel_corpus)
     print("\nraw lines: "+str(len(parallel_corpus)))
     print("\nignored lines: "+str(ignored_count))
 
-    if(args.paraphrase or args.dictionary):
+    if args.paraphrase or args.dictionary:
         # we load the dictionaries
         load_ab_ru_dictionary()
 
     paraphrase_lines = 0
-    if(args.paraphrase):
+    if args.paraphrase:
         # we extract the synonyme and paraphrase the corpus
         load_russian_synonyms()
         extract_ab_synonyms()
