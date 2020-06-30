@@ -1,8 +1,10 @@
 $(document).ready(function() {
-  $('form').on('change', function(event) {
+  $('#translate').on('click', function(event) {
     if ($('#target').text() == "")
       $('#target').text('Аиҭагара иаҿуп')
-    else
+    else if ($('#target').text().slice(-3) == "...") {
+      return
+    } else
       $('#target').text($('#target').text() + "...")
     $.ajax({
         data: {

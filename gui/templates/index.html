@@ -24,23 +24,28 @@
 
   <div class="container">
 
-    <form class="shadow-google mb-5 bg-white">
-      <div class="row m-0 border-google nav" role="navigation">
-        <div class="nav col" id="lang-src">
-          <div class="nav-link active" data-lang="ab">Аԥсуа</div>
+    <form>
+      <div class="shadow-google bg-white">
+        <div class="row m-0 border-google nav" role="navigation">
+          <div class="nav col" id="lang-src">
+            <div class="nav-link active" data-lang="ab">Аԥсуа</div>
+          </div>
+          <div class="col-1 nav-link material-icons align-middle swap" data-lang="ab">swap_horiz</div>
+          <div class="nav col" id="lang-tgt">
+            <div class="nav-link active" data-lang="ru">Аурыс</div>
+          </div>
         </div>
-        <div class="col-1 nav-link material-icons align-middle swap" data-lang="ab">swap_horiz</div>
-        <div class="nav col" id="lang-tgt">
-          <div class="nav-link active" data-lang="ru">Аурыс</div>
+        <div class="row m-0 form-group">
+          <div class="col-sm-6 px-0">
+            <textarea class="form-control rounded-right-0 rounded-left-top-0 no-resize" id="source" rows="6"></textarea>
+          </div>
+          <div class="col-sm-6 px-0">
+            <textarea class="form-control rounded-left-0 rounded-right-top-0 no-resize" id="target" placeholder="Аиҭагара" rows="6" readonly></textarea>
+          </div>
         </div>
       </div>
-      <div class="row m-0 form-group">
-        <div class="col-sm-6 px-0">
-          <textarea class="form-control rounded-right-0 rounded-left-top-0 no-resize" id="source" rows="6"></textarea>
-        </div>
-        <div class="col-sm-6 px-0">
-          <textarea class="form-control rounded-left-0 rounded-right-top-0 no-resize" id="target" placeholder="Аиҭагара" rows="6" readonly></textarea>
-        </div>
+      <div class="">
+        <button type="button" class="btn btn-success btn-sm float-right mt-2" id="translate">Еиҭага</button>
       </div>
     </form>
 
