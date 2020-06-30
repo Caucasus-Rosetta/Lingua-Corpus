@@ -29,5 +29,10 @@
 }
 
 .active {
-  border-bottom-color: green;
+  border-bottom: .25em solid #11b211;
+}
+
+.swap {
+  text-align: center;
+  min-width: 56px;
 }

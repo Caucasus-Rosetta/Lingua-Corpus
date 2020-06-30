@@ -6,10 +6,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" crossorigin="anonymous">
 
-  <title>Аиҭагара машьынала</title>
+  <title>Аиҭагара Машьынала</title>
 </head>
 
 <body>
@@ -24,17 +25,14 @@
   <div class="container">
 
     <form class="shadow-google mb-5 bg-white">
-      <div class="row m-0 border-google" role="navigation">
-        <ul class="nav col-6">
-          <li class="nav-item" id="lang-src">
-            <a class="nav-link active" data-lang="ab" href="#">Аԥсуа</a>
-          </li>
-        </ul>
-        <ul class="nav col-6">
-          <li class="nav-item" id="lang-tgt">
-            <a class="nav-link active" data-lang="ru" href="#">Аурыс</a>
-          </li>
-        </ul>
+      <div class="row m-0 border-google nav" role="navigation">
+        <div class="nav col" id="lang-src">
+          <div class="nav-link active" data-lang="ab">Аԥсуа</div>
+        </div>
+        <div class="col-1 nav-link material-icons align-middle swap" data-lang="ab">swap_horiz</div>
+        <div class="nav col" id="lang-tgt">
+          <div class="nav-link active" data-lang="ru">Аурыс</div>
+        </div>
       </div>
       <div class="row m-0 form-group">
         <div class="col-sm-6 px-0">
