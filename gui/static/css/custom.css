@@ -54,7 +54,7 @@ body {
   display: inline-block;
 }
 
-.material-icons.md-green {
+.md-green {
   color: rgba(40, 167, 69, 0.54);
 }
 
@@ -80,6 +80,29 @@ body {
   border-left: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+.svg {
+  display: block;
+  background: #fff;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 32px;
+  width: 32px;
+  height: 42px;
+}
+
+.law {
+  background-image: url('/static/images/law.svg');
+}
+
+.github {
+  background-image: url('/static/images/github.svg');
+}
+
+.mail {
+  background-image: url('/static/images/mail.svg');
+}
+
+/* This is the media query section */
 @media (max-width: 576px) {
   .mobile {
     border-top: none;
