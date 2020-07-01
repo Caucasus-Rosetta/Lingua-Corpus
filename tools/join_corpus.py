@@ -132,17 +132,17 @@ ru_text_test = io.open(folder+current_date+'_corpus_russian.test',"w+", encoding
 
 ignored_count = 0
 
-def read_splitted_corpus(min_length_ratio, max_length_ratio, min_length, max_words, verbose):
+def read_splitted_corpus(min_length_ratio, max_length_ratio, min_length, max_words, verbose, test_lines, valid_lines):
     global ignored_count
     for i,sentences in enumerate(parallel_text):
         splitted =  sentences.split("\t")
         if len(splitted) == 2 and not filter_out(splitted, min_length_ratio, max_length_ratio, min_length, max_words, verbose):
             ru_sentence = splitted[0]
             ab_sentence = splitted[1]
-            if i <= 500:
+            if i <= test_lines:
                 ab_text_valid.write(ab_sentence)
                 ru_text_valid.write(ru_sentence+"\n")
-            elif i<=1000 and i > 500:
+            elif i<=test_lines+valid_lines and i > test_lines:
                 ab_text_test.write(ab_sentence)
                 ru_text_test.write(ru_sentence+"\n")
             else:
@@ -231,7 +231,7 @@ def generate_lists(max_list_lengths, enumerate_list):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process the corpus with paraphrases and the dictionary')
     parser.add_argument('--dictionary', action='store_true',
-                        help='We use the dictionary as translation source')
+                        help='We use the dictionary lists as an additional translation source.')
     parser.add_argument('list_lengths', metavar='ll', type=int, nargs='+',
                         help='the lengths for dictionary lists', default=[1])
     parser.add_argument('--numerate', action='store_true',
@@ -245,10 +245,14 @@ if __name__ == "__main__":
                         help='We only use translation with this minimum length')
     parser.add_argument('max_words', metavar='max_words', type=int,
                         help='We only use translation with this maximum words')
+    parser.add_argument('test_lines', metavar='test_lines', type=int,
+                        help='We define the number of lines that are filtered for the test set.')
+    parser.add_argument('valid_lines', metavar='valid_lines', type=int,
+                        help='The number of lines that are filtered for the validation set.')
     parser.add_argument('--paraphrase', action='store_true',
-                        help='We paraphrase the filtered corpus')
+                        help='We paraphrase the filtered training corpus.')
     parser.add_argument('--verbose', action='store_true',
-                        help='We print the filtered lines to the terminal')
+                        help='We print the filtered lines to the terminal.')
     parser.add_argument('--random', action='store_true',
                         help='We randomize the corpus before splitting it into the training, validation and test sets.')
 
@@ -257,7 +261,7 @@ if __name__ == "__main__":
     if args.random:
         random.shuffle(parallel_text)
 
-    read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose)
+    read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose, args.test_lines, args.valid_lines)
 
     parallel_corpus = list(zip(ru_train_list,ab_train_list))
     original_corpus_lines = len(parallel_corpus)
