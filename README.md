@@ -4,24 +4,27 @@
 ###### The text materials here are used for research, if there are any concerns regarding having your text material on this repo, please contact us via email(s): daniel.abzakh@gmail.com, kalle@hilsenbek.de.
 ##### Tools:
 ###### Composition of a training corpus
-We can compose a specific training corpus and separate test files with the joined corpus script in the training directory:
-
+We can compose a specific, shuffled training corpus and separate test files with the joined corpus script in the training directory:
     usage: join_corpus.py [-h] [--dictionary] [--numerate] [--paraphrase]
+                          [--verbose] [--random]
                           ll [ll ...] min_ratio max_ratio min_length max_words
 
     Process the corpus with paraphrases and the dictionary
 
     positional arguments:
       ll            the lengths for dictionary lists
-      min_ratio     We only use translations with this minimum, parallel ratio
-      max_ratio     We only use translations with this maximum, parallel ratio
-      min_length    We only use translations with this minimum length
-      max_words     We only use translations with this maximum words
+      min_ratio     We only use translation with this minimum ratio
+      max_ratio     We only use translation with this maximum ratio
+      min_length    We only use translation with this minimum length
+      max_words     We only use translation with this maximum words
 
     optional arguments:
       --dictionary  We use the dictionary as translation source
       --numerate    The dictionary list has a numeration
       --paraphrase  We paraphrase the filtered corpus
+      --verbose     We print the filtered lines to the terminal
+      --random      We randomize the corpus before splitting it into the training,
+                    validation and test sets.
 
 For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50` results in the commited `06-19-2020_corpus` with a minimum range of 10 letters, max 50 words, a min ratio of 0,7 and max ratio of 2.25. The paraphrases are based on the filtered, training copus and are joined with the plain dictionary.
 #### Current Multilingual Corpuses:
