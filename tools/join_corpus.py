@@ -20,7 +20,7 @@ synonyms = {
 cyrillic_encoding = "utf-8"
 
 def load_russian_synonyms():
-    with io.open('../scripts/dictionary.json', 'r+',encoding=cyrillic_encoding) as f:
+    with io.open('../utils/dictionary.json', 'r+',encoding=cyrillic_encoding) as f:
         ru_dictionary = json.loads(f.read())
 
     russian_dictionay_mixin = ru_dictionary["wordlist"]
@@ -249,12 +249,12 @@ if __name__ == "__main__":
                         help='We paraphrase the filtered corpus')
     parser.add_argument('--verbose', action='store_true',
                         help='We print the filtered lines to the terminal')
-    parser.add_argument('--random-test', action='store_true',
+    parser.add_argument('--random', action='store_true',
                         help='We randomize the corpus before splitting it into the training, validation and test sets.')
 
     args = parser.parse_args()
 
-    if args.random-test:
+    if args.random:
         random.shuffle(parallel_text)
 
     read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose)
