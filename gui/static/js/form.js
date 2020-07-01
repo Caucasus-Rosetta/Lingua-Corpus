@@ -1,4 +1,12 @@
 $(document).ready(function() {
+  $('#swap-lang').on('click', function(event) {
+    src = $('#lang-src .active').attr('data-lang')
+    tgt = $('#lang-tgt .active').attr('data-lang')
+    src_list = $('#lang-src .nav-link').attr('data-lang')
+    tgt_list = $('#lang-tgt .nav-link').attr('data-lang')
+    event.preventDefault();
+  });
+
   $('#translate').on('click', function(event) {
     if ($('#target').text() == "Аиҭагара")
       $('#target').text('Аиҭагара иаҿуп')
