@@ -86,4 +86,14 @@ body {
     color: #fff;
     background-color: rgb(40, 167, 69)
   }
+
+  .footer {
+    margin-top: 6em;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .height-google {
+    min-height: calc(100vh - 65px - 56px - 148px - 72px);
+  }
 }
