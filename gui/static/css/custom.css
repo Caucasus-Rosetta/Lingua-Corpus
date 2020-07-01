@@ -4,6 +4,11 @@ body {
   overflow-x: hidden;
 }
 
+.header {
+  background-color: #fff;
+  margin-bottom: 4em;
+}
+
 .rounded-left-0 {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
@@ -66,7 +71,6 @@ body {
   background: #fff;
   border: 2px solid rgba(0, 0, 0, .12);
   border-radius: 50%;
-  height: 70px;
 }
 
 .no-box-shadow {
@@ -86,8 +90,19 @@ body {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 32px;
+  width: 52px;
+  height: 52px;
+}
+
+.logo {
+  display: block;
+  background: #fff;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 32px;
   width: 32px;
-  height: 42px;
+  height: 32px;
+  background-image: url('/static/images/logo-100px.png');
 }
 
 .law {
@@ -108,6 +123,10 @@ body {
     border-top: none;
     color: #fff;
     background-color: rgb(40, 167, 69)
+  }
+
+  .header {
+    margin-bottom: 0;
   }
 
   .footer {
