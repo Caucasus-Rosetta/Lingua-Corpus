@@ -24,23 +24,26 @@ body {
 
 .shadow-google {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.22);
-}
-
-.border-google {
+  border-radius: .5em;
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+.border-google {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
 .no-resize {
-  resize: none;
+  resize: none !important;
 }
 
 .active {
-  border-bottom: .25em solid #28a745;
+  border-bottom: .25em solid rgb(40, 167, 69);
 }
 
 .swap {
   text-align: center;
   min-width: 56px;
+  max-width: 56px;
 }
 
 .footer {
@@ -64,4 +67,23 @@ body {
   border: 2px solid rgba(0, 0, 0, .12);
   border-radius: 50%;
   height: 70px;
+}
+
+.no-box-shadow {
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  border: none !important
+}
+
+.mobile {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 576px) {
+  .mobile {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    color: #fff;
+    background-color: rgb(40, 167, 69)
+  }
 }
