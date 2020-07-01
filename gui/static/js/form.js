@@ -1,8 +1,11 @@
 $(document).ready(function() {
   $('#translate').on('click', function(event) {
-    if ($('#target').text() == "")
+    if ($('#target').text() == "Аиҭагара")
       $('#target').text('Аиҭагара иаҿуп')
-    else if ($('#target').text().slice(-3) == "...") {
+    else if ($('#source').val() == "") {
+      $('#target').text('Аиҭагара')
+      return
+    } else if ($('#target').text().slice(-3) == "...") {
       return
     } else
       $('#target').text($('#target').text() + "...")
