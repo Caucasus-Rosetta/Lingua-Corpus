@@ -82,7 +82,7 @@ body {
 
 @media (max-width: 576px) {
   .mobile {
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: none;
     color: #fff;
     background-color: rgb(40, 167, 69)
   }
