@@ -7,6 +7,7 @@ import random
 import json
 import datetime
 import argparse
+import sys
 
 #we define the functions to create the synonyme for the paraphrase generation
 russian_synonyms = {}
@@ -114,22 +115,6 @@ def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words,
         return True
     return False
 
-now = datetime.datetime.now()
-current_date = now.strftime('%m-%d-%Y')
-folder = "joined_translation_data/"
-
-parallel_text = io.open('ru-ab-parallel-juni-sorted-date.bifixed',"r+").readlines()
-
-ab_text_train = io.open(folder+current_date+'_corpus_abkhaz.train',"w+", encoding="utf-8")
-ab_train_list = []
-ab_text_valid = io.open(folder+current_date+'_corpus_abkhaz.valid',"w+", encoding="utf-8")
-ab_text_test = io.open(folder+current_date+'_corpus_abkhaz.test',"w+", encoding="utf-8")
-
-ru_text_train = io.open(folder+current_date+'_corpus_russian.train',"w+", encoding="utf-8")
-ru_train_list = []
-ru_text_valid = io.open(folder+current_date+'_corpus_russian.valid',"w+", encoding="utf-8")
-ru_text_test = io.open(folder+current_date+'_corpus_russian.test',"w+", encoding="utf-8")
-
 ignored_count = 0
 
 def read_splitted_corpus(min_length_ratio, max_length_ratio, min_length, max_words, verbose, test_lines, valid_lines):
@@ -229,6 +214,7 @@ def generate_lists(max_list_lengths, enumerate_list):
             current_list_length += 1
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(description='Process the corpus with paraphrases and the dictionary')
     parser.add_argument('--dictionary', action='store_true',
                         help='We use the dictionary lists as an additional translation source.')
@@ -258,44 +244,65 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if args.random:
-        random.shuffle(parallel_text)
+    arguments_length = len(sys.argv) - 1
 
-    read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose, args.test_lines, args.valid_lines)
+    # we don't execute the script with the single help argument
+    if arguments_length > 1:
 
-    parallel_corpus = list(zip(ru_train_list,ab_train_list))
-    original_corpus_lines = len(parallel_corpus)
-    print("\nraw lines: "+str(len(parallel_corpus)))
-    print("\nignored lines: "+str(ignored_count))
+        now = datetime.datetime.now()
+        current_date = now.strftime('%m-%d-%Y')
+        folder = "joined_translation_data/"
 
-    if args.paraphrase or args.dictionary:
-        # we load the dictionaries
-        load_ab_ru_dictionary()
+        parallel_text = io.open('ru-ab-parallel-juni-sorted-date.bifixed',"r+").readlines()
 
-    paraphrase_lines = 0
-    if args.paraphrase:
-        # we extract the synonyme and paraphrase the corpus
-        load_russian_synonyms()
-        extract_ab_synonyms()
-        for translation_tuple in parallel_corpus:
-            parallel_paraphrases[translation_tuple] = {} # dic for russian and abkhaz paraphrases
-            generate_paraphrases(translation_tuple)
+        ab_text_train = io.open(folder+current_date+'_corpus_abkhaz.train',"w+", encoding="utf-8")
+        ab_train_list = []
+        ab_text_valid = io.open(folder+current_date+'_corpus_abkhaz.valid',"w+", encoding="utf-8")
+        ab_text_test = io.open(folder+current_date+'_corpus_abkhaz.test',"w+", encoding="utf-8")
 
-        save_paraphrases()
-        paraphrase_lines = len(ru_train_list) - original_corpus_lines
-        print("\nnew paraphrase lines: "+str(paraphrase_lines))
+        ru_text_train = io.open(folder+current_date+'_corpus_russian.train',"w+", encoding="utf-8")
+        ru_train_list = []
+        ru_text_valid = io.open(folder+current_date+'_corpus_russian.valid',"w+", encoding="utf-8")
+        ru_text_test = io.open(folder+current_date+'_corpus_russian.test',"w+", encoding="utf-8")
 
-    dictionary_lists = 0
-    if(args.dictionary):
-        generate_lists(args.list_lengths, args.numerate)
-        dictionary_lists = len(ru_train_list) - original_corpus_lines - paraphrase_lines
-        print("\nadded dictionary lines: "+str(dictionary_lists))
+        if args.random:
+            random.shuffle(parallel_text)
 
-    print("\nwhole lines: "+str(len(ru_train_list)))
-    # we shuffle the training data before we save it
-    parallel_corpus = list(zip(ru_train_list, ab_train_list))
-    random.shuffle(parallel_corpus)
+        read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose, args.test_lines, args.valid_lines)
 
-    for sentences in parallel_corpus:
-        ru_text_train.write(sentences[0])
-        ab_text_train.write(sentences[1])
+        parallel_corpus = list(zip(ru_train_list,ab_train_list))
+        original_corpus_lines = len(parallel_corpus)
+        print("\nraw lines: "+str(len(parallel_corpus)))
+        print("\nignored lines: "+str(ignored_count))
+
+        if args.paraphrase or args.dictionary:
+            # we load the dictionaries
+            load_ab_ru_dictionary()
+
+        paraphrase_lines = 0
+        if args.paraphrase:
+            # we extract the synonyme and paraphrase the corpus
+            load_russian_synonyms()
+            extract_ab_synonyms()
+            for translation_tuple in parallel_corpus:
+                parallel_paraphrases[translation_tuple] = {} # dic for russian and abkhaz paraphrases
+                generate_paraphrases(translation_tuple)
+
+            save_paraphrases()
+            paraphrase_lines = len(ru_train_list) - original_corpus_lines
+            print("\nnew paraphrase lines: "+str(paraphrase_lines))
+
+        dictionary_lists = 0
+        if(args.dictionary):
+            generate_lists(args.list_lengths, args.numerate)
+            dictionary_lists = len(ru_train_list) - original_corpus_lines - paraphrase_lines
+            print("\nadded dictionary lines: "+str(dictionary_lists))
+
+        print("\nwhole lines: "+str(len(ru_train_list)))
+        # we shuffle the training data before we save it
+        parallel_corpus = list(zip(ru_train_list, ab_train_list))
+        random.shuffle(parallel_corpus)
+
+        for sentences in parallel_corpus:
+            ru_text_train.write(sentences[0])
+            ab_text_train.write(sentences[1])
