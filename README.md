@@ -5,6 +5,7 @@
 ##### Tools:
 ###### Composition of a training corpus
 We can compose a specific, shuffled training corpus and separate test files with the joined corpus script in the training directory:
+
     usage: join_corpus.py [-h] [--dictionary] [--numerate] [--paraphrase]
                           [--verbose] [--random]
                           ll [ll ...] min_ratio max_ratio min_length max_words
