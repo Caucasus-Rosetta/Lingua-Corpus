@@ -27,7 +27,7 @@ We can compose a specific, shuffled training corpus and separate test files with
       --random      We randomize the corpus before splitting it into the training,
                     validation and test sets.
 
-For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50` results in the commited `06-19-2020_corpus` with a minimum range of 10 letters, max 50 words, a min ratio of 0,7 and max ratio of 2.25. The paraphrases are based on the filtered, training copus and are joined with the lists of dictionary entries.
+For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50` results in the commited `06-19-2020_corpus` with a minimum range of 10 letters, max 50 words, a min ratio of 0,7 and max ratio of 2.25. The paraphrases are based on the filtered, training copus and are joined with the lists of dictionary entries - here with only one element.
 
 #### Current Multilingual Corpuses:
 1. Abkhazian Russian Parallel corpus (~121k lines).
