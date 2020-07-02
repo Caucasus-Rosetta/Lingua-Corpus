@@ -1,9 +1,11 @@
 $(document).ready(function() {
   $('#swap-lang').on('click', function(event) {
-    src = $('#lang-src .active').attr('data-lang')
-    tgt = $('#lang-tgt .active').attr('data-lang')
-    src_list = $('#lang-src .nav-link').attr('data-lang')
-    tgt_list = $('#lang-tgt .nav-link').attr('data-lang')
+    src = $('#lang-src .active').data('lang');
+    tgt = $('#lang-tgt .active').data('lang');
+    $('#lang-src .active').removeClass("active");
+    $('#lang-tgt .active').removeClass("active");
+    $('#lang-src').find("[data-lang='" + tgt + "']").addClass("active");
+    $('#lang-tgt').find("[data-lang='" + src + "']").addClass("active");
     event.preventDefault();
   });
 
@@ -20,8 +22,8 @@ $(document).ready(function() {
     $.ajax({
         data: {
           source: $('#source').val(),
-          langSrc: $('#lang-src .active').attr('data-lang'),
-          langTgt: $('#lang-tgt .active').attr('data-lang')
+          langSrc: $('#lang-src .active').data('lang'),
+          langTgt: $('#lang-tgt .active').data('lang')
         },
         type: 'POST',
         url: '/translate'

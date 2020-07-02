@@ -73,6 +73,14 @@ body {
   border-radius: 50%;
 }
 
+.nav .nav-link {
+  cursor: default;
+}
+
+.swap.nav-link {
+  cursor: pointer;
+}
+
 .no-box-shadow {
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
