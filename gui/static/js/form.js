@@ -1,4 +1,19 @@
 $(document).ready(function() {
+  $('.lang').on('click', function(event) {
+    src = $('#lang-src .active').data('lang');
+    tgt = $('#lang-tgt .active').data('lang');
+    $('#lang-src .active').removeClass("active");
+    $('#lang-tgt .active').removeClass("active");
+    $('#lang-src').find("[data-lang='" + tgt + "']").addClass("active");
+    $('#lang-tgt').find("[data-lang='" + src + "']").addClass("active");
+    if ($('#target').text() != "Аиҭагара") {
+      temp = $('#source').val()
+      $('#source').val($('#target').text())
+      $('#target').text(temp)
+      event.preventDefault();
+    }
+  });
+
   $('#swap-lang').on('click', function(event) {
     src = $('#lang-src .active').data('lang');
     tgt = $('#lang-tgt .active').data('lang');
