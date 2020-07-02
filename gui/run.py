@@ -14,10 +14,10 @@ def translate():
     source = request.form['source']
     source_list = source.split("\n")
     if language == "ab-ru":
-        translator = ctranslate2.Translator("ctranslate_model/")
+        translator = ctranslate2.Translator("ctranslate_model")
         text_list = translator.translate_batch(source_list)
     elif language == "ru-ab":
-        translator = ctranslate2.Translator("ctranslate_model/")
+        translator = ctranslate2.Translator("ctranslate_model")
         text_list = translator.translate_batch(source_list)
     for i, item in enumerate(text_list):
         text_list[i] = ' '.join(item[0]['tokens'])
