@@ -6,11 +6,16 @@ $(document).ready(function() {
     $('#lang-tgt .active').removeClass("active");
     $('#lang-src').find("[data-lang='" + tgt + "']").addClass("active");
     $('#lang-tgt').find("[data-lang='" + src + "']").addClass("active");
-    event.preventDefault();
+    if ($('#target').text() != "Аиҭагара") {
+      temp = $('#source').val()
+      $('#source').val($('#target').text())
+      $('#target').text(temp)
+      event.preventDefault();
+    }
   });
 
   $('#translate').on('click', function(event) {
-    if ($('#target').text() == "Аиҭагара")
+    if ($('#target').text() == "Аиҭагара" && $('#source').val() != "")
       $('#target').text('Аиҭагара иаҿуп')
     else if ($('#source').val() == "") {
       $('#target').text('Аиҭагара')
