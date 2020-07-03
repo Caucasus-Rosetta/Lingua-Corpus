@@ -1,5 +1,7 @@
 $(document).ready(function() {
   $('.lang').on('click', function(event) {
+    // TODO expand the behavior scope once more language pairs are available.
+    // Currently works as the swap, because we only have one language pair.
     src = $('#lang-src .active').data('lang');
     tgt = $('#lang-tgt .active').data('lang');
     $('#lang-src .active').removeClass("active");
@@ -10,8 +12,17 @@ $(document).ready(function() {
       temp = $('#source').val()
       $('#source').val($('#target').text())
       $('#target').text(temp)
-      event.preventDefault();
     }
+    // Support mobile
+    src = $('#lang-src .active').data('lang');
+    tgt = $('#lang-tgt .active').data('lang');
+    src_text = $('#lang-src .active').text();
+    tgt_text = $('#lang-tgt .active').text();
+    $('#lang-src-sm .lang').data(src);
+    $('#lang-tgt-sm .lang').data(tgt);
+    $('#lang-src-sm .lang').text(src_text);
+    $('#lang-tgt-sm .lang').text(tgt_text);
+    event.preventDefault();
   });
 
   $('#swap-lang').on('click', function(event) {
@@ -25,8 +36,17 @@ $(document).ready(function() {
       temp = $('#source').val()
       $('#source').val($('#target').text())
       $('#target').text(temp)
-      event.preventDefault();
     }
+    // Support mobile
+    src = $('#lang-src .active').data('lang');
+    tgt = $('#lang-tgt .active').data('lang');
+    src_text = $('#lang-src .active').text();
+    tgt_text = $('#lang-tgt .active').text();
+    $('#lang-src-sm .lang').data(src);
+    $('#lang-tgt-sm .lang').data(tgt);
+    $('#lang-src-sm .lang').text(src_text);
+    $('#lang-tgt-sm .lang').text(tgt_text);
+    event.preventDefault();
   });
 
   $('#translate').on('click', function(event) {
