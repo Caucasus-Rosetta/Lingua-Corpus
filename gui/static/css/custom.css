@@ -131,7 +131,10 @@ body {
   .mobile {
     border-top: none;
     color: #fff;
-    background-color: rgb(40, 167, 69)
+    background-color: rgb(40, 167, 69);
+    flex: none;
+    max-width: none;
+    min-height: 4em;
   }
 
   .header {
@@ -141,10 +144,38 @@ body {
   .footer {
     margin-top: 6em;
   }
+
+  #lang-src {
+    display: none;
+  }
+
+  #lang-tgt {
+    display: none;
+  }
+
+  #lang-src-sm .lang {
+    text-align: center;
+    width: 100%;
+    color: rgb(40, 167, 69)
+  }
+
+  #lang-tgt-sm .lang {
+    text-align: center;
+    width: 100%;
+    color: rgb(40, 167, 69)
+  }
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 577px) {
   .height-google {
     min-height: calc(100vh - 65px - 56px - 148px - 72px);
+  }
+
+  #lang-src-sm {
+    display: none;
+  }
+
+  #lang-tgt-sm {
+    display: none;
   }
 }
