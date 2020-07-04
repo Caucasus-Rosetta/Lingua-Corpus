@@ -268,6 +268,8 @@ if __name__ == "__main__":
         if args.random:
             random.shuffle(parallel_text)
 
+        print("\nlines before filtration: "+str(len(parallel_text)))
+
         read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose, args.test_lines, args.valid_lines)
 
         parallel_corpus = list(zip(ru_train_list,ab_train_list))
@@ -298,7 +300,7 @@ if __name__ == "__main__":
             dictionary_lists = len(ru_train_list) - original_corpus_lines - paraphrase_lines
             print("\nadded dictionary lines: "+str(dictionary_lists))
 
-        print("\nwhole lines: "+str(len(ru_train_list)))
+        print("\nwhole lines with paraphrases and dictionary lines: "+str(len(ru_train_list)))
         # we shuffle the training data before we save it
         parallel_corpus = list(zip(ru_train_list, ab_train_list))
         random.shuffle(parallel_corpus)
