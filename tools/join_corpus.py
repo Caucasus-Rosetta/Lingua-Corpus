@@ -266,7 +266,7 @@ if __name__ == "__main__":
         ru_text_test = io.open(folder+current_date+'_corpus_russian.test',"w+", encoding="utf-8")
 
         if args.random:
-            random.shuffle(parallel_text)
+            random.Random(5).shuffle(parallel_text)
 
         print("\nlines before filtration: "+str(len(parallel_text)))
 
