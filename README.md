@@ -50,6 +50,7 @@ For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50 5
 -   Family codex: http://presidentofabkhazia.org/doc/codecs/
 -   Quran: https://github.com/danielinux7/Abkhazian-books-in-Public-Domain/tree/master/Аҟәырҟан
 -   The president's cat: (Одишариа, Гәырам: Апрезидент ицгәы) http://clarino.uib.no/abnc/text-list
+-   The parliament of Abkhazia: https://parlamentra.org/
 #### Further resources
 - https://github.com/christos-c/bible-corpus
 - A Review of Past Work and Future Challenges https://arxiv.org/pdf/2006.07264.pdf
