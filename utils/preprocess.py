@@ -50,7 +50,7 @@ def clean(corpus):
         if (len(dirty_ab.findall(tuple[0])) > 0 and len(alphabet_ab.findall(tuple[0])) == 0) \
         or (len(dirty_ru.findall(tuple[1])) > 0 and len(alphabet_ru.findall(tuple[1])) == 0) \
         or (len(tuple[0])/len(tuple[1]) <= 0.7) \
-        or (len(tuple[0])/len(tuple[1]) >= 1.2):
+        or (len(tuple[0])/len(tuple[1]) >= 1.3):
             temp.remove(tuple)
     return temp
 
@@ -62,7 +62,7 @@ def remove_duplicate(test,train):
         try:
           temp.remove(line_test)
         except ValueError:
-          pass  # do nothing!        
+          pass  # do nothing!
   return temp
 
 def tokenize_moses(corpus):
@@ -176,4 +176,3 @@ def zip_data(title,train_list,val_list,test_list):
         archive.write('tgt-test.txt')
         os.remove("tgt-test.txt")
     archive.close()
-
