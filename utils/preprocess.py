@@ -65,6 +65,15 @@ def remove_duplicate(test,train):
           pass  # do nothing!
   return temp
 
+def add_tag(tag, corpus):
+    corpus_src, corpus_tgt = zip(*corpus)
+    corpus_src = list(corpus_src)
+    print("\Tagging corpus with "+tag+":")
+    for i, line in tqdm(enumerate(corpus_src)):
+        corpus_src[i] = tag +" "+ line
+    corpus_tgt = list(corpus_tgt)
+    return list(zip(corpus_src, corpus_tgt))
+
 def tokenize_moses(corpus):
     tokenize = MosesTokenizer('ru')
     temp = []
