@@ -4,6 +4,10 @@ body {
   overflow-x: hidden;
 }
 
+#target {
+  white-space: pre-wrap;
+}
+
 .header {
   background-color: #fff;
   margin-bottom: 4em;
@@ -111,7 +115,7 @@ body {
   background-size: 32px;
   width: 32px;
   height: 32px;
-  background-image: url('/static/images/logo-100px.png');
+  background-image: url('/static/images/logo.png');
 }
 
 .law {
