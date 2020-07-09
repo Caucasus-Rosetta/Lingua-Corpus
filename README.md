@@ -9,29 +9,33 @@ We can compose a specific, shuffled training corpus and separate test files with
     usage: join_corpus.py [-h] [--dictionary] [--numerate] [--paraphrase]
                           [--verbose] [--random]
                           ll [ll ...] min_ratio max_ratio min_length max_words
-                          test_lines valid_lines
+                          paraphrase_scale test_lines valid_lines
 
     Process the corpus with paraphrases and the dictionary
 
     positional arguments:
-      ll            the lengths for dictionary lists
-      min_ratio     We only use translation with this minimum ratio
-      max_ratio     We only use translation with this maximum ratio
-      min_length    We only use translation with this minimum length
-      max_words     We only use translation with this maximum words
-      test_lines    We define the number of lines that are filtered for the test set.
-      valid_lines   The number of lines that are filtered for the validation set.
+      ll                the lengths for dictionary lists
+      min_ratio         We only use translation with this minimum ratio
+      max_ratio         We only use translation with this maximum ratio
+      min_length        We only use translation with this minimum length
+      max_words         We only use translation with this maximum words
+      paraphrase_scale  Definies how many paraphrases are generated per sentence
+                        pair.
+      test_lines        We define the number of lines that are filtered for the
+                        test set.
+      valid_lines       The number of lines that are filtered for the validation
+                        set.
 
     optional arguments:
-      --dictionary  We use the dictionary lists as an additional translation
-                    source.
-      --numerate    The dictionary list has a numeration
-      --paraphrase  We paraphrase the filtered training corpus.
-      --verbose     We print the filtered lines to the terminal.
-      --random      We randomize the corpus before splitting it into the training,
-                validation and test sets.
+      --dictionary      We use the dictionary lists as an additional translation
+                        source.
+      --numerate        The dictionary list has a numeration
+      --paraphrase      We paraphrase the filtered training corpus.
+      --verbose         We print the filtered lines to the terminal.
+      --random          We randomize the corpus before splitting it into the
+                        training, validation and test sets.
 
-For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50 500 500` results in the commited `06-19-2020_corpus` with a minimum range of 10 letters, max 50 words, a min ratio of 0,7 and max ratio of 2.25. The paraphrases are based on the filtered, training copus and are joined with the lists of dictionary entries - here with only one element. Other compositions are possible with the described arguments. It is a good practice to firstly figure out the filter and dictionary list parameters, because the praphrase generation will take several minutes.
+For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50 1 500 500` results in the commited `06-19-2020_corpus` with a minimum range of 10 letters, max 50 words, a min ratio of 0,7 and max ratio of 2.25. Only 1 paraphrase pair is generated per sentence pair. The paraphrases are based on the filtered, training copus and are joined with the lists of dictionary entries - here with only one element. Other compositions are possible with the described arguments. It is a good practice to firstly figure out the filter and dictionary list parameters, because the praphrase generation will take several minutes.
 
 #### Current Multilingual Corpuses:
 1. Abkhazian Russian Parallel corpus (~121k lines).
