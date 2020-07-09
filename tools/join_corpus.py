@@ -104,7 +104,7 @@ def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words,
     if ru_length/ab_length < min_length_ratio \
     or ru_length/ab_length > max_length_ratio:
         if verbose:
-            print("\n"+str(ru_length/ab_length)+" is not in the langth ratio scope with "+str(ru_length)+" russian and "+str(ab_length)+ " abkhazian letters.")
+            print("\n"+str(ru_length/ab_length)+" is not in the length ratio scope with "+str(ru_length)+" russian and "+str(ab_length)+ " abkhazian letters.")
             print(tuple)
         return True
     if len(tuple[0].split(" ")) > max_words or len(tuple[1].split(" ")) > max_words \
