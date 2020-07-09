@@ -171,11 +171,11 @@ def fill_list(list_to_fill, filler, length_to_align, max_length=3):
         list_to_fill.append(filler)
     return list_to_fill[:length_to_fill]
 
-def save_paraphrases():
+def save_paraphrases(paraphrase_scale):
     for translation_tuple in parallel_paraphrases:
         abkhazian_paraphrases = parallel_paraphrases[translation_tuple]["abkhaz"] or []
         russian_paraphrases = parallel_paraphrases[translation_tuple]["russian"] or []
-        max_paraphrase_length = max(len(russian_paraphrases), len(abkhazian_paraphrases))
+        max_paraphrase_length = min(paraphrase_scale,max(len(russian_paraphrases), len(abkhazian_paraphrases)))
         # we fill the list to the same length
         abkhazian_paraphrases = fill_list(abkhazian_paraphrases, translation_tuple[0], max_paraphrase_length)
         russian_paraphrases = fill_list(russian_paraphrases, translation_tuple[1], max_paraphrase_length)
@@ -231,6 +231,8 @@ if __name__ == "__main__":
                         help='We only use translation with this minimum length')
     parser.add_argument('max_words', metavar='max_words', type=int,
                         help='We only use translation with this maximum words')
+    parser.add_argument('paraphrase_scale', metavar='paraphrase_scale', type=int,
+                        help='Definies how many paraphrases are generated per sentence pair.')
     parser.add_argument('test_lines', metavar='test_lines', type=int,
                         help='We define the number of lines that are filtered for the test set.')
     parser.add_argument('valid_lines', metavar='valid_lines', type=int,
@@ -290,7 +292,7 @@ if __name__ == "__main__":
                 parallel_paraphrases[translation_tuple] = {} # dic for russian and abkhaz paraphrases
                 generate_paraphrases(translation_tuple)
 
-            save_paraphrases()
+            save_paraphrases(args.paraphrase_scale)
             paraphrase_lines = len(ru_train_list) - original_corpus_lines
             print("\nnew paraphrase lines: "+str(paraphrase_lines))
 
