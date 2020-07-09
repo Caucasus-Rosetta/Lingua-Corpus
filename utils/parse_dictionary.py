@@ -143,6 +143,28 @@ def get_following_text(node, boldspans):
 
     return strip_clips(node_translation)
 
+#alphabets
+dirty_ab = re.compile('[^ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ]+')
+dirty_ru = re.compile('[^ёйцукенгшщзхъфывапролджэячсмитьбю]+')
+alphabet_ab = re.compile('[ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ]+',re.I)
+alphabet_ru = re.compile('[ёйцукенгшщзхъфывапролджэячсмитьбю]+',re.I)
+
+def is_abkhazian_alphabet(node_text):
+    # There should be at last one letter of the alphabet
+    if (len(dirty_ab.findall(node_text.lower())) > 0 and len(alphabet_ab.findall(node_text.lower())) == 0):
+        print("\nno letter:")
+        print(node_text)
+        return False
+    return True
+
+def is_russian_alphabet(node_text):
+    # There should be at last one letter of the alphabet
+    if (len(dirty_ru.findall(node_text.lower())) > 0 and len(alphabet_ru.findall(node_text.lower())) == 0):
+        print("\nno letter:")
+        print(node_text)
+        return False
+    return True
+
 def extract_parallel_text(boldspan, boldspans):
     ru_word = boldspan.text.replace("\n","").strip()
     ru_word_accent = ru_word
@@ -162,7 +184,7 @@ def extract_parallel_text(boldspan, boldspans):
                 if not len(ab_translation)>3:
                     print(ab_translation)
                 '''
-                if ab_translation and len(ab_translation)>3 and len(ab_translation.split(" "))<=2 and not (ru_word in messy_russian_words):# and not [ru_word, ab_translation] in messy_pairs:
+                if ab_translation and len(ab_translation)>3 and len(ab_translation.split(" "))<=2 and not (ru_word in messy_russian_words) and is_russian_alphabet(ru_word) and is_abkhazian_alphabet(ab_translation):# and not [ru_word, ab_translation] in messy_pairs:
                     # we leave the accents for comparison with the original
                     searchable_output.write(ru_word_accent + "\t:\t" + ab_translation+"\n")
                     # we try to convert the accents
