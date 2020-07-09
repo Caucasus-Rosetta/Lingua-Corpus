@@ -50,7 +50,7 @@ def clean(corpus):
         if (len(dirty_ab.findall(tuple[0])) > 0 and len(alphabet_ab.findall(tuple[0])) == 0) \
         or (len(dirty_ru.findall(tuple[1])) > 0 and len(alphabet_ru.findall(tuple[1])) == 0) \
         or (len(tuple[0])/len(tuple[1]) <= 0.7) \
-        or (len(tuple[0])/len(tuple[1]) >= 1.2):
+        or (len(tuple[0])/len(tuple[1]) >= 1.3):
             temp.remove(tuple)
     return temp
 
@@ -62,8 +62,17 @@ def remove_duplicate(test,train):
         try:
           temp.remove(line_test)
         except ValueError:
-          pass  # do nothing!        
+          pass  # do nothing!
   return temp
+
+def add_tag(tag, corpus):
+    corpus_src, corpus_tgt = zip(*corpus)
+    corpus_src = list(corpus_src)
+    print("\Tagging corpus with "+tag+":")
+    for i, line in tqdm(enumerate(corpus_src)):
+        corpus_src[i] = tag +" "+ line
+    corpus_tgt = list(corpus_tgt)
+    return list(zip(corpus_src, corpus_tgt))
 
 def tokenize_moses(corpus):
     tokenize = MosesTokenizer('ru')
@@ -176,4 +185,3 @@ def zip_data(title,train_list,val_list,test_list):
         archive.write('tgt-test.txt')
         os.remove("tgt-test.txt")
     archive.close()
-
