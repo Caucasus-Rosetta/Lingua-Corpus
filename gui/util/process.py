@@ -7,7 +7,7 @@ def translate(src_list,sp_path_src,sp_path_tgt,ct_path):
     sp_src = spm.SentencePieceProcessor()
     sp_src.load(sp_path_src)
     for i, text in enumerate(src_list):
-        text = ' '.join(tokenize(text))
+        text = ' '.join(tokenize(text)).lower()
         text = sp_src.encode(text, out_type=str)
         src_list[i] = text
     translator = ctranslate2.Translator(ct_path)
