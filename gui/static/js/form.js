@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  $('#source').on('keyup keypress', function() {
+    $(this).height(0);
+    $(this).height(this.scrollHeight);
+  });
   $('.lang').on('click', function(event) {
     // TODO expand the behavior scope once more language pairs are available.
     // Currently works as the swap, because we only have one language pair.

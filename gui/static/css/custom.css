@@ -8,6 +8,10 @@ body {
   white-space: pre-wrap;
 }
 
+#source {
+  min-height: 172px;
+}
+
 .header {
   background-color: #fff;
   margin-bottom: 4em;
@@ -168,11 +172,15 @@ body {
     width: 100%;
     color: rgb(40, 167, 69)
   }
+
+  #source {
+    max-height: 172px;
+  }
 }
 
 @media screen and (min-width: 577px) {
-  .height-google {
-    min-height: calc(100vh - 65px - 56px - 148px - 72px);
+  .footer {
+    margin-top: 10em;
   }
 
   #lang-src-sm {
@@ -181,5 +189,9 @@ body {
 
   #lang-tgt-sm {
     display: none;
+  }
+
+  #source {
+    overflow: auto hidden;
   }
 }
