@@ -40,6 +40,7 @@ For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50 1
 #### Current Multilingual Corpuses:
 1. Abkhazian Russian Parallel corpus (~121k lines).
 #### Multilingual sources:
+##### Abkhaz
 -	100 text book: http://apsua.tk/upload/iblock/54c/54cfde81abd369cdffa6512d9fdbea1e.pdf
 -   Declaration of Human Rights: https://www.ohchr.org/EN/UDHR/Documents/UDHR_Translations/abk.pdf
 -	Braveheart: https://www.opensubtitles.org/en/subtitles/7977089/braveheart-ab
@@ -55,6 +56,9 @@ For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50 1
 -   Quran: https://github.com/danielinux7/Abkhazian-books-in-Public-Domain/tree/master/Аҟәырҟан
 -   The president's cat: (Одишариа, Гәырам: Апрезидент ицгәы) http://clarino.uib.no/abnc/text-list
 -   The parliament of Abkhazia: https://parlamentra.org/
+##### Adyghe
+-   Bible related: http://www.inyourlanguage.org/Adyghe
+-   Quran: http://dumraikk.ru/zagruzki/
 #### Further resources
 - https://github.com/christos-c/bible-corpus
 - A Review of Past Work and Future Challenges https://arxiv.org/pdf/2006.07264.pdf
