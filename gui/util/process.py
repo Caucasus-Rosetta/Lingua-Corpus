@@ -1,6 +1,7 @@
 import sentencepiece as spm
 from mosestokenizer import *
 import ctranslate2
+import re
 
 def translate(src_list,sp_path_src,sp_path_tgt,ct_path):
     tokenize = MosesTokenizer('ru')
@@ -8,7 +9,15 @@ def translate(src_list,sp_path_src,sp_path_tgt,ct_path):
     sp_src.load(sp_path_src)
     lengths = []
     temp = []
+    p_big = re.compile('Ҧ')
+    g_big = re.compile('Ҕ')
+    p_small = re.compile('ҧ')
+    g_small = re.compile('ҕ')
     for text in src_list:
+        text = p_big.sub('Ԥ', text)
+        text = g_big.sub('Ӷ', text)
+        text = p_small.sub('ԥ', text)
+        text = g_small.sub('ӷ', text)
         if text != '':
             with MosesSentenceSplitter('ru') as splitsents:
                 text = splitsents([text])
