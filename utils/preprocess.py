@@ -28,14 +28,14 @@ def save_list(title, corpus, **kwargs):
     if join:
         with open(title,'w') as file:
             for i, line in tqdm(enumerate(corpus)):
-                file.writelines(line[0].strip()+'\t'+line[1])
+                file.writelines(line[0].strip()+'\t'+line[1].strip()+'\n')
     else:
         with open('1_'+title,'w') as file:
             for i, line in tqdm(enumerate(corpus)):
-                file.writelines(line[0])
+                file.writelines(line[0].strip()+'\n')
         with open('2_'+title,'w') as file:
             for i, line in tqdm(enumerate(corpus)):
-                file.writelines(line[1])
+                file.writelines(line[1].strip()+'\n')
 
 # a function to clean the text from duplicates and noise
 def clean(corpus):
