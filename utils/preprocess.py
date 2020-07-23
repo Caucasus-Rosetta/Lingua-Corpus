@@ -56,13 +56,16 @@ def clean(corpus):
 
 def remove_duplicate(test,train):
   temp = list(test)
+  count = 0
   for line_test in tqdm(test):
     for line_train in train:
       if line_test[0] == line_train[0] or line_test[1] == line_train[1]:
         try:
           temp.remove(line_test)
+          count = count + 1
         except ValueError:
           pass  # do nothing!
+  print('\nRemoved duplicates: '+str(count))
   return temp
 
 def add_tag(tag, corpus):
