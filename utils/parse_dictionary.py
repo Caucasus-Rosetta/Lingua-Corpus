@@ -32,7 +32,7 @@ searchable_output = open('searchable_unaccented_dictionary.txt', 'w+',encoding=c
 skipped_translations = open('skipped_translations.txt', 'w+',encoding=cyrillic_encoding)
 
 messy_accents = {
-'а́': 'a',
+'а́': 'а',
 'ѝ': 'и',
 'и́': 'и',
 'о́': 'о',
@@ -40,6 +40,7 @@ messy_accents = {
 'у́':'у',
 'ы́': 'ы',
 'е́':'е',
+'э́':'э',
 'ю́':'ю'
 }
 
@@ -57,12 +58,12 @@ messy_russian_words = ["звучание)","навaривать","обдавaт�
 "лютый и лютой",
 "лютый и лютoй","лютый","лютoй",
 "навряд","навряд ли","вряд ли",
-"стaртер","стартёр","стaртер и стартёр",
-"стaртерный и стартёрный","стaртерный","стартёрный",
+"стартер","стартёр","стартер и стартёр",
+"стартерный и стартёрный","стартерный","стартёрный",
 "чeрви и чeрвы","чeрви","чeрвы",
-"игрeц","трaпеза",
+"игрeц","трапеза",
 "трёхлeток","у́ксусник","полюбовник",
-"нумизмaтика ж","сам (","стерильность ж"
+"нумизматика ж","сам (","стерильность ж"
 ]
 
 # convert the pdfs into html files
@@ -144,24 +145,38 @@ def get_following_text(node, boldspans):
     return strip_clips(node_translation)
 
 #alphabets
-dirty_ab = re.compile('[^ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ]+')
-dirty_ru = re.compile('[^ёйцукенгшщзхъфывапролджэячсмитьбю]+')
-alphabet_ab = re.compile('[ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ]+',re.I)
-alphabet_ru = re.compile('[ёйцукенгшщзхъфывапролджэячсмитьбю]+',re.I)
+dirty_ab = re.compile('[^ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ\s]+')
+dirty_ru = re.compile('[^ёйцукенгшщзхъфывапролджэячсмитьбю\s]+')
+alphabet_ab = re.compile('[ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ\s]+',re.I)
+alphabet_ru = re.compile('[ёйцукенгшщзхъфывапролджэячсмитьбю\s]+',re.I)
 
 def is_abkhazian_alphabet(node_text):
+    ab_dirt = dirty_ab.findall(node_text.lower())
     # There should be at last one letter of the alphabet
-    if (len(dirty_ab.findall(node_text.lower())) > 0 and len(alphabet_ab.findall(node_text.lower())) == 0):
+    if (len(ab_dirt) > 0 and len(alphabet_ab.findall(node_text.lower())) == 0):
         print("\nno letter:")
         print(node_text)
+        return False
+    # There should be no other alphabet
+    if len(ab_dirt) > 0:
+        print("other alphabet:")
+        print(node_text)
+        print(ab_dirt)
         return False
     return True
 
 def is_russian_alphabet(node_text):
+    ru_dirt = dirty_ru.findall(node_text.lower())
     # There should be at last one letter of the alphabet
-    if (len(dirty_ru.findall(node_text.lower())) > 0 and len(alphabet_ru.findall(node_text.lower())) == 0):
+    if (len(ru_dirt) > 0 and len(alphabet_ru.findall(node_text.lower())) == 0):
         print("\nno letter:")
         print(node_text)
+        return False
+    # There should be no other alphabet
+    if len(ru_dirt) > 0:
+        print("other alphabet:")
+        print(node_text)
+        print(ru_dirt)
         return False
     return True
 
@@ -179,6 +194,8 @@ def extract_parallel_text(boldspan, boldspans):
                 for number in numbers:
                     ab_translation = ab_translation.replace(number, "")
                 ab_translation = ab_translation.strip()
+                # we convert the accents
+                ab_translation = strip_accents(ab_translation)
                 # only save certain translations and no messy pairs
                 '''
                 if not len(ab_translation)>3:
@@ -187,8 +204,6 @@ def extract_parallel_text(boldspan, boldspans):
                 if ab_translation and len(ab_translation)>3 and len(ab_translation.split(" "))<=2 and not (ru_word in messy_russian_words) and is_russian_alphabet(ru_word) and is_abkhazian_alphabet(ab_translation):# and not [ru_word, ab_translation] in messy_pairs:
                     # we leave the accents for comparison with the original
                     searchable_output.write(ru_word_accent + "\t:\t" + ab_translation+"\n")
-                    # we try to convert the accents
-                    ab_translation = strip_accents(ab_translation)
 
                     #write the extracted translation to the files
 
