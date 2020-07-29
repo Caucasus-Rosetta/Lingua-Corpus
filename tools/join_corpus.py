@@ -255,7 +255,7 @@ if __name__ == "__main__":
         current_date = now.strftime('%m-%d-%Y')
         folder = "joined_translation_data/"
 
-        parallel_text = io.open('ru-ab-parallel-juni-sorted-date.bifixed',"r+").readlines()
+        parallel_text = io.open('ru-ab-parallel-27-07.bifixed',"r+").readlines()
 
         ab_text_train = io.open(folder+current_date+'_corpus_abkhaz.train',"w+", encoding="utf-8")
         ab_train_list = []
