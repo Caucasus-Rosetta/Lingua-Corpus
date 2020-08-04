@@ -60,6 +60,7 @@ For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50 1
 ##### Adyghe
 -   Bible related: http://www.inyourlanguage.org/Adyghe
 -   Quran: http://dumraikk.ru/zagruzki/
+-   Collection of ebooks,xls sheets: https://www.facebook.com/groups/483351895070661/files/
 #### Further resources
 - https://github.com/christos-c/bible-corpus
 - A Review of Past Work and Future Challenges https://arxiv.org/pdf/2006.07264.pdf
