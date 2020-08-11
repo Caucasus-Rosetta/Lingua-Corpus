@@ -28,6 +28,7 @@ We can compose a specific, shuffled training corpus and separate test files with
                         set.
 
     optional arguments:
+      -h, --help        show this help message and exit
       --dictionary      We use the dictionary lists as an additional translation
                         source.
       --numerate        The dictionary list has a numeration
@@ -35,6 +36,7 @@ We can compose a specific, shuffled training corpus and separate test files with
       --verbose         We print the filtered lines to the terminal.
       --random          We randomize the corpus before splitting it into the
                         training, validation and test sets.
+      --punctuation     We use the punctuation criteria as filter.
 
 For example `python3 join_corpus.py --dictionary --paraphrase 1 0.7 2.25 10 50 1 500 500` results in the commited `06-19-2020_corpus` with a minimum range of 10 letters, max 50 words, a min ratio of 0,7 and max ratio of 2.25. Only 1 paraphrase pair is generated per sentence pair. The paraphrases are based on the filtered, training copus and are joined with the lists of dictionary entries - here with only one element. Other compositions are possible with the described arguments. It is a good practice to firstly figure out the filter and dictionary list parameters, because the praphrase generation will take several minutes.
 
