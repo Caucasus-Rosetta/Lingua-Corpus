@@ -2,7 +2,6 @@ import random
 import io
 import re
 from os import listdir
-import io
 import random
 import json
 import datetime
@@ -88,6 +87,7 @@ dirty_ab = re.compile('[^ҟцукенгшәзхҿфывапролджҽџчсм�
 dirty_ru = re.compile('[^ёйцукенгшщзхъфывапролджэячсмитьбю\.\:,;\ 0-9-\(\)"!?]+')
 alphabet_ab = re.compile('[ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ\.\:,;\ 0-9-\(\)"!?]+',re.I)
 alphabet_ru = re.compile('[ёйцукенгшщзхъфывапролджэячсмитьбю\.\:,;\ 0-9-\(\)"!?]+',re.I)
+sentence_signs = re.compile('[\.\:!?]+',re.I)
 
 def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words, verbose):
     ru_words = 1.0*len(tuple[0].split(" "))
@@ -213,6 +213,25 @@ def generate_lists(max_list_lengths, enumerate_list):
 
             current_list_length += 1
 
+def filter_punctuation(parallel_corpus):
+    filtered_punctuations = 0
+    ru_result_list = []
+    ab_result_list = []
+
+    for translation in parallel_corpus:
+        ru_signs = sentence_signs.findall(translation[0])
+        ab_signs = sentence_signs.findall(translation[1])
+
+        if ru_signs == ab_signs:
+            ru_result_list.append(translation[0])
+            ab_result_list.append(translation[1])
+        else:
+            filtered_punctuations += 1
+
+    print("filtered punctuations: "+str(filtered_punctuations))
+
+    return list(zip(ru_result_list,ab_result_list))
+
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Process the corpus with paraphrases and the dictionary')
@@ -243,6 +262,9 @@ if __name__ == "__main__":
                         help='We print the filtered lines to the terminal.')
     parser.add_argument('--random', action='store_true',
                         help='We randomize the corpus before splitting it into the training, validation and test sets.')
+    # ('Aligning parallel bilingual corpora statistically with punctuation criteria'; Thomas C Chuang and Kevin C Yeh)
+    parser.add_argument('--punctuation', action='store_true',
+                        help='We use the punctuation criteria as filter.')
 
     args = parser.parse_args()
 
@@ -277,7 +299,10 @@ if __name__ == "__main__":
         parallel_corpus = list(zip(ru_train_list,ab_train_list))
         original_corpus_lines = len(parallel_corpus)
         print("\nraw lines: "+str(len(parallel_corpus)))
-        print("\nignored lines: "+str(ignored_count))
+        print("\nignored lines due to the lenght alignment: "+str(ignored_count))
+
+        if args.punctuation:
+            parallel_corpus = filter_punctuation(parallel_corpus)
 
         if args.paraphrase or args.dictionary:
             # we load the dictionaries
