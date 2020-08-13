@@ -213,7 +213,7 @@ def generate_lists(max_list_lengths, enumerate_list):
 
             current_list_length += 1
 
-def filter_punctuation(parallel_corpus):
+def filter_punctuation(parallel_corpus, verbose):
     filtered_punctuations = 0
     ru_result_list = []
     ab_result_list = []
@@ -227,6 +227,8 @@ def filter_punctuation(parallel_corpus):
             ab_result_list.append(translation[1])
         else:
             filtered_punctuations += 1
+            if verbose:
+                print(translation[0]+" != "+translation[1])
 
     print("filtered punctuations: "+str(filtered_punctuations))
 
@@ -302,7 +304,7 @@ if __name__ == "__main__":
         print("\nignored lines due to the lenght alignment: "+str(ignored_count))
 
         if args.punctuation:
-            parallel_corpus = filter_punctuation(parallel_corpus)
+            parallel_corpus = filter_punctuation(parallel_corpus, args.verbose)
 
         if args.paraphrase or args.dictionary:
             # we load the dictionaries
