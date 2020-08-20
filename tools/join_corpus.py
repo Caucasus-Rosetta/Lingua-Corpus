@@ -19,8 +19,8 @@ synonyms = {
 """
 cyrillic_encoding = "utf-8"
 
-def load_russian_synonyms():
-    with io.open('../utils/dictionary.json', 'r+',encoding=cyrillic_encoding) as f:
+def load_russian_synonyms(json_path='../utils/dictionary.json'):
+    with io.open(json_path, 'r+',encoding=cyrillic_encoding) as f:
         ru_dictionary = json.loads(f.read())
 
     russian_dictionay_mixin = ru_dictionary["wordlist"]
@@ -38,18 +38,18 @@ dictionary_ru_ab = {}
 dictionary_ab_ru = {}
 abkhaz_synonyms = {}
 
-def load_ab_ru_dictionary():
+def load_ab_ru_dictionary(dic_one='../draft/dictionary_prescript.ru', dic_two='../draft/dictionary.ru', translation_dic_one='../draft/dictionary_prescript.ab', translation_dic_two='../draft/dictionary.ab'):
     global russian_word_list,abkhazian_word_list, dictionary_ru_ab, dictionary_ab_ru
     #read the russian word into the list
-    with open('../draft/dictionary_prescript.ru', 'r+',encoding=cyrillic_encoding) as f:
+    with open(dic_one, 'r+',encoding=cyrillic_encoding) as f:
         russian_word_list = f.read().splitlines()
-    with open('../draft/dictionary.ru', 'r+',encoding=cyrillic_encoding) as f:
+    with open(dic_two, 'r+',encoding=cyrillic_encoding) as f:
         russian_word_list += f.read().splitlines()
 
     # read also the abkhazian translations
-    with open('../draft/dictionary_prescript.ab', 'r+',encoding=cyrillic_encoding) as f:
+    with open(translation_dic_one, 'r+',encoding=cyrillic_encoding) as f:
         abkhazian_word_list = f.read().splitlines()
-    with open('../draft/dictionary.ab', 'r+',encoding=cyrillic_encoding) as f:
+    with open(translation_dic_two, 'r+',encoding=cyrillic_encoding) as f:
         abkhazian_word_list += f.read().splitlines()
 
     # we combine the lists to a translation dictionary
@@ -124,10 +124,10 @@ def read_splitted_corpus(min_length_ratio, max_length_ratio, min_length, max_wor
         if len(splitted) == 2 and not filter_out(splitted, min_length_ratio, max_length_ratio, min_length, max_words, verbose):
             ru_sentence = splitted[0]
             ab_sentence = splitted[1]
-            if i <= test_lines:
+            if i < test_lines:
                 ab_text_valid.write(ab_sentence)
                 ru_text_valid.write(ru_sentence+"\n")
-            elif i<=test_lines+valid_lines and i > test_lines:
+            elif i < test_lines+valid_lines and i > test_lines:
                 ab_text_test.write(ab_sentence)
                 ru_text_test.write(ru_sentence+"\n")
             else:
@@ -171,7 +171,13 @@ def fill_list(list_to_fill, filler, length_to_align, max_length=3):
         list_to_fill.append(filler)
     return list_to_fill[:length_to_fill]
 
-def save_paraphrases(paraphrase_scale):
+def save_paraphrases(paraphrase_scale, only_paraphrases):
+    global ru_train_list
+    global ab_train_list
+    if only_paraphrases:
+        # we only store the paraphrases into the output files
+        ru_train_list = []
+        ab_train_list = []
     for translation_tuple in parallel_paraphrases:
         abkhazian_paraphrases = parallel_paraphrases[translation_tuple]["abkhaz"] or []
         russian_paraphrases = parallel_paraphrases[translation_tuple]["russian"] or []
@@ -234,6 +240,7 @@ def filter_punctuation(parallel_corpus, verbose):
 
     return list(zip(ru_result_list,ab_result_list))
 
+
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Process the corpus with paraphrases and the dictionary')
@@ -267,19 +274,30 @@ if __name__ == "__main__":
     # ('Aligning parallel bilingual corpora statistically with punctuation criteria'; Thomas C Chuang and Kevin C Yeh)
     parser.add_argument('--punctuation', action='store_true',
                         help='We use the punctuation criteria as filter.')
+    parser.add_argument('corpus_file', metavar='corpus_file', default='ru-ab-parallel-27-07.bifixed',
+                        help='We define the path to the aligned corpus file.')
+    parser.add_argument('--only_paraphrase', action='store_true',
+                        help="We simply generate paraphrases and don't store the original translations into the output file.")
 
     args = parser.parse_args()
 
-    arguments_length = len(sys.argv) - 1
+    # arguments_length = len(sys.argv) - 1
 
-    # we don't execute the script with the single help argument
-    if arguments_length > 1:
+    now = datetime.datetime.now()
+    current_date = now.strftime('%m-%d-%Y')
+    folder = "joined_translation_data/"
 
-        now = datetime.datetime.now()
-        current_date = now.strftime('%m-%d-%Y')
-        folder = "joined_translation_data/"
+    parallel_text = io.open(args.corpus_file,"r+").readlines()
 
-        parallel_text = io.open('ru-ab-parallel-27-07.bifixed',"r+").readlines()
+    # we initialize the output files
+    if args.only_paraphrase:
+
+        ab_train_list = []
+        ru_train_list = []
+        ab_paraphrase_file = io.open(folder+current_date+'_paraphrases.ab',"w+", encoding="utf-8")
+        ru_paraphrase_file = io.open(folder+current_date+'_paraphrases.ru',"w+", encoding="utf-8")
+
+    else:
 
         ab_text_train = io.open(folder+current_date+'_corpus_abkhaz.train',"w+", encoding="utf-8")
         ab_train_list = []
@@ -291,49 +309,63 @@ if __name__ == "__main__":
         ru_text_valid = io.open(folder+current_date+'_corpus_russian.valid',"w+", encoding="utf-8")
         ru_text_test = io.open(folder+current_date+'_corpus_russian.test',"w+", encoding="utf-8")
 
-        if args.random:
-            random.Random(5).shuffle(parallel_text)
+    # we process the corpus
+    if args.random:
+        random.Random(5).shuffle(parallel_text)
 
-        print("\nlines before filtration: "+str(len(parallel_text)))
+    print("\nlines before filtration: "+str(len(parallel_text)))
 
+    if args.only_paraphrase:
+        read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose, 0, 0)
+    else:
         read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose, args.test_lines, args.valid_lines)
 
-        parallel_corpus = list(zip(ru_train_list,ab_train_list))
-        original_corpus_lines = len(parallel_corpus)
-        print("\nraw lines: "+str(len(parallel_corpus)))
-        print("\nignored lines due to the lenght alignment: "+str(ignored_count))
+    parallel_corpus = list(zip(ru_train_list,ab_train_list))
+    original_corpus_lines = len(parallel_corpus)
+    print("\nraw lines: "+str(len(parallel_corpus)))
+    print("\nignored lines due to the lenght alignment: "+str(ignored_count))
 
-        if args.punctuation:
-            parallel_corpus = filter_punctuation(parallel_corpus, args.verbose)
+    if args.punctuation:
+        parallel_corpus = filter_punctuation(parallel_corpus, args.verbose)
 
-        if args.paraphrase or args.dictionary:
-            # we load the dictionaries
-            load_ab_ru_dictionary()
+    if args.only_paraphrase or args.paraphrase or args.dictionary:
+        # we load the dictionaries
+        load_ab_ru_dictionary()
 
-        paraphrase_lines = 0
-        if args.paraphrase:
-            # we extract the synonyme and paraphrase the corpus
-            load_russian_synonyms()
-            extract_ab_synonyms()
-            for translation_tuple in parallel_corpus:
-                parallel_paraphrases[translation_tuple] = {} # dic for russian and abkhaz paraphrases
-                generate_paraphrases(translation_tuple)
+    paraphrase_lines = 0
+    if args.only_paraphrase or args.paraphrase:
+        # we extract the synonyme and paraphrase the corpus
+        load_russian_synonyms()
+        extract_ab_synonyms()
+        for translation_tuple in parallel_corpus:
+            parallel_paraphrases[translation_tuple] = {} # dic for russian and abkhaz paraphrases
+            generate_paraphrases(translation_tuple)
 
-            save_paraphrases(args.paraphrase_scale)
-            paraphrase_lines = len(ru_train_list) - original_corpus_lines
+        save_paraphrases(args.paraphrase_scale, args.only_paraphrase)
+        paraphrase_lines = len(ru_train_list) - original_corpus_lines
+        if args.only_paraphrase:
+            print("\nnew paraphrase lines: "+str(len(ru_train_list))
+        else:
             print("\nnew paraphrase lines: "+str(paraphrase_lines))
 
-        dictionary_lists = 0
-        if(args.dictionary):
-            generate_lists(args.list_lengths, args.numerate)
-            dictionary_lists = len(ru_train_list) - original_corpus_lines - paraphrase_lines
-            print("\nadded dictionary lines: "+str(dictionary_lists))
+    dictionary_lists = 0
+    if args.dictionary:
+        generate_lists(args.list_lengths, args.numerate)
+        dictionary_lists = len(ru_train_list) - original_corpus_lines - paraphrase_lines
+        print("\nadded dictionary lines: "+str(dictionary_lists))
 
-        print("\nwhole lines with paraphrases and dictionary lines: "+str(len(ru_train_list)))
+    print("\nwhole lines with paraphrases and dictionary lines: "+str(len(ru_train_list)))
+
+    parallel_corpus = list(zip(ru_train_list, ab_train_list))
+    if args.random:
         # we shuffle the training data before we save it
-        parallel_corpus = list(zip(ru_train_list, ab_train_list))
         random.shuffle(parallel_corpus)
 
+    if args.only_paraphrase:
+        for sentences in parallel_corpus:
+            ru_paraphrase_file.write(sentences[0])
+            ab_paraphrase_file.write(sentences[1])
+    else:
         for sentences in parallel_corpus:
             ru_text_train.write(sentences[0])
             ab_text_train.write(sentences[1])
