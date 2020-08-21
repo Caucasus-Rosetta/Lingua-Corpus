@@ -354,7 +354,7 @@ if __name__ == "__main__":
 
     if args.random:
         # we shuffle the training data before we save it
-        random.shuffle(parallel_corpus)
+        random.Random(5).shuffle(parallel_corpus)
 
     if args.only_paraphrase:
         for sentences in parallel_corpus:
