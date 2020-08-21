@@ -87,9 +87,9 @@ dirty_ab = re.compile('[^ҟцукенгшәзхҿфывапролджҽџчсм�
 dirty_ru = re.compile('[^ёйцукенгшщзхъфывапролджэячсмитьбю\.\:,;\ 0-9-\(\)"!?]+')
 alphabet_ab = re.compile('[ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ\.\:,;\ 0-9-\(\)"!?]+',re.I)
 alphabet_ru = re.compile('[ёйцукенгшщзхъфывапролджэячсмитьбю\.\:,;\ 0-9-\(\)"!?]+',re.I)
-sentence_signs = re.compile('[\.\:!?]+',re.I)
+sentence_signs = re.compile('[\.\:!?0-9…\(\)\[\]«»]+',re.I)
 
-def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words, verbose):
+def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words, verbose, punctuation_filter_boolean):
     ru_words = 1.0*len(tuple[0].split(" "))
     ab_words = 1.0*len(tuple[1].split(" "))
     ru_length = 1.0*len(tuple[0])
@@ -113,15 +113,20 @@ def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words,
             print("\ntoo long or too short:")
             print(tuple)
         return True
+    if punctuation_filter_boolean and filter_punctuation(tuple):
+        if verbose:
+            print("wrong punctuation order")
+            print(tuple)
+        return True
     return False
 
 ignored_count = 0
 
-def read_splitted_corpus(min_length_ratio, max_length_ratio, min_length, max_words, verbose, test_lines, valid_lines):
+def read_splitted_corpus(min_length_ratio, max_length_ratio, min_length, max_words, verbose, test_lines, valid_lines, punctuation_filter_boolean):
     global ignored_count
     for i,sentences in enumerate(parallel_text):
         splitted =  sentences.split("\t")
-        if len(splitted) == 2 and not filter_out(splitted, min_length_ratio, max_length_ratio, min_length, max_words, verbose):
+        if len(splitted) == 2 and not filter_out(splitted, min_length_ratio, max_length_ratio, min_length, max_words, verbose, punctuation_filter_boolean):
             ru_sentence = splitted[0]
             ab_sentence = splitted[1]
             if i < test_lines:
@@ -219,26 +224,17 @@ def generate_lists(max_list_lengths, enumerate_list):
 
             current_list_length += 1
 
-def filter_punctuation(parallel_corpus, verbose):
-    filtered_punctuations = 0
-    ru_result_list = []
-    ab_result_list = []
+filtered_punctuations = 0
+def filter_punctuation(translation):
+    global filtered_punctuations
+    ru_signs = sentence_signs.findall(translation[0])
+    ab_signs = sentence_signs.findall(translation[1])
 
-    for translation in parallel_corpus:
-        ru_signs = sentence_signs.findall(translation[0])
-        ab_signs = sentence_signs.findall(translation[1])
-
-        if ru_signs == ab_signs:
-            ru_result_list.append(translation[0])
-            ab_result_list.append(translation[1])
-        else:
-            filtered_punctuations += 1
-            if verbose:
-                print(translation[0]+" != "+translation[1])
-
-    print("filtered punctuations: "+str(filtered_punctuations))
-
-    return list(zip(ru_result_list,ab_result_list))
+    if ru_signs == ab_signs:
+        return False
+    else:
+        filtered_punctuations += 1
+    return True
 
 
 if __name__ == "__main__":
@@ -273,7 +269,7 @@ if __name__ == "__main__":
                         help='We randomize the corpus before splitting it into the training, validation and test sets.')
     # ('Aligning parallel bilingual corpora statistically with punctuation criteria'; Thomas C Chuang and Kevin C Yeh)
     parser.add_argument('--punctuation', action='store_true',
-                        help='We use the punctuation criteria as filter.')
+                        help='We use the punctuation criteria as filter in such way that each translation have the same order of sentence signs. The sentence signs are ".:!?0-9…()[]«»".')
     parser.add_argument('corpus_file', metavar='corpus_file', default='ru-ab-parallel-27-07.bifixed',
                         help='We define the path to the aligned corpus file.')
     parser.add_argument('--only_paraphrase', action='store_true',
@@ -316,17 +312,19 @@ if __name__ == "__main__":
     print("\nlines before filtration: "+str(len(parallel_text)))
 
     if args.only_paraphrase:
-        read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose, 0, 0)
+        read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose, 0, 0, args.punctuation)
     else:
-        read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose, args.test_lines, args.valid_lines)
+        read_splitted_corpus(args.min_length_ratio, args.max_length_ratio, args.min_length, args.max_words, args.verbose, args.test_lines, args.valid_lines, args.punctuation)
 
     parallel_corpus = list(zip(ru_train_list,ab_train_list))
-    original_corpus_lines = len(parallel_corpus)
+    if args.only_paraphrase:
+        original_corpus_lines = 0
+    else:
+        original_corpus_lines = len(parallel_corpus)
     print("\nraw lines: "+str(len(parallel_corpus)))
-    print("\nignored lines due to the lenght alignment: "+str(ignored_count))
-
+    print("\nignored lines due to the filter criterion: "+str(ignored_count))
     if args.punctuation:
-        parallel_corpus = filter_punctuation(parallel_corpus, args.verbose)
+        print("including sentence order filration: "+str(filtered_punctuations))
 
     if args.only_paraphrase or args.paraphrase or args.dictionary:
         # we load the dictionaries
@@ -343,10 +341,7 @@ if __name__ == "__main__":
 
         save_paraphrases(args.paraphrase_scale, args.only_paraphrase)
         paraphrase_lines = len(ru_train_list) - original_corpus_lines
-        if args.only_paraphrase:
-            print("\nnew paraphrase lines: "+str(len(ru_train_list))
-        else:
-            print("\nnew paraphrase lines: "+str(paraphrase_lines))
+        print("\nnew paraphrase lines: "+str(paraphrase_lines))
 
     dictionary_lists = 0
     if args.dictionary:
