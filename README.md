@@ -40,7 +40,9 @@ We can compose a specific, shuffled training corpus and separate test files with
       --verbose          We print the filtered lines to the terminal.
       --random           We randomize the corpus before splitting it into the
                          training, validation and test sets.
-      --punctuation      We use the punctuation criteria as filter.
+      --punctuation      We use the punctuation criteria as filter in such way
+                         that each translation have the same order of sentence
+                         signs. The sentence signs are ".:!?0-9…()[]«»".
       --only_paraphrase  We simply generate paraphrases and don't store the
                          original translations into the output file.
 
