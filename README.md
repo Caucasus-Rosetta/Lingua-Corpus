@@ -1,3 +1,5 @@
+[![GitHub issues](https://img.shields.io/github/issues/danielinux7/Multilingual-Parallel-Corpus)](https://github.com/danielinux7/Multilingual-Parallel-Corpus/issues)
+[![GitHub license](https://img.shields.io/github/license/danielinux7/Multilingual-Parallel-Corpus)](https://github.com/danielinux7/Multilingual-Parallel-Corpus/blob/master/LICENSE)
 ##### For data scientists, developers and whom it may concern: 
 ###### Some of the text materials are copyrighted, check out the multilingual sources section that links to the source, please be sure to obide the authors restrictions and limitations. Beside this, the repo is under CC0 (public domain) license, also please have a look at [code of conducts][page].
 [page]: https://github.com/danielinux7/Multilingual-Parallel-Corpus/blob/master/CODE_OF_CONDUCT.md
