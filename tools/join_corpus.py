@@ -204,8 +204,8 @@ def generate_lists(max_list_lengths, enumerate_list):
         ab_sentence = ""
         for i, dic_tuple in enumerate(parallel_translations):
             if current_list_length >= max_list_length:
-                ru_train_list.append(ru_sentence)
-                ab_train_list.append(ab_sentence)
+                ru_train_list.append(ru_sentence+"\n")
+                ab_train_list.append(ab_sentence+"\n")
                 ru_sentence = ""
                 ab_sentence = ""
                 current_list_length = 0
@@ -218,9 +218,9 @@ def generate_lists(max_list_lengths, enumerate_list):
             if enumerate_list:
                 ru_sentence += str(tuple_number)+" "+dic_tuple[0]
                 ab_sentence += str(tuple_number)+" "+dic_tuple[1]
-
-            ru_sentence += dic_tuple[0]
-            ab_sentence += dic_tuple[1]
+            else:
+                ru_sentence += dic_tuple[0]
+                ab_sentence += dic_tuple[1]
 
             current_list_length += 1
 
@@ -350,8 +350,8 @@ if __name__ == "__main__":
         print("\nadded dictionary lines: "+str(dictionary_lists))
 
     print("\nwhole lines with paraphrases and dictionary lines: "+str(len(ru_train_list)))
-
     parallel_corpus = list(zip(ru_train_list, ab_train_list))
+
     if args.random:
         # we shuffle the training data before we save it
         random.shuffle(parallel_corpus)
@@ -361,6 +361,6 @@ if __name__ == "__main__":
             ru_paraphrase_file.write(sentences[0])
             ab_paraphrase_file.write(sentences[1])
     else:
-        for sentences in parallel_corpus:
+        for i,sentences in enumerate(parallel_corpus):
             ru_text_train.write(sentences[0])
             ab_text_train.write(sentences[1])
