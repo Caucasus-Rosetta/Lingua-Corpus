@@ -6,8 +6,10 @@
 ##### For copyright owners:
 ###### The text materials here are used for research, if there are any concerns regarding having your text material on this repo, please contact us via email(s): daniel.abzakh@gmail.com, kalle@hilsenbek.de.
 ##### Tools:
-###### Composition of a training corpus
-We can compose a specific, shuffled training corpus and separate test files with the joined corpus script in the training directory:
+###### Composition of a training corpus with a local repository
+Firstly clone this repo with`git clone https://github.com/danielinux7/Multilingual-Parallel-Corpus.git` and go to the tool folder: `cd tools`
+
+Then we can compose a specific, shuffled training corpus and separate test files with the joined corpus script in the training directory: `python3 join_corpus.py --help`
 
     usage: join_corpus.py [-h] [--dictionary] [--numerate] [--paraphrase]
                           [--verbose] [--random] [--punctuation]
