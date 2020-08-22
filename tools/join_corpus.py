@@ -194,7 +194,7 @@ def save_paraphrases(paraphrase_scale, only_paraphrases):
         ru_train_list.extend(russian_paraphrases)
         ab_train_list.extend(abkhazian_paraphrases)
 
-def generate_lists(max_list_lengths, enumerate_list):
+def generate_lists(max_list_lengths, enumerate_list, comma_seperation=False):
     # we combine the lists to a translation dictionary
     parallel_translations = list(zip(russian_word_list, abkhazian_word_list))
     for max_list_length in max_list_lengths:
@@ -212,8 +212,12 @@ def generate_lists(max_list_lengths, enumerate_list):
 
             tuple_number = i % max_list_length + 1
             if tuple_number is not 1:
-                ru_sentence += ", "
-                ab_sentence += ", "
+                if comma_seperation:
+                    ru_sentence += ", "
+                    ab_sentence += ", "
+                else:
+                    ru_sentence += " "
+                    ab_sentence += " "
 
             if enumerate_list:
                 ru_sentence += str(tuple_number)+" "+dic_tuple[0]
