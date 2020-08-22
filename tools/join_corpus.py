@@ -328,7 +328,7 @@ if __name__ == "__main__":
     print("\nraw lines: "+str(len(parallel_corpus)))
     print("\nignored lines due to the filter criterion: "+str(ignored_count))
     if args.punctuation:
-        print("including sentence order filration: "+str(filtered_punctuations))
+        print("including sentence order filtration: "+str(filtered_punctuations))
 
     if args.only_paraphrase or args.paraphrase or args.dictionary:
         # we load the dictionaries
