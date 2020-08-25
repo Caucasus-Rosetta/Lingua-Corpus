@@ -1,8 +1,8 @@
 import random
 import io
 import re
-from os import listdir
 import random
+import os
 import json
 import datetime
 import argparse
@@ -210,8 +210,8 @@ def generate_lists(max_list_lengths, enumerate_list, comma_seperation=False):
                 ab_sentence = ""
                 current_list_length = 0
 
-            tuple_number = i % max_list_length + 1
-            if tuple_number is not 1:
+            tuple_number = i % max_list_length
+            if tuple_number is not 0:
                 if comma_seperation:
                     ru_sentence += ", "
                     ab_sentence += ", "
@@ -286,6 +286,9 @@ if __name__ == "__main__":
     now = datetime.datetime.now()
     current_date = now.strftime('%m-%d-%Y')
     folder = "joined_translation_data/"
+
+    if not os.path.exists(folder):
+        os.makedirs(folder)
 
     parallel_text = io.open(args.corpus_file,"r+").readlines()
 
