@@ -113,7 +113,7 @@ def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words,
             print("\ntoo long or too short:")
             print(tuple)
         return True
-    if punctuation_filter_boolean and filter_punctuation(tuple):
+    if punctuation_filter_boolean and filter_punctuation(tuple, verbose):
         if verbose:
             print("wrong punctuation order")
             print(tuple)
@@ -228,16 +228,28 @@ def generate_lists(max_list_lengths, enumerate_list, comma_seperation=False):
 
             current_list_length += 1
 
+def flat_strings_to_chars(string_list):
+    char_list = []
+    for string_item in string_list:
+        for char_item in string_item:
+            char_list.append(char_item)
+    return char_list
+
 filtered_punctuations = 0
-def filter_punctuation(translation):
+def filter_punctuation(translation, verbose):
     global filtered_punctuations
-    ru_signs = sentence_signs.findall(translation[0])
-    ab_signs = sentence_signs.findall(translation[1])
+    ru_signs = flat_strings_to_chars(sentence_signs.findall(translation[0]))
+    ab_signs = flat_strings_to_chars(sentence_signs.findall(translation[1]))
 
     if ru_signs == ab_signs:
         return False
     else:
         filtered_punctuations += 1
+        if verbose:
+            print("russian signs:")
+            print(ru_signs)
+            print("abkhazian signs:")
+            print(ab_signs)
     return True
 
 
