@@ -87,7 +87,7 @@ dirty_ab = re.compile('[^ҟцукенгшәзхҿфывапролджҽџчсм�
 dirty_ru = re.compile('[^ёйцукенгшщзхъфывапролджэячсмитьбю\.\:,;\ 0-9-\(\)"!?]+')
 alphabet_ab = re.compile('[ҟцукенгшәзхҿфывапролджҽџчсмитьбҩҵқӷӡҳԥҷҭ\.\:,;\ 0-9-\(\)"!?]+',re.I)
 alphabet_ru = re.compile('[ёйцукенгшщзхъфывапролджэячсмитьбю\.\:,;\ 0-9-\(\)"!?]+',re.I)
-sentence_signs = re.compile('[\.\:!?0-9…\(\)\[\]«»]+',re.I)
+sentence_signs = re.compile('[\.\:!?0-9…\(\)\[\]«»\-]+',re.I)
 
 def filter_out(tuple, min_length_ratio, max_length_ratio, min_length, max_words, verbose, punctuation_filter_boolean):
     ru_words = 1.0*len(tuple[0].split(" "))
