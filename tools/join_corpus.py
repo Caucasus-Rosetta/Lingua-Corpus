@@ -144,31 +144,37 @@ def read_splitted_corpus(min_length_ratio, max_length_ratio, min_length, max_wor
 # now we generate and add the parallel_paraphrases
 parallel_paraphrases = {} # dictionary of paraphrases with translation tuples as keys
 
-def exchange_synonym(synonym_key, synonyms,translation_tuple, tuple_index, language):
+def exchange_synonym(verbose, synonym_key, synonyms,translation_tuple, tuple_index, language, paraphrase_rare_words, common_words):
     global parallel_paraphrases
-    paraphrases = []
+    paraphrases = parallel_paraphrases.get(translation_tuple, {}).get(language, [])
     # search and exchange the synonym
     # the search space could be advanced to the start and end of the sentence
     # how can we make this case sensitive?
+    paraphrase_edits = 0
     if " "+synonym_key+" " in translation_tuple[tuple_index]:
         # we have found a match
         for i,synonym in enumerate(synonyms[synonym_key]):
-            if len(paraphrases) == i:
-                paraphrases.append(translation_tuple[tuple_index][:])
-            if " "+synonym_key+" " in paraphrases[i]:
-                paraphrases[i] = paraphrases[i].replace(" "+synonym_key+" ", " "+synonym+" ")
-    if len(paraphrases) > 0:
-        parallel_paraphrases[translation_tuple][language] = paraphrases
+            if " "+synonym_key+" " in translation_tuple[tuple_index]:
+                if (paraphrase_rare_words and synonym not in common_words) or not paraphrase_rare_words:
+                    if len(paraphrases) <= i:
+                        paraphrases.append(translation_tuple[tuple_index][:])
+                    paraphrases[paraphrase_edits] = paraphrases[paraphrase_edits].replace(" "+synonym_key+" ", " "+synonym+" ")
+                    paraphrase_edits += 1
+                elif verbose:
+                    print(synonym + " is a common word")
 
-def generate_paraphrases(translation_tuple):
+    if len(paraphrases) > 0:
+        parallel_paraphrases[translation_tuple][language] = list(filter(None, paraphrases))
+
+def generate_paraphrases(verbose, translation_tuple, paraphrase_rare_words, ab_common_words, ru_common_words):
     global parallel_paraphrases
     parallel_paraphrases[translation_tuple]["abkhaz"] = []
     for synonym_key in abkhaz_synonyms.keys():
-        exchange_synonym(synonym_key, abkhaz_synonyms, translation_tuple, 1, "abkhaz")
+        exchange_synonym(verbose, synonym_key, abkhaz_synonyms, translation_tuple, 1, "abkhaz", paraphrase_rare_words, ab_common_words)
 
     parallel_paraphrases[translation_tuple]["russian"] = []
     for synonym_key in russian_synonyms.keys():
-        exchange_synonym(synonym_key, russian_synonyms, translation_tuple, 0, "russian")
+        exchange_synonym(verbose, synonym_key, russian_synonyms, translation_tuple, 0, "russian", paraphrase_rare_words, ru_common_words)
 
 def fill_list(list_to_fill, filler, length_to_align, max_length=3):
     length_to_fill = min(length_to_align, max_length)
@@ -193,6 +199,37 @@ def save_paraphrases(paraphrase_scale, only_paraphrases):
         # and write them to the train list
         ru_train_list.extend(russian_paraphrases)
         ab_train_list.extend(abkhazian_paraphrases)
+
+def replace_strings(sentence):
+    # we replace each sentence sign with nothing
+    # sentence_sings = [\.\:,!?0-9…\(\)\[\]«»\-\"]
+    sentence_signs = ['.',':',',','!','?','…','(',')','[',']','«','»','"','-','0','1','2','3','4','5','6','7','8','9']
+    for sign in sentence_signs:
+        sentence = sentence.replace(sign,'')
+    sentence = sentence.strip()
+    # and return the words of the sentence
+    return sentence
+
+def word_count(corpus_list):
+    word_count = {}
+
+    for line in corpus_list:
+        # simple word tokenizer
+        line_words = replace_strings(line).split(' ')
+        for word in line_words:
+            if word in word_count:
+                word_count[word] = word_count[word] + 1
+            else:
+                word_count[word] = 1
+
+    return word_count
+
+def get_common_words(word_count, word_dictionary):
+    word_list = []
+    for word in word_dictionary:
+        if word_dictionary[word] > word_count:
+            word_list.append(word)
+    return word_list
 
 def generate_lists(max_list_lengths, enumerate_list, comma_seperation=False):
     # we combine the lists to a translation dictionary
@@ -277,6 +314,8 @@ if __name__ == "__main__":
                         help='We define the number of lines that are filtered for the test set.')
     parser.add_argument('valid_lines', metavar='valid_lines', type=int,
                         help='The number of lines that are filtered for the validation set.')
+    parser.add_argument('common_words_threshold', metavar='common_words_threshold', type=int,
+                        help='We define the threshold for the common word classification.')
     parser.add_argument('--paraphrase', action='store_true',
                         help='We paraphrase the filtered training corpus.')
     parser.add_argument('--verbose', action='store_true',
@@ -290,6 +329,8 @@ if __name__ == "__main__":
                         help='We define the path to the aligned corpus file.')
     parser.add_argument('--only_paraphrase', action='store_true',
                         help="We simply generate paraphrases and don't store the original translations into the output file.")
+    parser.add_argument('--paraphrase_rare_words', action='store_true',
+                        help="We only generate paraphrases with rare words.")
 
     args = parser.parse_args()
 
@@ -345,18 +386,27 @@ if __name__ == "__main__":
     if args.punctuation:
         print("including sentence order filtration: "+str(filtered_punctuations))
 
-    if args.only_paraphrase or args.paraphrase or args.dictionary:
+    if args.only_paraphrase or args.paraphrase or args.dictionary or args.paraphrase_rare_words:
         # we load the dictionaries
         load_ab_ru_dictionary()
 
     paraphrase_lines = 0
-    if args.only_paraphrase or args.paraphrase:
+    if args.only_paraphrase or args.paraphrase or args.paraphrase_rare_words:
+        # we count the words
+        ab_word_count = word_count(ab_train_list)
+        ru_word_count = word_count(ru_train_list)
+        # we extract thr common words
+        print("\namount of common words which occur more than "+str(args.common_words_threshold)+" times.")
+        ab_common_words = get_common_words(args.common_words_threshold, ab_word_count)
+        print(len(ab_common_words))
+        ru_common_words = get_common_words(args.common_words_threshold, ru_word_count)
+        print(len(ru_common_words))
         # we extract the synonyme and paraphrase the corpus
         load_russian_synonyms()
         extract_ab_synonyms()
         for translation_tuple in parallel_corpus:
             parallel_paraphrases[translation_tuple] = {} # dic for russian and abkhaz paraphrases
-            generate_paraphrases(translation_tuple)
+            generate_paraphrases(args.verbose, translation_tuple, args.paraphrase_rare_words, ab_common_words, ru_common_words)
 
         save_paraphrases(args.paraphrase_scale, args.only_paraphrase)
         paraphrase_lines = len(ru_train_list) - original_corpus_lines
