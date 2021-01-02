@@ -96,3 +96,4 @@ For example `python3 join_corpus.py 10 0.75 1.33 10 50 5 500 500 1 ru-ab-paralle
 - https://mlexplained.com/2019/11/06/a-deep-dive-into-the-wonderful-world-of-preprocessing-in-nlp/
 - https://github.com/neubig/lowresource-nlp-bootcamp-2020
 - On the Impact of Various Types of Noise on Neural Machine Translation: https://arxiv.org/abs/1805.12282
+- Character base transformer: https://arxiv.org/abs/2004.14280
