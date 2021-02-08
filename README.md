@@ -75,6 +75,7 @@ For example `python3 join_corpus.py 10 0.75 1.33 10 50 5 500 500 1 ru-ab-paralle
 -   Quran: https://github.com/danielinux7/Abkhazian-books-in-Public-Domain/tree/master/Аҟәырҟан
 -   The president's cat: (Одишариа, Гәырам: Апрезидент ицгәы) http://clarino.uib.no/abnc/text-list
 -   The parliament of Abkhazia: https://parlamentra.org/
+-   VK: https://vk.com/translation
 ##### Adyghe
 -   Bible related: http://www.inyourlanguage.org/Adyghe
 -   Quran: http://dumraikk.ru/zagruzki/

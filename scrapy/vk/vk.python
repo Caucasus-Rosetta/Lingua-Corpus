@@ -1,0 +1,85 @@
+import collections
+ab=[]
+with open("drive/MyDrive/vk_ab.txt") as f:
+   ab = f.readlines()
+count = 1
+count2 = 0
+corpus = collections.defaultdict(list)
+for line in ab:
+   if line.strip().isnumeric():
+      if line.strip() == '1':
+         count = 1
+         count2 = count2+1
+         corpus[count2]=[]
+      elif int(line.strip()) == count+1:
+         count = count +1
+         count2 = count2+1
+         corpus[count2]=[]
+   elif count2 > 0:
+      corpus[count2].append(line)
+corpus_ab ={}
+for key in corpus:
+   corpus_ab[corpus[key][-1].strip()]=corpus[key][:-1]
+
+import collections
+ru=[]
+with open("drive/MyDrive/vk_ru.txt") as f:
+   ru = f.readlines()
+count = 1
+count2 = 0
+corpus = collections.defaultdict(list)
+for line in ru:
+   if line.strip().isnumeric():
+      if line.strip() == '1':
+         count = 1
+         count2 = count2+1
+         corpus[count2]=[]
+      elif int(line.strip()) == count+1:
+         count = count +1
+         count2 = count2+1
+         corpus[count2]=[]
+   elif count2 >0:
+      corpus[count2].append(line)
+corpus_ru ={}
+for key in corpus:
+   corpus_ru[corpus[key][-1].strip()]=corpus[key][:-1]
+
+ab=[]
+ru=[]
+for key in corpus_ab:
+   if key in corpus_ru.keys() and len(corpus_ab[key])==len(corpus_ru[key]):
+      ab.extend(corpus_ab[key])
+      ru.extend(corpus_ru[key])
+      count = count + 1
+with open("vk_ab.txt","w") as f:
+   f.writelines(ab)
+with open("vk_ru.txt","w") as f:
+   f.writelines(ru)
+
+ab=[]
+count = 0
+for key in corpus_ab:
+  count = count + 1
+  ab.append('key_'+str(count)+': '+key+'\n')
+  ab.extend(corpus_ab[key])
+with open("vk_ab+keys.txt","w") as f:
+   f.writelines(ab)
+ru=[]
+count = 0
+for key in corpus_ru:
+  count = count + 1
+  ru.append('key_'+str(count)+': '+key+'\n')
+  ru.extend(corpus_ru[key])
+with open("vk_ru+keys.txt","w") as f:
+   f.writelines(ru)
+
+ru=[]
+count = 0
+for key in corpus_ru:
+   if key not in corpus_ab.keys():
+      count = count + 1
+      ru.append('key_'+str(count)+': '+key+'\n')
+      ru.extend(corpus_ru[key])
+with open("vk_ru+keys+untranstalated.txt","w") as f:
+   f.writelines(ru)
+
