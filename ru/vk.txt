@@ -1,18 +1,7 @@
-
-...
-~~~
-~~~~
-~~~~~
-$ %s
-£ %s
-€ %s
-0+
 0,30 грн. подробнее
 0.49 грн. подробнее
 0.49 грн. подробнее
-1 000 ₽ + 2 000 ₽
 Не менее 1000
-< 100
 100% видео
 100 голосов
 Не менее 100
@@ -20,25 +9,15 @@ $ %s
 10 голосов
 Не менее 10
 10 секунд
-1:1
 111 единиц:
-2
-1 210
-12+
-1 260
 12 голосов
 13 голосов
 1.5 руб. подробнее
 15 минут
 15 млрд
-16+
-16:9
 16 голосов
 До 16 лет
 16 лет и старше
-18+
-18–21
-18-24
 18 голосов
 От 18 до 20 лет
 от 18 до 20
@@ -47,26 +26,19 @@ $ %s
 До 18
 18 лет
 18 лет и старше
-19:43 04.10.2016 MSK
 1.99 руб.
 1,99 руб. за исходящее SMS подробнее
 1 единица:
 1 млрд
-2 000 ₽
 200 голосов
-© 2018 MARVEL
 2019 ГОД 🎉
 2020 ГОД 🎉
 20 дирам подробнее
 20 голосов
-21–24
 От 21 до 23 лет
 от 21 до 24
-228 500
 Душа 22
 2,3,4 единицы:
-24–27
-24-30
 24 голоса
 От 24 до 26 лет
 от 24 до 27
@@ -74,13 +46,10 @@ $ %s
 25% видео
 25 голосов
 от 25 до 29
-27–30
 27 голосов
 От 27 до 29 лет
 от 27 до 30
 28 голосов
-290 000
-292 000
 2 голоса
 2ГИС
 2 руб. за исходящее SMS подробнее
@@ -89,7 +58,6 @@ $ %s
 2 единицы:
 300 000 голосов 28 и 29 августа
 300 голосов
-30–35
 30 гол. + 5 гол.
 30 голосов
 От 30 до 34 лет
@@ -102,9 +70,6 @@ $ %s
 3.20 руб. в сутки подробнее
 32 голоса
 330 км/ч
-340 000
-3:4
-35–45
 От 35 до 44 лет
 от 35 до 44
 от 35 до 45
@@ -119,7 +84,6 @@ $ %s
 3 секунды
 3 единицы:
 Интересно 41 123 людям
-4:3
 45 голосов
 от 45 до 54
 От 45
@@ -137,62 +101,35 @@ $ %s
 5 минут
 5 часов
 5 единиц:
-6 000
-10B
-6+
-6 700 000
 6 голосов
 6 часов
 75% видео
-776.family
 +78121234567 — номер телефона в международном формате.
 Менее 85 фунтов
 8 голосов
 за 8 часов
-9:16
-97M
 97 млн
 9 голосов
 9 драм подробнее
-aaa
-aaad
-aaQ13axAPQEcczQa
-Account
 Узнать больше
-Activ:
 Добавлено
-{additional_information}
-{address}
 Добавить в группу
-admin_test_key_111
-admin_test_key
-Adrenaline Rush
 Возрастное ограничение:
 Возрастные ограничения
 {albums} и {playlists}
-AliExpress
 Товары AliExpress
 Хиты AliExpress
 Выпускник (бакалавр)
 Выпускник (магистр)
 Выпускник (специалист)
-AMEDIATEKA
 Загрузить Amigo
-{amount} ₽
-{amount} {symbol}
 Амстердам
-Android
-Android: {android_link}
-Android new version: 5.56
-Android SDK
 Версии Android:
 Скачать для Android
 Планшеты Android
 Android устройства
 Отправить на Android
 Android-планшет
-«{answer}»
-API
 API и Wiki
 API для ботов
 Старая версия API
@@ -203,99 +140,48 @@ API для магазина в сообществе
 Запросы к API
 Знакомство с API
 APNS (уведомления для iOS)
-App Bundle ID:
 App Bundle ID для iOS
 App ID для iOS
-Apple
-Apple Developer Team ID
-Apple Developer Team Name
-App Store
 Приложения
-apps_test_key1
-App Store
 СКАЧАТЬ В APP STORE
 Перейти в App Store
 'kNOpKA' и 'knopka' – разные пароли
-{artist_name}
 {artist_name}: клипы
 {artist_name}: альбомы
-asdfasd
-asdfasdasdfasdasdfasd
-Atom
 Скачать Atom
-{audio_title} ({audio_artist})
-Auth
 Осень
 руководитель Backend-разработки
-Barni
-Beeline:
-Beta
-BlackBerry
-Blizzard Entertainment
-BodroGordo
-BOOM
-BOOM VIP
 Стикеры BOOM
 Приложение BOOM
 Перейти в BOOM
-Boxberry
-Boxberry:
 Боксберри
 Обзор комментариев
 через {browser}
-BTS purple you
-BURGER KING® Russia
 бел. руб.
 Сортировать {by}
 Внимание! Когда подтверждение входа включено, услуга восстановления пароля по номеру телефона становится недоступной.
 Наши письма до вас не доходят
 C2DM (уведомления для Android)
-Callback API
 Отменить приглашение
 Кандидат наук
 Убедитесь, что не включена кнопка Caps Lock
-Cartoon Network
 Cartoon Network Россия
-Cashback
-C-c-combo breaker!
-CD/DVD
 CEO ВКонтакте
 Изменить
-Cheetos
 Выберите город
-Chrome
-Cinema Critique
-Client Secret:
-Coca-Cola
-Colgate
 Подписка Combo
 Comic Con Россия
-Comma-Separated Values (.csv)
-{comment}
 Сообщества
-Community app
-{copyright_holder}
-Cosmo Girl
 Cosmopolitan Россия
-{count} ₽
 {counter} из {total}
 {count} уведомление/{count} уведомления/{count} уведомлений
 {count} аудиозапись/{count} аудиозаписи/{count} аудиозаписей
 {count} сообщение/{count} сообщения/{count} сообщений
 {count} шт.
-CPC
-CPF
-CPM
-CSV
-CTR
 Ctrl+Enter – отправка сообщения
 Ctrl+Enter — отправка сообщения
-{curator_name}
 {current_count} из {all_count}
-Curtis
 Москва, Петербург, Новосибирск
-{date} {action}
-{date}, {link}
 {date} %s человек оценил вашу запись {post}/{date} %s человека оценили вашу запись {post}/{date} %s человек оценили вашу запись {post}
 {date} %s человек принял вашу заявку в друзья/{date} %s человека приняли вашу заявку в друзья/{date} %s человек приняли вашу заявку в друзья
 {date} написал на стене сообщества/{date} написала на стене сообщества
@@ -304,12 +190,6 @@ Curtis
 от {date}
 к записи {post}
 {date} на вашу запись {post}
-Daugavpils
-{day} {dayMonth} {year}, {hour}:00
-{day} {month}
-{day} {month} {hour}:{minute}
-{day} {month} {year}
-{day} {month} {year}, {hour}:{minute}/{day} {month} {year}, {hour}:{minute}/{day} {month} {year}, {hour}:{minute}/{day} {month} {year}, {hour}:{minute}
 {day} {month} {year}, {hour}:{minute}/{day} {month} {year}, {hour}:{minute}/{hour}:{minute}/завтра, {hour}:{minute}
 {day} {month} {year} в {hour}:{minute}:{second}/вчера в {hour}:{minute}:{second}/сегодня в {hour}:{minute}:{second}/завтра в {hour}:{minute}:{second}
 {day} {month} {year} в {hour}:{minute}/вчера в {hour}:{minute}/сегодня в {hour}:{minute}/завтра в {hour}:{minute}
@@ -317,30 +197,9 @@ Daugavpils
 {day} {month} {year}/вчера/сегодня/завтра
 {day} {month} в {hour}:{minute}/вчера в {hour}:{minute}/сегодня в {hour}:{minute}/завтра в {hour}:{minute}
 {day} {month}/вчера/сегодня/завтра
-deer_test
-deer_testdeer_test
-Delivery Club
-VK Messenger
 Заявки DG
-Direct games
-Direct Games
 Платежи с Direct Games
-Dirol Jack
-© Disney
-DJ
-Dota 2 Champions League
-Dota 2
-Durex 2020
-Durex
-Durex’s New Year
 %d способ оплаты/%d способа оплаты/%d способов оплаты
-E3 2016
-E3 2019
-EeOneGuy
-Election girl
-Electronic Arts
-Email
-Email:
 Email заблокирован.
 Привязать email
 Привязать страницу
@@ -364,38 +223,19 @@ Email или телефон
 Новый email:
 Новый адрес
 Новый адрес:
-Emoji
 Emoji-стикеры
-End date:
 Enter – отправка сообщения, Shift+Enter – перевод строки
 Enter — перенос строки
 Enter – перевод строки, Ctrl+Enter – отправка сообщения
 Enter — отправка сообщения
-Error: unable to save audio file info
-Excel (.xls)
-Execute
-Explicit:
-Export format:
-facebook.com
-Facebook
-Facebook:
 Войти через Facebook
 в Facebook
-FACES!
 Мода
-Fave
-Felix ®
-Firefox
-FIVE
-Flash
-Flash/iFrame
 Установить Flash Player
 Загрузить Flash Player
 Установить Flash Player
-Flash SDK
 Flash-контейнер:
 Вы подписаны
-Fortnite
 {from} пригласил {user}/{from} пригласила {user}
 {from} обновил фотографию беседы/{from} обновила фотографию беседы
 {from} вернулся в беседу/{from} вернулась в беседу
@@ -405,17 +245,9 @@ Fortnite
 {from} удалил фотографию беседы/{from} удалила фотографию беседы
 {from} изменил название беседы: {title}/{from} изменила название беседы: {title}
 {from} присоединился к беседе/{from} присоединилась к беседе
-Game Insight
 Начинается трансляция шоу Electronic Arts на gamescom 2017
-Garnier
 GCM (уведомления для Android)
-GG WP
-[GIF]
-GIF
-[GIF]/[GIF]/[GIF]
 Автоматически воспроизводить GIF-анимации
-Girl Power
-#GIRLPOWER
 (GMT +10:00) Владивосток, Сидней
 (GMT +11:00) Магадан
 (GMT +11:30) Норфолк
@@ -438,95 +270,42 @@ Girl Power
 (GMT +9:00) Якутск, Токио
 (GMT +9:30) Аделаида, Дарвин
 (GMT -9:30) Французская Полинезия
-GONE.Fludd
-Google
-Google+
 Google Карты
-Google Play
-Google Play:
-Google Play Market
 СКАЧАТЬ В GOOGLE PLAY
 Перейти в Google Play
 В Google Play доступна новая версия приложения
-Google Podcasts
-Google Play
 Войти через Google
-GoRun
 {h2}Описание магазина{/h2}
 {h2}Доставка товаров{/h2}
 {h2}Оплата товаров{/h2}
-Handmade
-Honor
-{hour}:{minute}/{hour}:{minute}/{hour}:{minute}/{hour}:{minute}
 Новинки House & Techno
-Mobile HTML5
 HTTPS-aдрес iframe ведёт на небезопасный сайт.
-https://example.com/callback/xE4sA
-https://play.google.com/store/apps/details?id=com.vkontakte.android
-https://vk.com/classifiedsclub
 HTTPS-адрес IFrame:
-ID
 ID приложения
 Вам необходимо указать ID приложения
 ID заявки
 IFrame/Flash приложение
-IFrame
 Адрес IFrame
 Размер IFrame
 В сообществе IGM начинается прямая трансляция по Warface
 В сообществе IGM начинается прямая трансляция по Warface
-instagram.com
-Instagram
-Instagram:
 в Instagram
 Интеграция с Instagram
-Internet Explorer
 Загрузить Internet Explorer
 Приглашение выслано
-iOS
-iOS: {ios_link}
-iOS new version: 5.56
-iOS SDK
 Версии iOS:
-iPad
 Планшеты iPad
 iPhone и iPad устройства
-iPhone/iPod Touch
 Скачать для iPhone
 Отправить на iPhone
 IP-адрес: {ip}
-{item1}, {item2}
 {item1} и {item2}
-IT
-Jacobs Monarch
-Javascript SDK
-Java SDK
-Johnyboy
-JS API
 Экспорт в JSON
-Key
-KFC BATTLE
-KFC
 KFC Россия
-KIZARU
-Kotex
-K-pop
-Lay’s 2020
-Lay's
-Lead forms
-Leads
-League of Legends
 League of Legends: Киберспорт
-LEGO
-life:) :
-{link1} · {link2}
 {link_day}{day} {month}{/link_day} {link_year}{year} г.{/link_year}
-{link_day}{day} {month}{/link_day}
 {link}Указать новый email{/link}
-Linkin Park
-{link}
 Вы можете {link_other}использовать другой почтовый адрес{/link_other} или {link}выслать письмо с активацией повторно{/link}.
-{link}/{user}
 {link}Создать аудиторию{/link}
 {link}Перейти к аудиториям{/link}
 {link}Восстановить.{/link}
@@ -539,62 +318,26 @@ Linkin Park
 {link}ваш комментарий{/link} был успешно отправлен.
 Вы можете {link}удалить свою страницу{/link}.
 Вашу {link}фотографию{/link}
-Linux
 Лондон
 Лондон
-Lipton
-livejournal.com
-LiveJournal
-LiveJournal:
-Live
 LIVE и BodroGordo
 LIVE и BodroGordo
-Lizer,
-LOBODA
 Местоположение
-Long Poll API
-Long Poll API:
 {lookalike_request_source_name} и ещё %s/{lookalike_request_source_name} и ещё %s/{lookalike_request_source_name} и ещё %s
 {lookalike_request_source_name} и {lookalike_request_source_name_2}
-Lovina
-macOS
-Mail.ru
 Войти через Mail.ru
 Main activity для Android
-Maps.me
-Marijampolė
-© MARVEL
 Mastercard, Maestro, Visa, Мир
-Mastercard
-MDK
-MegaCom:
-Men in black... Friday
-Merchant ID
-{message}
-Microsoft Store
-Mini Apps
 {minutes} мин
-Mirinda
-Mixtank
-MMS
-Moldcell:
 {money} (%s голос)/{money} (%s голоса)/{money} (%s голосов)
 {day} {month} {hour}:{minute}/вчера в {hour}:{minute}/сегодня в {hour}:{minute}/завтра в {hour}:{minute}
 {day} {month} в {hour}:{minute}/вчера в {hour}:{minute}/сегодня в {hour}:{minute}/завтра в {hour}:{minute}
 {day} {month} {year}/вчера/сегодня/завтра
-{month}
-{month} {year}
 {day} {month} {year} в {hour}:{minute}/Вчера в {hour}:{minute}/Сегодня в {hour}:{minute}/Завтра в {hour}:{minute}
-mostreseubrasil
 MPNS (уведомления Windows Phone)
-Mr. Chips
-MrLololoshka
 Музыка
 {name1} и {name2}
 {name1} и {name2} записывают аудио
-{name}: {desc}
-{name}
-{name}, {period} — {price}
 {names} оценил {what}/{names} оценила {what}
 {names} указал {what}/{names} указала {what}
 {names} оценили {what}
@@ -609,71 +352,34 @@ MrLololoshka
 Посмотрите на {name} и другие рекомендации
 {name}, мы обнаружили подозрительную активность и временно заморозили Вашу страницу, чтобы вырвать её из рук злоумышленников.
 {name} написал на вашей стене:/{name} написала на вашей стене:
-Natus Vincere
 Оформлен NDA
 Nescafé 3 в 1
-NESCAFE
 Стокгольм
 Стокгольм
-new
-New
 Новая запись на стене
-News
-Noize MC
-{|nomargin; |- ! 1 | 2 | 3 |- | 1 ! 2 | 3 |- | 1 | 2 ! 3 |}
-№
 №{position} в жанре «{genre}»
-NoSpam
 Нет
 {num_day}.{month}.{short_year} {num_hour}:{minute}/вчера, {num_hour}:{minute}/сегодня, {num_hour}:{minute}/завтра, {num_hour}:{minute}
 {num_day}.{month}.{short_year}/вчера/{num_hour}:{minute}/завтра
 {num} SMS из {count}
 %n стиль/%n стиля/%n стилей
 %n бесплатно
-{objection}
 Продукты Office 365
-OK
 Войти через OK.ru
-online
-Opera Mini
-Opera Mini S60
-Opera
-Orbit
-Orders
-OREO
-Oriflame Russia
-Other installed
 Другое
-{owner}
-Panevėžys
-PAThWORD:
-PayPal
-Paysupp
 Оплатить
-Pepsi
-{performer}
 Доктор наук
 {phone} или me(at)sample.com
-PIN
 Неверный PIN-код
 Неверный PIN-код.
-{playlist_name}
 Скачать Play Machine
 Стикеры PlayStation
 PlayStation Россия
-.png, .ai, .psd, .cdr
-.png, .psd
-Polls
 Аспирант
 Отправить
-{price_from} – {price_to}
 {price} / м²
 {price} / м³
-Pringles
-Project Id:
 Директор по PR
-PUBG
-Pulpy
 Push-уведомления
 Push-уведомления:
 Push-уведомления
@@ -681,18 +387,10 @@ QR-код
 QR-код
 {question} — {answer}/{question} — {answers} и {answer}/{question} — {answers} и {answer}
 Rammstein ВКонтакте
-Rap & Hip-Hop
-Rap, Hip-Hop
-R&B
-{reason}{reason_samples}
 Рекомендации
-RedHat/Fedora (.rpm)
 {reports} с {date}
 Пожаловаться
-Rexona
 {rights} и {right}
-Roadmap
-Room Factory
 Ссылка на RSS:
 Включить RSS
 Отключить RSS
@@ -700,45 +398,25 @@ RSS-экспорт:
 RSS-импорт:
 Импорт RSS:
 RSS-файл
-ru
-%s ₽
-%s ₽/%s ₽/%s ₽
-Safari
-SALAT Live: EuroVillage
-Sale Day
-Sale Day 🎁
-Sale
 Сохранить
-SAYONARA BOY OPAL
 %s б. р.
-SDK
 Настройки SDK
 вторая строка {friends_count_info}
 {seconds} с
-Secret Match
-Secure
 Выберите страну
 Специально для вас
 {selected} из {limit}
 Отправить подарок
 Отправить
-{share_buttons}
 Поделиться
-Sharing
 Shift+Enter – перевод строки
 Shift+Enter — перенос строки
 Показать все
 Показать ещё
-SID:
 Записаться
 Sillamäe (Силламяэ)
-Simple API Key:
-Skype
-Skype:
 %s, {link}детали{/link}
-SMM
 Руководитель SMM-направления Yota
-SMS
 SMS-оповещения будут приходить на номер %s
 Получать новые записи {user} через SMS
 Получать личные сообщения от {user} через SMS
@@ -756,28 +434,15 @@ SMS-оповещения успешно отключены.
 Отключение SMS-оповещений
 Настройка SMS-оповещений
 SMS-сообщение
-Snapster
 Установить Snapster
-SNICKERS® Russia
 Новый альбом SOLD OUT
-{sorry}.
 {span}Разработчик:{/span} %s
 Состоит в Special Forces
-Speed Dating
-Sprite
-%s px/%s px/%s px
-«%s»
 Сертификат SSL:
 %s {tag}коп.{/tag}/%s {tag}коп.{/tag}/%s {tag}коп.{/tag}
 %s {tag}руб.{/tag}/%s {tag}руб.{/tag}/%s {tag}руб.{/tag}
 %s {tag}тнг.{/tag}
 Standalone-приложение
-Start date:
-{start}–{end}
-Status
-Sticker pack:
-Stories discover
-Streaming API
 Студент (бакалавр)
 Студентка (бакалавр)
 Студент (магистр)
@@ -1003,51 +668,20 @@ c %s г.
 %s год/%s года/%s лет
 %s друг/%s друга/%s друзей
 %s друг/%s друга/%s друзей
-{/tagMore}
-{tagMore}
 {tag}В файле добавлены вылеты и кривые, по которым наклейка будет вырезаться.{/tag}
 Кто может {tag}приглашать меня в сообщества{/tag}
-Tcell:
-Tele2:
 Tele2 Россия
 по требованию Telekomünikasyon İletişim Başkanlığı
-test 222
-test2test2
-test2test2test2
-[{textlive_link}|{title}]: «[{textpost_link}|{text}]»
-{text}
-TheBrianMaps
-The Coca-Cola Company
 Игре будет доступен ваш email
-The International 2016
-The LEGO Group
-Thirty Seconds to Mars
-{ticket_link}
-{ticket_text}
-Tic Tac
-«{title}»
-{title}VK Music Awards{/title}
 {title} | Клипы | ВКонтакте
-TM CELL:
-twitter.com
-Twitter
-Twitter:
 Найти друзей через Twitter
 в Twitter
 txt, csv, до 30 КБ
 Экспорт в TXT
 {type} в сообществе {name}
-UA based
-Ubuntu/Debian (.deb)
 Загрузить UC Browser
-Ucom:
 Абитуриент
-Unicorn BOOM
 Загрузить Unity Web Player
-Uptime
-Uptime (%)
-URL
-URL:
 {user1} и {user2}
 {user1} и {user2} поделились записью
 {user1} и {user2} понравилась
@@ -1058,15 +692,7 @@ URL:
 {user2} оставила комментарий к вашей фотографии:
 {user2} оставила вам личное сообщение:
 {user2} приглашает вас на мероприятие «{title}».
-{user}, {date}
-{user_info}
-{users}, {user}
 {users} и другие
-{user} {time}
-/{user},
-{user}
-{user},
-{user}
 {user} приглашает вас пойти
 Вас приглашает {user}/Вас приглашает {user}
 {user} разместил новость ВКонтакте./{user} разместила новость ВКонтакте.
@@ -1134,24 +760,16 @@ URL:
 {user} подписан на вас/{user} подписана на вас
 Добавьте {user} в друзья, чтобы смотреть его записи, фотографии и другие материалы/Добавьте {user} в друзья, чтобы смотреть её записи, фотографии и другие материалы
 USSD-запросы
-Utena
 U-Лайка
-Values are estimated and may vary. [The performance score is calculated](https://web.dev/performance-scoring/) directly from these metrics. [See calculator.](https://googlechrome.github.io/lighthouse/scorecalc/)
 Векторный формат, предназначенный для печатного оборудования.
-Vega Squadron
 Версия {ver}
-Virtus.pro
 Virtus.pro против Natus Vincere
 VK Admin для iOS
-VK Admin
 VK для Android
-iOS/Android
 VK: {code} - код для получения доступа к персональным данным.
 vk.com/app1 — ссылка на приложение;
 vk.com/app5619682_-103600381 — ссылка на приложение в сообществе;
-vk.com/settings?act=music_subscription
 vk.com/team — ссылка на сообщество;
-VK Connect
 VK Connect: номер не может быть привязан к аккаунту {id}.
 Войти через VK Connect
 VK Connect: Заявка отклонена: {link}
@@ -1160,34 +778,16 @@ VK Connect: Заявка отклонена: {link}
 VK Connect: доступ восстановлен. Логин: {login} Пароль: {password}
 Единый аккаунт VK Connect нужен для упрощённой авторизации в сервисах
 VK для {device}
-VK Donut
-VK Donut:
 Уведомления VK Donut
 Статистика VK Donut
-VK Fest 2018
-VK Fest 2019
-VK Fest 5
-VK Fest
-VK Gaming Open Cup
-VK Gaming
 VK для iPhone
-VK Live
 vk.me/adsnews — ссылка на диалог с сообществом;
 VK Messenger для {os}
-VK Messenger
 Скачать VK Messenger
-VK Me
 Подробнее о VK Me
-VK Mini Apps
 Что такое VK Mini Apps
-VK Mobile Challenge
-{vk_mobile_gim_link}
-VK Mobile
 Написать в VK Mobile
-VK Music Awards
-VK New Year
 Ошибка VK Pay API
-VK Pay
 VK Pay, ЮMoney, QIWI, WebMoney, PayPal
 VK Pay, ЮMoney, QIWI, WebMoney
 Открыть VK Pay
@@ -1195,12 +795,8 @@ VK Pay, ЮMoney, QIWI, WebMoney
 Перейти в VK Pay
 VK Pay, Яндекс.Деньги, QIWI, WebMoney, PayPal
 VK Pay, Яндекс.Деньги, QIWI, WebMoney
-VK Shop
 ВКонтакте с авторами
-VK Tech
-VK Testers
 Участник VK Testers
-VK TOP-30 2017
 VK для Windows Phone
 VK для WP
 Для ВК:
@@ -1209,49 +805,23 @@ VK для WP
 Только в VK
 {v_title} — Видео
 V поколения
-Warface
-Wargaming.net
 WASD и RGB
-WebMoney
-Webserver
-Web
 Заявки Web
-WHISKAS®
 wikipedia.org — ссылка на внешний сайт;
-Windows 10
-Windows 7
-Windows 8 Touch
-Windows 8
-Windows App ID
-Windows Phone SDK
-Windows Phone
-Windows XP/Vista
 Скачать для Windows
 Игры для Windows
 Доступно только для Windows
 WNS (уведомления Windows)
-World of Tanks Fan
-World of Warcraft
-#WOWMOSCOW
 Скачать для WP
-WWF
 Компаньон Xbox
-x{count} iPhone/x{count} iPhone/x{count} iPhone
-Xiaomi
-Yandex.Browser
 Пароль YCLIENTS
 Войти через YCLIENTS
 Логин YCLIENTS
-© {year}
 © {year} Команда ВКонтакте
 {year} г.
 {year} год
 ЮMoney
-Yota
 Ваше имя
-YouTube
-ZeptoLab UK Ltd
-Zero waste
 Версии API
 Производство, промышленность
 Производительность

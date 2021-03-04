@@ -1,18 +1,7 @@
-
-...
-~~~
-~~~~
-~~~~~
-$ %s
-£ %s
-€ %s
-0+
 0.30 агрн. инарҭбааны
 0,49 грн., инарҭбааны
 0.49 грн. инарҭбааны
-1 000 ₽ + 2 000 ₽
 1000 иеиҵамкәа
-< 100
 100% авидео
 100 бжьы
 100 иеиҵамкәа
@@ -20,25 +9,15 @@ $ %s
 10 бжьы
 10 иеиҵамкәа
 10 секундк
-1:1
 111 цыра:
-1
-1 210
-12+
-1 260
 12 бжьы
 13 бжьы
 1.5 мааҭ. инарҭбааны
 15 минуҭ
 15 млрд
-16+
-16:9
 16 бжьы
 16 шықәса аҟынӡа
 16 шықәса еиҳабу
-18+
-18–21
-18-24
 18 бжьы
 18 инаркны 20 шықәсанӡа
 18 иннаркны 20 аҟынӡа
@@ -47,26 +26,19 @@ $ %s
 18 рҟынӡа
 18 шықәса
 18 шықәса еиҳауи
-19:43 04.10.2016 MSK
 1.99 мааҭ.
 1.99 мааҭ иазышьҭуа SMS азы инарҭбааны
 1 ацыра:
 1 млрд
-2 000 ₽
 200 бжьы
-© 2018 MARVEL
 2019 🎉
 2020 🎉
 20 адирам инарҭбааны
 20 бжьы
-21–24
 21 инаркны 23 шықәсанӡа
 21 иннаркны 24 аҟынӡа
-228 500
 22 аԥсы
 2,3,4 цыра:
-24–27
-24-30
 24 бжьы
 24 инаркны 26 шықәсанӡа
 24 иннаркны 27 аҟынӡа
@@ -74,13 +46,10 @@ $ %s
 25% авидео
 25 бжьы
 25 иннаркны 29 аҟынӡа
-27–30
 27 бжьы
 27 инаркны 29 шықәсанӡа
 27 иннаркны 30 аҟынӡа
 28 бжьы
-290 000
-292 000
 2 бжьык
 2ГИС
 2 мааҭ иазышьҭуа SMS азы инарҭбааны
@@ -89,7 +58,6 @@ $ %s
 2 цырак:
 300 000 бжьы ахыхәмарра
 300 бжьы
-30–35
 30 бжь. + 5 бжь.
 30 бжьы
 30 инаркны 34 шықәсанӡа
@@ -102,9 +70,6 @@ $ %s
 3,20 мааҭ уахыки-ҽнаки, инарҭбааны
 32 бжьы
 330 км/сҭ
-340 000
-3:4
-35–45
 35 инаркны 44 шықәсанӡа
 35 иннаркны 44 аҟынӡа
 35 иннаркны 45 аҟынӡа
@@ -119,7 +84,6 @@ $ %s
 3 секундк
 3 цырак:
 41 123 ҩык ирымоуп азҿлымҳара
-4:3
 45 бжьы
 45 иннаркны 54 аҟынӡа
 45 иннаркны
@@ -137,62 +101,35 @@ $ %s
 5 минуҭк
 5 сааҭк
 5 цырак:
-6 000
-6,5B
-6+
-6 700 000
 6 бжьык
 6 сааҭк
 75% авидео
-776.family
 +79401234567 — абжьылда аномер адунеитә форматла.
 85 фунт инеиҵны
 8 бжьы
 8 сааҭк рыла
-9:16
-97M
 97 млн
 9 бжьык
 9 драм инарҭбааны
-aaa
-aaad
-aaQ13axAPQEcczQa
-Account
 Еиҳа адырра
-Activ
 Added
-{additional_information}
-{address}
 Add to Group
-admin_test_key_111
-admin_test_key
-Adrenaline Rush
 adВозрастное ограничение:
 Age restrictions
 {albums} и {playlists}
-AliExpress
 AliExpress аҭитәқәа
 AliExpress ахитқәа
 Alumnus (Bachelor's)
 Alumnus (Master's)
 Alumnus (Specialist)
-AMEDIATEKA
 Amigo аҭагалара
-{amount} ₽
-{amount} {symbol}
 AMS-IX
-Android
-Android: {android_link}
-Android new version: 5.56
-Android SDK
 Android аверсиақәа:
 Android азы аҭагалара
 Android апланшетқәа
 Android ахархәагақәа
 Android ахь азышьҭра
 Android-планшет
-«{answer}»
-API
 API, Wiki
 API аботқәа рзы
 API аверсиа ажәытә
@@ -203,99 +140,48 @@ API адәқьаназы аилазааратә гәыԥ аҿы
 API ахь адҵааларақәа
 API иареи аибадырра
 APNS (iOS азы ардыррақәа)
-App Bundle ID:
 App Bundle ID, iOS азы:
 App Id, iOS азы:
-Apple
-Apple Developer Team ID
-Apple Developer Team Name
-Apple Store
 Applications
-apps_test_key1
-App Store
 App Store аҟны аҭагалара
 App Store ахь аиасра
 'apsny' насгьы 'аPsNy' еиԥшым ажәамаӡақәоуп.
-{artist_name}
 {artist_name}: аклипқәа
 {artist_name}: альбомқәа
-asdfasd
-asdfasdasdfasdasdfasd
-Atom
 Atom аҭагалара
-{audio_title} ({audio_artist})
-Auth
 Autumn
 Backend-наԥҵара анапхгаҩы
-Barni
-Beeline:
-Beta
-BlackBerry
-Blizzard Entertainment
-BodroGordo
-BOOM
-BOOM VIP
 BOOM ақьачақьқәа
 BOOM аԥшьы
 BOOM ахь аиасра
 Boxberry
-Boxberry:
-Boxberry
 Browse comments
 {browser} ала
-BTS purple you
-BURGER KING® Russia
 BYN
 {by} аилырхра
 Агәҽанызаара! аҭалара арҵабыргра анаҿаку, амаҵура ажәамаӡа аиҭашьақәыргылара аҭел аномер ала узыҟаҵаӡом.
 Ҳара ҳасалам шәҟәқәа шәара шәҟынӡа инаӡом
 C2DM (Android азы ардыррақәа)
-Callback API
 Cancel invitation
 Candidate of Sciences
 CAPS-Lock шаҿакым гәашәҭ
-Cartoon Network
 Cartoon Network Урыстәыла
-Cashback
-C-c-combo breaker!
-CD/DVD
 CEO ВКонтакте
 Change
-Cheetos
 Choose a city
-Chrome
-Cinema Critique
-Client Secret:
-Coca-Cola
-Colgate
 Combo анапаҵаҩра
 Comic Con Урыстәыла
-Comma-Separated Values (.csv)
-{comment}
 Communities
-Community App
-{copyright_holder}
-Cosmo Girl
 Cosmopolitan Урыстәыла
-{count} ₽
 {counter} из {total}
 {count} ардырра/{count} ардыррақәа/{count} ардыррақәа
 {count} бжьынҵамҭак/{count} бжьынҵамҭак/{count} бжьынҵамҭак
 {count} цҳамҭак/{count}-цҳамҭак/{count}-цҳамҭак
 {count} цыра.
-CPC
-CPF
-CPM
-CSV
-CTR
 Ctrl+Enter — асалам шәҟәы ашьҭра
 Ctrl+Enter — ацҳамҭа адәықәҵара
-{curator_name}
 {current_count} аҟынтә {all_count}
-Curtis
 DataIX
-{date} {action}
-{date}, {link}
 {date} %s шәынҵамҭа ахә ршьеит{post}/{date} %s шәынҵамҭа ахә ршьеит{post}/{date} %s шәынҵамҭа ахә ршьеит{post}
 {date} аӡәы аиҩызаразы шәааԥхьара идикылеит/{date}аиҩызаразы шәааԥхьара рыдыркылеит/{date} %s аиҩызаразы шәааԥхьара рыдыркылеит
 {date} аилак аҿы ианиҵеит/{date} аилак аҿы ианылҵеит
@@ -304,12 +190,6 @@ DataIX
 {date} иннаркны
 {date} к записи {post}
 {date} шәынҵамҭа {post}
-Daugavpils
-{day} {dayMonth} {year}, {hour}:00
-{day} {month}
-{day} {month} {hour}:{minute}
-{day} {month} {year}
-{day} {month} {year}, {hour}:{minute}/{day} {month} {year}, {hour}:{minute}/{day} {month} {year}, {hour}:{minute}/{day} {month} {year}, {hour}:{minute}
 {day} {month} {year}, {hour}:{minute}/{day} {month} {year}, {hour}:{minute}/{hour}:{minute}/уаҵәы, {hour}:{minute}
 {day} {month} {year} {hour}:{minute}:{second} рзы/иацы {hour}:{minute}:{second} рзы/иахьа {hour}:{minute}:{second} рзы/уаҵәы {hour}:{minute}:{second} рзы
 {day} {month} {year} {hour}:{minute} рзы/иацы {hour}:{minute} рзы/иахьа {hour}:{minute} рзы/уаҵәы {hour}:{minute} рзы
@@ -317,30 +197,9 @@ Daugavpils
 {day} {month} {year} ш. рзы/иацы/иахьа/уаҵәы
 {day} {month} асааҭ {hour}:{minute} рзы/иацы асааҭ {hour}:{minute} рзы/иахьа асааҭ {hour}:{minute} рзы/уаҵәы асааҭ {hour}:{minute} рзы
 {day} {month}/иацы/иахьа/уаҵәы
-deer_test
-deer_testdeer_test
-Delivery Club
-Desktop Messenger
 DG аҭахҳәагақәа
-Direct games
-Direct Games
 Direct Games аҟнытә аԥарашәарақәа
-Dirol Jack
-© Disney
-DJ
-Dota 2 Champions League
-Dota 2
-Durex 2020
-Durex
-Durex’s New Year
 %d ахәшәаара аҟаҵашьа/%d ахәшәаара аҟаҵашьа/%d ахәшәаара аҟаҵашьа
-E3 2016
-E3 2019
-EeOneGuy
-Election girl
-Electronic Arts
-Email
-Email:
 Email аанкылоуп.
 Email адҳәалара
 Email адҳәалара
@@ -364,38 +223,19 @@ Email:
 Email ҿыц:
 Email ҿыц
 Email ҿыц:
-Emoji
 Emoji-ақьачақьқәа
-End date:
 Enter — анҵамҭа ашьҭра, Shift+Enter — ацәаҳәа аиагара
 Enter — ацәаҳәа аиагара
 Enter — ацәаҳәа аиагара, Shift+Enter — анҵамҭа ашьҭра
 Enter — ацҳамҭа адәықәҵара
-Error: unable to save audio file info
-Excel (.xls)
-Execute
-Explicit:
-Export format:
-facebook.com
-Facebook
-Facebook:
 Facebook ала аҭалара
 Facebook аҿы
-FACES!
 Fashion
-Fave
-Felix ®
-Firefox
-FIVE
-Flash
-Flash/iFrame
 Flash Player ақәыргылара
 Flash Player аҭагалара
 Flash Player ашьақәыргылара
-Flash SDK
 Flash-контеинер:
 Following
-Fortnite
 {from} ааԥхьара ииҭеит {user}/{from} ааԥхьара лиҭеит {user}
 {from} аилацәажәара аԥшранҵа ирҿыҵит/{from} аилацәажәара аԥшранҵа илырҿыҵит
 {from} аилацәажәарахь дхынҳәит/{from} аилацәажәарахь дхынҳәит
@@ -405,17 +245,9 @@ Fortnite
 {from} инихеит аилацәажәара ԥшранҵа/{from} инылхеит аилацәажәара ԥшранҵа
 {from} иԥсахит аилацәажәараахьӡ {title} ахь/{from} илыԥсахит аилацәажәара ахьӡ {title} ахь
 {from} иҽадыикылеит аиҿцәажәара/{from} лҽадылкылеит аиҿцәажәара
-Game Insight
 Gamescom 2017 аҿы ашоу Electronic Arts алагоит
-Garnier
 GCM (Android азы ардыррақәа)
-GG WP
-[GIF]
-GIF
-[GIF]/[GIF]/[GIF]
 GIF-анимациа ахала алагара
-Girl Power
-#GIRLPOWER
 (GMT +10:00) Владивосток, Сиднеи
 (GMT +11:00) Магадан
 (GMT +11:30) Норфолк
@@ -438,95 +270,42 @@ Girl Power
 (GMT +9:00) Иакутск, Токио
 (GMT +9:30) Аделаида, Дарвин
 (GMT -9:30) Францызтәи Полинезиа
-GONE.Fludd
-Google
-Google+
 Google Maps
-Google Play
-Google Play:
-Google Play Market
 Google Play аҟны аҭагалара
 Google Play ахь аиасра
 Google Play аҿы анаӡара амоуп аԥшьы аверсиа ҿыц
-Google Podcasts
-Google Store
 Google ала аҭалара
-GoRun
 {h2}Адәқьан ахҳәаа{/h2}
 {h2}Аҭитәқәа азнагара{/h2}
 {h2}Аҭитәқәа ахәшәара{/h2}
-Handmade
-Honor
-{hour}:{minute}/{hour}:{minute}/{hour}:{minute}/{hour}:{minute}
 House & Techno арҿыцрақәа
-HTML5
 HTTPS-aҭыӡҭыԥ iframe ишәарҭадароу асаит ахь иианагоит.
-https://example.com/callback/xE4sA
-https://play.google.com/store/apps/details?id=com.vkontakte.android
-https://vk.com/classifiedsclub
 HTTPS-аҭыӡҭыԥ IFrame:
-ID
 ID аԥшьы
 ID аԥшьы ашәырбароуп
 ID ҭахҳәагақәа
 IFrame/Flash аԥшьы
-IFrame
 IFrame аҭыӡҭыԥ
 IFrame ашәага
 IGM аилазаараҿы Warface ала ишиашоу ицо атранслиациа алагоит
 IGM аилазаараҿы иалагоит Warface ала ишиашоу ицо атранслиациа
-instagram.com
-Instagram
-Instagram:
 Instagram аҿы
 Instagram иареи аинилаара
-Internet Explorer
 Internet Explorer аҭагалара
 Invitation sent
-iOS
-iOS: {ios_link}
-iOS new version: 5.56
-iOS SDK
 iOS аверсиақәа:
-iPad
 iPad апланшетқәа
 iPhone iPad хархәагақәа
-iPhone/iPod Touch
 iPhone азы аҭагалара
 iPhone ахь азышьҭра
 IP-аҭыӡҭыԥ: {ip}
-{item1}, {item2}
 {item1} насгьы {item2}
-IT
-Jacobs Monarch
-Javascript SDK
-Java SDK
-Johnyboy
-JS API
 JSON аекспортра
-Key
-KFC BATTLE
-KFC
 KFC Урыстәыла
-KIZARU
-Kotex
-K-pop
-Lay’s 2020
-Lay's
-Lead forms
-Leads
-League of Legends
 League of Legends: Киберспорт
-LEGO
-life:)
-{link1} · {link2}
 {link_day}{day} {month}{/link_day} {link_year}{year} ш.{/link_year}
-{link_day}{month} {day}{/link_day}
 {link}Email ҿыц арбара{/link}
-Linkin Park
-{link}
 {link_other}Даҽа аԥошьҭа адреск{/link_other} шәхы иашәырхәар ҟалоит, мамзаргьы {link}активациа зызу ашәҟәы{/link} шәышьҭыр алшоит.
-{link}/{user}
 {link}Аӡырҩрҭа аԥҵара{/link}
 {link}Аӡырҩырҭақәа рахь аиасра{/link}
 {link}Аиҭашьақәыргылара{/link}
@@ -539,62 +318,26 @@ Linkin Park
 {link}Шәажәеиларкка{/link} қәҿиарала ишьҭуп.
 {link}Шәдаҟьа аныхра{/link} шәылшоит.
 {link}шәыԥшранҵа{/link}
-Linux
 LINX Extreme LAN
 LINX Juniper LAN
-Lipton
-livejournal.com
-LiveJournal
-LiveJournal:
-Live
 LIVE и BodroGordo
 LIVE насгьы BodroGordo
-Lizer,
-LOBODA
 Location:
-Long Poll API
-Long Poll API:
 {lookalike_request_source_name} даҽа %s/{lookalike_request_source_name} даҽа %s/{lookalike_request_source_name} даҽа %s
 {lookalike_request_source_name} насгьы {lookalike_request_source_name_2}
-Lovina
-Mac OS
-Mail.ru
 Mail.ru ала аҭалара
 Main activity, Android азы:
-Maps.me
-Marijampolė
-© MARVEL
 Mastercard, Maestro, Visa, МИР
-Mastercard
-MDK
-MegaCom
-Men in black... Friday
-Merchant ID
-{message}
-Microsoft Store
-Mini Apps
 {minutes} мин
-Mirinda
-Mixtank
-MMS
-Moldcell
 {money} (%s бжьык)/{money} (%s бжьы)/{money} (%s бжьқәа)
 {month}. {day} {hour}:{minute} рзы/иацы {hour}:{minute} рзы/иахьа {hour}:{minute} рзы/уаҵәы {hour}:{minute} рзы
 {month}. {day} {hour}:{minute} рзы/иацы {hour}:{minute} рзы/иахьа {hour}:{minute} рзы/уаҵәы {hour}:{minute} рзы
 {month} {day} {year} ш. рзы/иацы/иахьа/уаҵәы
-{month}
-{month} {year}
 {month}мза {day} {year} ш. {hour}:{minute} рзы/Иацы {hour}:{minute} рзы/Иахьа {hour}:{minute} рзы/Уаҵәы {hour}:{minute} рзы
-mostreseubrasil
 MPNS (Windows Phone ардыррақәа)
-Mr. Chips
-MrLololoshka
 Music
 {name1}, {name2}
 {name1}, {name2} абжьытә аацҳара ҭарыҩуеит
-{name}: {desc}
-{name}
-{name}, {period} — {price}
 {names} ахә ишьеит {what} /{names} ахә ишьеит {what}
 {names} ахә ишьеит {what} /{names} ахә ишьеит {what}
 {names} ахә ршьеит {what}
@@ -609,71 +352,34 @@ Music
 {name}и егьырҭ ишәыдаҳгалогьы шәрыхәаԥша
 {name}, ҳара иааҳарԥшит зыгәрагам активра, аамҭала иаанаҳкалит шәдаҟьа, ацәгьахәыцыҩцәа ирымпыҵҳхырц азы.
 {name} шәдаҟьаҿы ианиҵеит:/{name} шәдаҟьаҿы ианылҵеит:
-Natus Vincere
 NDA еиқәыршәоуп
 Nescafé 3 in 1
-NESCAFE
 Netnod-A
 Netnod-B
-new
-New
 New post
-News
-Noize MC
-{|nomargin; |- ! 1 | 2 | 3 |- | 1 ! 2 | 3 |- | 1 | 2 ! 3 |}
-№
 №{position} ажанр аҿы «{genre}»
-NoSpam
 No
 {num_day}.{month}.{short_year} {num_hour}:{minute}/иацы, {num_hour}:{minute}/иахьа, {num_hour}:{minute}/уаҵәы, {num_hour}:{minute}
 {num_day}.{month}.{short_year}/иацы/{num_hour}:{minute}/уаҵәы
 {num} SMS {count} аҟнытә
 %n стиль/%n стильқәа/%n стильқәа
 %n хәыда-ԥсада
-{objection}
 Office 365 аалыҵқәа
-OK
 OK.ru ала аҭалара
-online
-Opera Mini
-Opera Mini S60
-Opera
-Orbit
-Orders
-OREO
-Oriflame Russia
-Other installed
 Other
-{owner}
-Panevėžys
-PAThWORD
-PayPal
-Paysupp
 Pay
-Pepsi
-{performer}
 PhD
 {phone} or me(at)sample.com
-PIN
 PIN-ахьӡмаӡа иашаӡам
 PIN-ахьӡмаӡа иашаӡам.
-{playlist_name}
 Play Machine аҭагалара
 PlayStation Ақьачақьқәа
 PlayStation Урыстәыла
-.png, .ai, .psd, .cdr
-.png, .psd
-Polls
 Postgraduate Student
 Post
-{price_from} – {price_to}
 {price} / м²
 {price} / м³
-Pringles
-Project Id:
 PR анапхгаҩы
-PUBG
-Pulpy
 Push-ардыррақәа
 Push-ардыррақәа:
 Push-қәҿыҭрақәа:
@@ -681,18 +387,10 @@ QR-ажәамаӡа
 QR-ахьӡмаӡа
 {question} — {answer}/{question} — {answers}, {answer}/{question} — {answers}, {answer}
 Rammstein ВКонтакте
-Rap & Hip-Hop
-Rap, Hip-Hop
-R&B
-{reason}{reason_samples}
 Recommendations
-RedHat/Fedora (.rpm)
 {reports} с {date}
 Report
-Rexona
 {rights} насгьы {right}
-Roadmap
-Room Factory
 RSS ахь азхьарԥш:
 RSS аҿакра
 RSS аҿыхра
@@ -700,45 +398,25 @@ RSS експорт:
 RSS импорт:
 RSS импорт:
 RSS-қьаад
-ru
-%s ₽
-%s ₽/%s ₽/%s ₽
-Safari
-SALAT Live: EuroVillage
-Sale Day
-Sale Day 🎁
-Sale
 Save
-SAYONARA BOY OPAL
 %s BYN
-SDK
 SDK архиагақәа
 second line {friends_count_info}
 {seconds} с
-Secret Match
-Secure
 Select a country
 Selected for You
 {selected} {limit} аҟнытә
 Send gift
 Send
-{share_buttons}
 Share
-Sharing
 Shift+Enter — ацәаҳәа аиагара
 Shift+Enter — ацәаҳәа аиагара
 Show all
 Show more
-SID:
 Sign up
 Sillamäe (Силламиае)
-Simple API Key:
-Skype
-Skype:
 %s, {link}ахәҭаҷқәа{/link}
-SMM
 SMM анаԥхгаҩы - Yota ахырхарҭала
-SMS
 SMS-азаацҳарақәа иарбоу %s аномер ахь инашьҭхоит.
 SMS ала {user} л(и)анҵамҭа ҿыцқәа аиура
 SMS ала {user} л(и)ҟнытә хаҭалатәи ацҳаамҭақәа аиура
@@ -756,28 +434,15 @@ SMS-лаҳәарақәа қәҿиарала иаҿыхуп.
 SMS-лаҳәарақәа рҿыхра
 SMS-лаҳәарақәа рырхиага
 SMS-цҳамҭа
-Snapster
 Snapster ашьақәыргылара
-SNICKERS® Russia
 SOLD OUT ральбом ҿыц
-{sorry}.
 {span}Аҭҵааҩы:{/span} %s
 Special Forces иалоуп
-Speed Dating
-Sprite
-%s px/%s px/%s px
-«%s»
 SSL асертификат:
 %s {tag}кап.{/tag}/%s {tag}кап.{/tag}/%s {tag}кап.{/tag}
 %s {tag}мааҭ.{/tag}/%s {tag}мааҭ.{/tag}/%s {tag}мааҭ.{/tag}
 %s {tag}тнг.{/tag}
 Standalone-аԥшьы
-Start date:
-{start}–{end}
-Status
-Sticker pack:
-Stories discover
-Streaming API
 Student (Bachelor's)
 Student (Bachelor's)
 Student (Master's)
@@ -1003,51 +668,20 @@ SWF-афаил ацҵара
 %s шықәсык/%s шықәса/%s шықәса
 %s ҩызак/%s аҩызцәак/%s аҩызцәак
 %s ҩызак/%s ҩызак/%s ҩызак
-{/tagMore}
-{tagMore}
 {tag}The file contains curves and bleeds for cutting{/tag}
 {tag}Аилакқәа рахь ааԥхьара{/tag} сыҭара зылшо
-Tcell
-Tele2:
 Tele2 Урыстәыла
 Telekomünikasyon İletişim Başkanlığı аҳәарала
-test 222
-test2test2
-test2test2test2
-[{textlive_link}|{title}]: «[{textpost_link}|{text}]»
-{text}
-TheBrianMaps
-The Coca-Cola Company
 The game will know your email address
-The International 2016
-The LEGO Group
-Thirty Seconds to Mars
-{ticket_link}
-{ticket_text}
-Tic Tac
-«{title}»
-{title}VK Music Awards{/title}
 {title} | Аклипқәа | ВКонтакте
-TM CELL
-twitter.com
-Twitter
-Twitter:
 Twitter ала аҩызцәа рыԥшаара
 Twitter аҿы
 txt, csv, до 30 КБ
 TXT аекспортра
 {type}  Аилазаараҿы {name}
-UA based
-Ubuntu/Debian (.deb)
 UC Browser аҭагалара
-Ucom
 Undergraduate applicant
-Unicorn BOOM
 Unity Web Player аҭагалара
-Uptime
-Uptime (%)
-URL
-URL:
 {user1} насгьы {user2}
 {user1} насгьы {user2} анҵамҭа азнаргеит
 {user1} насгьы {user2} иргәаԥхеит
@@ -1058,15 +692,7 @@ URL:
 {user2} ианлыжьит ажәеиларкка шәыԥшранҵа ахь:
 {user2} ианлыжьит шәара шәзы ацҳамҭа.
 {user2} ишәыԥхьоит аиԥыларахь «{title}».
-{user}, {date}
-{user_info}
-{users}, {user}
 {users} убас егьырҭгьы
-{user} {time}
-/{user},
-{user}
-{user},
-{user}:
 {user} ааԥхьара ҟаи(л)ҵоит шәцаразы
 {user} ааԥхьара шәиҭоит/{user} ааԥхьара шәылҭоит
 {user} ажәабжь аниҵеит ВКонтакте аҟны./{user} ажәабжь анылҵеит ВКонтакте аҟны.
@@ -1134,24 +760,16 @@ URL:
 {user} шәнапаҵаҩ иоуп/{user} шәнапаҵаҩ лоуп
 {user} шәҩызцәа рахь дацышәҵа, иҭаҩрақәа, исахьақәа, егьырҭ идыррақәа рыхәаԥшра азы/{user} шәҩызцәа рахь дацышәҵа, лҭаҩрақәа, лсахьақәа, егьырҭ лдыррақәа рыхәаԥшра азы
 USSD-адҵааларақәа
-Utena
 U-Лаика
-Values are estimated and may vary. [The performance score is calculated](https://web.dev/performance-scoring/) directly from these metrics. [See calculator.](https://googlechrome.github.io/lighthouse/scorecalc/)
 Vector image format for printing equipment.
-Vega Squadron
 {ver} аверсиа
-Virtus.pro
 Virtus.pro иаҿагылоуп Natus Vincere
 VK Admin iOS азы
-VK Admin
 VK Android азы
-VK App
 VK: {code} — акод ахатә дыррақәа рнеирҭа аиуразы.
 vk.com/app1 — азхьарԥш аԥшьы ахь;
 vk.com/app5619682_-103600381 — азхьарԥш аԥшьы ахь аилазааратә гәыԥ аҟны;
-vk.com/settings?act=music_subscription
 vk.com/team — азхьарԥш аилазааратә гәыԥахь;
-VK Connect
 VK Connect: абри аномер адаҟьа {id} адҳәаларазы азыҳәамҭа мап ацәкуп.
 VK Connect ала аҭалара
 VK Connect: Аҭахҳәага аанкылоуп: {link}
@@ -1160,34 +778,16 @@ VK Connect ахь аиасра
 VK Connect: шәхы иашәырхәар ҟалоит. Ахатәыхьӡ: {login} Амаӡажәа: {password}
 VK Connect шәҽышьақәырӷәӷәара мариахар азы ауп изаԥҵоу.
 VK {device} азы
-VK Donut
-VK Donut:
 VK Donut ардыррақәа
 VK Donut рхыԥхьаӡараҭҵаарҭа
-VK Fest 2018
-VK Fest 2019
-VK Fest 5
-VK Fest
-VK Gaming Open Cup
-VK Gaming
 VK iPhone азы
-VK Live
 vk.me/adsnews — азхьарԥш аиҿцәажәара аилазааратә гәыԥеи ахь;
 VK Messenger {os} азы
-VK Messenger
 VK Messenger аҭагалара
-VK Me
 VK Me инарҭбааны аилкаара
-VK Mini Apps
 VK Mini Apps иазкны
-VK Mobile Challenge
-{vk_mobile_gim_link}
-VK Mobile
 VK Mobile ахь анҵара
-VK Music Awards
-VK New Year
 VK Pay API агха
-VK Pay
 VK Pay, YooMoney, QIWI, WebMoney, PayPal
 VK Pay, YooMoney, QIWI, WebMoney
 VK Pay аартра
@@ -1195,12 +795,8 @@ VK Pay адҵаалара
 VK Pay ахь аиасра
 VK Pay, Иандекс.Аԥара, QIWI, WebMoney, PayPal
 VK Pay, Иандекс.Аԥара, QIWI, WebMoney
-VK Shop
 VK Talents
-VK Tech
-VK Testers
 VK Testers ахархәаҩы
-VK TOP-30 2017
 VK Windows Phone азы
 VK WP азы
 VK азы:
@@ -1209,49 +805,23 @@ VK аԥшьы
 VK мацара аҟны
 {v_title} — Авидео
 V абиԥара
-Warface
-Wargaming.net
 WASD и RGB
-WebMoney
-Webserver
-Web
 Web Аҭахҳәага
-WHISKAS®
 wikipedia.org — азхьарԥш адәахьҭәи асаит ахь;
-Windows 10
-Windows 7
-Windows 8 Touch
-Windows 8
-Windows App ID:
-Windows Phone SDK
-Windows Phone
-Windows XP/Vista
 Windows азы аҭагалара
 Windows азы ахәмаррақәа
 Windows заҵәык азы анаӡара амоуп
 WNS (Windows ардыррақәа)
-World of Tanks Fan
-World of Warcraft
-#WOWMOSCOW
 WP азы аҭагалара
-WWF
 Xbox акомпанион
-x{count} iPhone/x{count} iPhone/x{count} iPhone
-Xiaomi
-Yandex.Browser
 YCLIENTS ажәамаӡа
 YCLIENTS ала аҭалара
 YCLIENTS ахатәыхьӡ
-© {year}
 © {year} ВКонтакте агәыԥ
 {year} ш.
 {year} шықәса
 YooMoney
-Yota
 Your name
-YouTube
-ZeptoLab UK Ltd
-Zero waste
 АPI аверсиақәа
 Аагалыхеи аарахреи
 Аагалыҵга
