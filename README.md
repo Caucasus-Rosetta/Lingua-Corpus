@@ -1,6 +1,6 @@
 [![GitHub issues](https://img.shields.io/github/issues/danielinux7/Multilingual-Parallel-Corpus)](https://github.com/danielinux7/Multilingual-Parallel-Corpus/issues)
 [![GitHub license](https://img.shields.io/github/license/danielinux7/Multilingual-Parallel-Corpus)](https://github.com/danielinux7/Multilingual-Parallel-Corpus/blob/master/LICENSE)
-##### For data scientists, developers and whom it may concern: 
+##### For data scientists, developers and whom it may concern:
 ###### Some of the text materials are copyrighted, check out the multilingual sources section that links to the source, please be sure to obide the authors restrictions and limitations. Beside this, the repo is under CC0 (public domain) license, also please have a look at [code of conducts][page].
 [page]: https://github.com/danielinux7/Multilingual-Parallel-Corpus/blob/master/CODE_OF_CONDUCT.md
 ##### For copyright owners:
@@ -75,7 +75,6 @@ For example `python3 join_corpus.py 10 0.75 1.33 10 50 5 500 500 1 ru-ab-paralle
 -   Quran: https://github.com/danielinux7/Abkhazian-books-in-Public-Domain/tree/master/Аҟәырҟан
 -   The president's cat: (Одишариа, Гәырам: Апрезидент ицгәы) http://clarino.uib.no/abnc/text-list
 -   The parliament of Abkhazia: https://parlamentra.org/
--   VK: https://vk.com/translation
 -   Evgeny Onegin: http://apsnyteka.org/3669-Pushkin_A_Evgeny_Onegin_2017_rus-abh.html
 ##### Adyghe
 -   Bible related: http://www.inyourlanguage.org/Adyghe
