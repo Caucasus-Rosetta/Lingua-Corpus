@@ -85,6 +85,7 @@ For example `python3 join_corpus.py 10 0.75 1.33 10 50 5 500 500 1 ru-ab-paralle
 ##### Other Languages
 -   http://tanzil.net/trans/
 -   https://drive.google.com/drive/folders/0B1N9Td4ah2QWWjBIanUxbFJQSTg
+-   https://github.com/quran/quran_android/issues/295
 #### Further resources
 - https://github.com/christos-c/bible-corpus
 - A Review of Past Work and Future Challenges https://arxiv.org/pdf/2006.07264.pdf
