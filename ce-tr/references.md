@@ -1,0 +1,3 @@
+- Quran: http://tanzil.net/trans/
+- Quran: https://drive.google.com/drive/folders/0B1N9Td4ah2QWWjBIanUxbFJQSTg
+- Quran: https://github.com/quran/quran_android/issues/295

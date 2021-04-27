@@ -1,0 +1,16 @@
+-	100 text book: http://apsua.tk/upload/iblock/54c/54cfde81abd369cdffa6512d9fdbea1e.pdf
+-   Declaration of Human Rights: https://www.ohchr.org/EN/UDHR/Documents/UDHR_Translations/abk.pdf
+-	Braveheart: https://www.opensubtitles.org/en/subtitles/7977089/braveheart-ab
+-	The new testament book: http://apsnyteka.org/3009-Novy_zavet_2015_abh.html
+-	Abaza site articles: http://abaza.org/
+-   Apsnypress articles: http://apsnypress.info/
+-   Tatoeba: https://tatoeba.org/eng/sentences/search?query=&from=rus&to=abk
+-   JW: https://wol.jw.org/
+-   JW300: http://opus.nlpl.eu/JW300.php
+-   Constitution: https://ru.wikipedia.org/wiki/Конституция_Республики_Абхазия
+-   Criminal codex: http://presidentofabkhazia.org/doc/codecs/
+-   Family codex: http://presidentofabkhazia.org/doc/codecs/
+-   Quran: https://github.com/danielinux7/Abkhazian-books-in-Public-Domain/tree/master/Аҟәырҟан
+-   The president's cat: (Одишариа, Гәырам: Апрезидент ицгәы) http://clarino.uib.no/abnc/text-list
+-   The parliament of Abkhazia: https://parlamentra.org/
+-   Evgeny Onegin: http://apsnyteka.org/3669-Pushkin_A_Evgeny_Onegin_2017_rus-abh.html

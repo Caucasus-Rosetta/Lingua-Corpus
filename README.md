@@ -58,34 +58,9 @@ For example `python3 join_corpus.py 10 0.75 1.33 10 50 5 500 500 1 ru-ab-paralle
 
 #### Current Multilingual Corpuses:
 1. Abkhazian Russian Parallel corpus (~121k lines).
-#### Multilingual sources:
-##### Abkhaz
--	100 text book: http://apsua.tk/upload/iblock/54c/54cfde81abd369cdffa6512d9fdbea1e.pdf
--   Declaration of Human Rights: https://www.ohchr.org/EN/UDHR/Documents/UDHR_Translations/abk.pdf
--	Braveheart: https://www.opensubtitles.org/en/subtitles/7977089/braveheart-ab
--	The new testament book: http://apsnyteka.org/3009-Novy_zavet_2015_abh.html
--	Abaza site articles: http://abaza.org/
--   Apsnypress articles: http://apsnypress.info/
--   Tatoeba: https://tatoeba.org/eng/sentences/search?query=&from=rus&to=abk
--   JW: https://wol.jw.org/
--   JW300: http://opus.nlpl.eu/JW300.php
--   Constitution: https://ru.wikipedia.org/wiki/Конституция_Республики_Абхазия
--   Criminal codex: http://presidentofabkhazia.org/doc/codecs/
--   Family codex: http://presidentofabkhazia.org/doc/codecs/
--   Quran: https://github.com/danielinux7/Abkhazian-books-in-Public-Domain/tree/master/Аҟәырҟан
--   The president's cat: (Одишариа, Гәырам: Апрезидент ицгәы) http://clarino.uib.no/abnc/text-list
--   The parliament of Abkhazia: https://parlamentra.org/
--   Evgeny Onegin: http://apsnyteka.org/3669-Pushkin_A_Evgeny_Onegin_2017_rus-abh.html
-##### Adyghe
--   Bible related: http://www.inyourlanguage.org/Adyghe
--   Quran: http://dumraikk.ru/zagruzki/
--   Collection of ebooks,xls sheets: https://www.facebook.com/groups/483351895070661/files/
-##### Kabard
--   Dictionaries: http://www.amaltus.com/%d0%b7%d0%b0%d0%b3%d1%80%d1%83%d0%b7%d0%ba%d0%b8/
-##### Other Languages
--   http://tanzil.net/trans/
--   https://drive.google.com/drive/folders/0B1N9Td4ah2QWWjBIanUxbFJQSTg
--   https://github.com/quran/quran_android/issues/295
+#### References of materials:
+Every language pair folder has a references.md
+
 #### Further resources
 - https://github.com/christos-c/bible-corpus
 - A Review of Past Work and Future Challenges https://arxiv.org/pdf/2006.07264.pdf
@@ -102,3 +77,6 @@ For example `python3 join_corpus.py 10 0.75 1.33 10 50 5 500 500 1 ru-ab-paralle
 - https://github.com/neubig/lowresource-nlp-bootcamp-2020
 - On the Impact of Various Types of Noise on Neural Machine Translation: https://arxiv.org/abs/1805.12282
 - Character base transformer: https://arxiv.org/abs/2004.14280
+- Adyghe Bible related: http://www.inyourlanguage.org/Adyghe
+- Adyghe Quran: http://dumraikk.ru/zagruzki/
+- Adyghe Collection of ebooks,xls sheets: https://www.facebook.com/groups/483351895070661/files/
