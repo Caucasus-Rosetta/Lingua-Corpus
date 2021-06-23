@@ -1,12 +1,13 @@
 name: Pull Request Milestone
 
 on:
-  pull_request:
+  project_card:
     types:
-      - opened
+      - moved
 
 jobs:
   milestone:
+    if: github.event.project_card.column_id == '10215851' || github.event.project_card.column_id == '10215852' || github.event.project_card.column_id == '10215853'
     name: Pull Request Milestone
     runs-on: ubuntu-latest
     steps:
