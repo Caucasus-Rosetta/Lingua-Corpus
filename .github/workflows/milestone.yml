@@ -1,7 +1,7 @@
 name: Pull Request Milestone
 
 on:
-  project_card:
+  pull_request:
     types:
       - moved
 
