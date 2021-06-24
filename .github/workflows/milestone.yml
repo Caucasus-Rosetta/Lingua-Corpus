@@ -3,7 +3,7 @@ name: Pull Request Milestone
 on:
   pull_request:
     types:
-      - opened
+      - moved
 
 jobs:
   milestone:
