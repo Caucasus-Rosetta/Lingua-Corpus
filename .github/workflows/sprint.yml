@@ -14,3 +14,4 @@ jobs:
         uses: danielinux7/sprinter@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-column: github.event.project_card.column_id
