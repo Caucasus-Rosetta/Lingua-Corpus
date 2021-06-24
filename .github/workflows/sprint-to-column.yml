@@ -11,6 +11,7 @@ jobs:
       issues: write
       pull-requests: write
     steps:
+      - run: echo "it's working ${{ github.event.project_card }}"
       - name: remove labels
         uses: danielinux7/labeler@master
         with:
