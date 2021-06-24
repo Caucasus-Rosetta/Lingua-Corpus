@@ -1,19 +1,16 @@
-name: Remove labels
+name: Update sprint
 on:
   project_card:
     types:
       - moved
 jobs:
   remove_labels:
-    if: github.event.project_card.column_id == '10215851' || github.event.project_card.column_id == '10215852' || github.event.project_card.column_id == '10215853'
     runs-on: ubuntu-latest
     permissions:
       issues: write
       pull-requests: write
     steps:
-      - run: echo "it's working ${{ github.event_name }}"
-      - name: remove labels
-        uses: danielinux7/labeler@master
+      - name: update sprint
+        uses: danielinux7/sprinter@master
         with:
-          remove-labels: "help wanted"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
