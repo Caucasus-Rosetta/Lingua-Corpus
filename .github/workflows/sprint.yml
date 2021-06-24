@@ -4,7 +4,7 @@ on:
     types:
       - moved
 jobs:
-  remove_labels:
+  update_sprint:
     runs-on: ubuntu-latest
     permissions:
       issues: write
