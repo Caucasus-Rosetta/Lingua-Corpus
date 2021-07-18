@@ -1,1 +1,2 @@
 - Quran: http://tanzil.net/trans/
+- Apsny Habar: https://youtu.be/ZJZ0wc6_l0g

@@ -14,3 +14,4 @@
 -   The president's cat: (Одишариа, Гәырам: Апрезидент ицгәы) http://clarino.uib.no/abnc/text-list
 -   The parliament of Abkhazia: https://parlamentra.org/
 -   Evgeny Onegin: http://apsnyteka.org/3669-Pushkin_A_Evgeny_Onegin_2017_rus-abh.html
+-   Apsny Habar: https://www.youtube.com/channel/UC1edWCd5SWsOIdT41c0ynxQ

@@ -1,0 +1,17 @@
+name: Update sprint
+on:
+  project_card:
+    types:
+      - moved
+jobs:
+  update_sprint:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: update sprint
+        uses: danielinux7/sprinter@master
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-column: ${{ github.event.project_card.column_id }}
