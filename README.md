@@ -33,3 +33,4 @@ Every language pair folder has a references.md
 - Adyghe Quran: http://dumraikk.ru/zagruzki/
 - Adyghe Collection of ebooks,xls sheets: https://www.facebook.com/groups/483351895070661/files/
 - Pre-trained subword embeddings in 275 languages, based on Byte-Pair Encoding (BPE) https://github.com/bheinzerling/bpemb
+- [Copyright duration](https://www.bitlaw.com/copyright/duration.html)
