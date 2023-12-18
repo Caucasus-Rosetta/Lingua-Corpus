@@ -1,4 +1,4 @@
-# Abkhazian-Russian Data Pipeline for NMT and SST
+# Abkhazian-Russian Data Pipeline for NMT and STT
 
 ## Description
 
