@@ -1,4 +1,4 @@
-# Abkhazian-Russian Data Pipeline for NMT and STT
+# Abkhazian focused Data Pipeline for Natural Language Processing(NLP)
 
 ## Description
 
