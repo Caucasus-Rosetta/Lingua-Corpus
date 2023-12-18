@@ -15,4 +15,3 @@ for line in jw_id_ru:
     rulist.append(line[:-1])
 for line in jw_id_aligned:
     alignedlist.append(line[:-1])
-import pdb; pdb.set_trace()
