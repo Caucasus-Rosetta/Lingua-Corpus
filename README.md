@@ -20,8 +20,9 @@ The text is cleaned up to remove noise and identify outliers using Python and Sh
 
 The cleaned-up data is aggregated into a single file, ready to be passed further down the line for tokenization.
 
-## Installation
+## Transform and Download Abkhazian-Russian parallel data
 
 ```bash
 git clone https://github.com/danielinux7/MultiNMT-STT-Data-Pipeline.git
 cd MultiNMT-STT-Data-Pipeline
+bash getclean_ab_ru.sh
