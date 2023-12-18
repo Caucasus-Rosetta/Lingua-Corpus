@@ -1,1 +1,0 @@
-- Quran: http://tanzil.net/trans/
