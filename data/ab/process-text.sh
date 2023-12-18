@@ -11,6 +11,7 @@ done
 
 for file in $(ls | grep '^[0-9]\+.txt.temp$')
 do
+  echo Processing $file;
   ### preprocess
   sed -ni '/['$alpha']/p' $file;
   # 4

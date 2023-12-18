@@ -1,3 +1,12 @@
+clean="../../clean"
+
+if [ ! -d "$clean" ]; then
+  mkdir -p "$clean"
+  echo "Directory created: $clean"
+else
+  echo "Directory already exists: $clean"
+fi
+
 value="";
 value=$(ls | grep -o '^[0-9]\+.txt.temp$');
 if [ ! -z "$value" ]; then sed -r 's/[^[:print:]\t]//g' [0-9]*.txt.temp > all.txt.temp && rm [0-9]*.txt.temp; fi
@@ -13,5 +22,5 @@ cut -f2 $file | sed -e 's/[[:punct:]]//g' | sed 's/./\L&/g' | \
 paste $file - > $file.temp;
 sort -t$'\t' -k3 -u $file.temp | cut -f1,2 | shuf > $file && cat $file > $file.temp;
 ### Replace more or less than 40-200 characters.
-sed -r 's/…//g' $file.temp | sed -r 's/–/—/g' | perl -e 'print sort { length($a) <=> length($b) } <>' > $file \
-&& rm $file.temp;
+sed -r 's/…//g' $file.temp | sed -r 's/–/—/g' | perl -e 'print sort { length($a) <=> length($b) } <>' > $clean/all_ab_clean.txt \
+&& rm $file.temp && rm all.txt.temp && rm $file;
