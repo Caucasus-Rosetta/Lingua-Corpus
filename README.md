@@ -8,9 +8,13 @@ This repository contains a data pipeline for monolingual and parallel corpuses u
 
 The data pipeline involves the process of extraction, transformation, and loading (ETL) to prepare the data for training neural network models.
 
-### Extraction
+### Extraction (This step is done for you, the information is provided in case)
 
-The data is extracted from web scraping, ebooks, and the dictionary using Python and Shell scripts.
+The data acquisition process involves extracting information from various sources, employing diverse techniques to ensure comprehensive coverage. Specifically, the data is obtained through dictionary parsing using the `parse_dictionary.py` script.
+
+For web content, a web scraping methodology is implemented, leveraging Scrapy spiders to simultaneously extract data from parallel web pages. Additionally, [`hunalign`](https://github.com/danielvarga/hunalign) is employed to perform heuristic text alignment across pages, optimizing the alignment process, the scripts can be found in the `scrapy` folder.
+
+Furthermore, the content from ebooks is directly extracted from PDF documents.
 
 ### Transformation
 
@@ -20,7 +24,7 @@ The text is cleaned up to remove noise and identify outliers using Python and Sh
 
 The cleaned-up data is aggregated into a single file, ready to be passed further down the line for tokenization.
 
-## Transform and Download Abkhazian-Russian parallel data
+## Transform and load Abkhazian-Russian parallel data
 
 ```bash
 git clone https://github.com/danielinux7/Abkhaz-NLP-Data-Pipeline.git
@@ -28,7 +32,7 @@ cd Abkhaz-NLP-Data-Pipeline
 bash getclean_ab_ru.sh
 ```
 
-## Transform and Download Abkhazian Monolingual data
+## Transform and load Abkhazian Monolingual data
 
 ```bash
 git clone https://github.com/danielinux7/Abkhaz-NLP-Data-Pipeline.git
