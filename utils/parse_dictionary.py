@@ -20,11 +20,11 @@ and delete tom1.html tom2.html tom3.html
 ru_list = []
 ab_list = []
 cyrillic_encoding = 'utf-8' #"windows-1251"
-with open('../draft/dictionary_prescript.ru', 'r+',encoding=cyrillic_encoding) as f:
+with open('dictionary_prescript.ru', 'r+',encoding=cyrillic_encoding) as f:
     dictionary_prescript = f.read().splitlines()
 
-ru_output = open('../draft/dictionary.ru', 'w+',encoding=cyrillic_encoding)
-ab_output = open('../draft/dictionary.ab', 'w+',encoding=cyrillic_encoding)
+ru_output = open('dictionary.ru', 'w+',encoding=cyrillic_encoding)
+ab_output = open('dictionary.ab', 'w+',encoding=cyrillic_encoding)
 
 comparable_output = open('comparable_dictionary_output.txt', 'w+',encoding=cyrillic_encoding)
 searchable_output = open('searchable_unaccented_dictionary.txt', 'w+',encoding=cyrillic_encoding)

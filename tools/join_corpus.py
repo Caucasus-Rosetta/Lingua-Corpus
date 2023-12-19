@@ -38,7 +38,7 @@ dictionary_ru_ab = {}
 dictionary_ab_ru = {}
 abkhaz_synonyms = {}
 
-def load_ab_ru_dictionary(dic_one='../draft/dictionary_prescript.ru', dic_two='../draft/dictionary.ru', translation_dic_one='../draft/dictionary_prescript.ab', translation_dic_two='../draft/dictionary.ab'):
+def load_ab_ru_dictionary(dic_one='../utils/dictionary_prescript.ru', dic_two='../utils/dictionary.ru', translation_dic_one='../utils/dictionary_prescript.ab', translation_dic_two='../utils/dictionary.ab'):
     global russian_word_list,abkhazian_word_list, dictionary_ru_ab, dictionary_ab_ru
     #read the russian word into the list
     with open(dic_one, 'r+',encoding=cyrillic_encoding) as f:
