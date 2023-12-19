@@ -26,7 +26,7 @@ Different hyperparameters such as sentence length are used to filter out sentenc
 
 ### Loading
 
-The cleaned-up data is aggregated into a single file, ready to be passed further down the line for tokenization.
+The cleaned-up data is aggregated into a single file, ready to be passed further down the line for Natural Language Processing(NLP) tasks.
 
 ## Transform and load Abkhazian-Russian parallel data
 
