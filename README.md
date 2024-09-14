@@ -1,4 +1,4 @@
-# Abkhazian focused Data Pipeline for Natural Language Processing(NLP)
+# Caucasus focused Data Pipeline for Natural Language Processing(NLP)
 
 ## Description
 
