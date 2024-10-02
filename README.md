@@ -4,9 +4,19 @@
 
 This repository contains a data pipeline for monolingual and parallel corpuses used for Neural Machine Translation (NMT) and Speech To Text Tasks (STT). The data, which includes around 100 thousand parallel sentences, 100 thousand parallel words for Abkhazian-Russian pairs, and around 1.4 million sentences monolingual Abkhazian corpus, is sourced from various websites, ebooks, and a dictionary. Our team has obtained permissions from the content owners to open source all the text.
 
-## Data ETL Pipeline
+## Data Pipeline
 
-The data pipeline involves the process of extraction, transformation, and loading (ETL) to prepare the data for training neural network models.
+### Methodology
+
+I employ Bayesian Optimization methodology in my work. Currently, The black box function involves the process of extraction, transformation, and processing to prepare the data for training neural network models. the black box output is accuracy validated by human evaluators, with inputs derived from heuristics. The Gaussian processes and acquisition score policy are done manually, the global optimum is 95% accuracy.
+
+To improve this process, I propose the following approach:
+
+- Implement Gaussian processes and acquisition policy properly.
+- Incorporate prompt engineering techniques alongside heuristics as inputs. Use prompt engineering to evaluate output accuracy initially, as it's more cost-effective than human evaluators.
+- Employ human evaluators for a final, more thorough assessment of accuracy.
+
+![BO](https://github.com/user-attachments/assets/8a340d3f-c553-4356-91cc-aafe3eaaee0e)
 
 ### Extraction (This step is done for you, the information is provided in case)
 
