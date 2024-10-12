@@ -8,7 +8,7 @@ This repository contains a data pipeline for monolingual and parallel corpuses u
 
 ### Methodology
 
-I employ Bayesian with multifidelity Optimization methodology in my work. Currently, The black box function involves the process of extraction, transformation, and processing to prepare the data for training neural network models, then random sampling and validationg accuracy by human evaluators (high fidelity), with inputs derived from heuristics. The Gaussian processes and acquisition score policy are done manually, the desired global optimum is 95% accuracy.
+I employ Bayesian with multifidelity Optimization methodology in my work. Currently, The black box function involves the process of extraction, transformation, and processing to prepare the data for training neural network models, then validate accuracy by human evaluators (high fidelity). Inputs are derived from heuristics. The Gaussian processes and acquisition score policy are done manually, the desired global optimum is 95% accuracy.
 
 To improve this process, I propose the following approach:
 
@@ -17,7 +17,7 @@ To improve this process, I propose the following approach:
 - Utilize and balance between prompt engineering to evaluate output accuracy (low fidelity), and employ human evaluators for a thorough accuracy (high fidelity).
 
 ![BO](images/bayesopt.png)
-Refernce image from Bayesian Optimization in Action by Quan Nguyen
+Reference image from Bayesian Optimization in Action by Quan Nguyen
 
 ### Extraction (This step is done for you, the information is provided in case)
 
