@@ -5,3 +5,15 @@ resources/ady/suad/HowToTeachTheCircassianLanguage.pdf filter=lfs diff=lfs merge
 resources/ady/suad/Circassian_arabic_dict.pdf filter=lfs diff=lfs merge=lfs -text
 resources/ady/suad/Адыгабзэм[[:space:]]изэхэф[[:space:]]гушыIалъ.PDF filter=lfs diff=lfs merge=lfs -text
 resources/draft/645186918-Тэухьидымрэ-иманымрэ-зыхэлъхэм-я-уаджибхэр.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/23077430-Adiga-Proverbs-Book.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/432206182-Circassian-Proverbs-Book.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/518075940-Адыгские-пословицы-и-поговорки-Гутова-Л-А1.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/646338148-Мэлэ1ычхэр-уи-ф1эщ-пщ1ыныр.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/647570875-МУСЛЪЫМЭНЫМ-И-БЫДАПIЭ.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/398534597-Кабардино-черкесский-язык.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/577797585-текст-1.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/643933266-Аль-1эрбэгьунэ-Ан-Нэуэуийэ.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/645206888-Иманыр.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/645209363-Л1ык1уэхэр-уи-ф1эщ-пщ1ыныр.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/646347361-Къемэт-махуэр-уи-ф1эщ-пщ1ыныр.pdf filter=lfs diff=lfs merge=lfs -text
+resources/draft/650724689-Иманыр-зэрыхэхъуэр.pdf filter=lfs diff=lfs merge=lfs -text
