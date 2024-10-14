@@ -2,25 +2,25 @@
 
 ```
 Lingua-Corpus/
-├── **src**/
-│   ├── **extraction**/
-│   ├── **processing**/
-│   ├── analysis/
-│   └── **utils**/
-├── **data**/
-│   ├── **raw**/
-│   ├── **interim**/
-│   ├── **processed**/
-│   └── **stats**/
-├── notebooks/
-├── tests/
-├── configs/
-├── docs/
-├── .gitignore
-├── **README.md**
-├── **CODE_OF_CONDUCT.md**
-├── **LICENSE**
-└── requirements.txt
+├── src/
+│   ├── extraction/
+│   ├── processing/
+│   ├── analysis/        # <-- not added yet
+│   └── utils/
+├── data/
+│   ├── raw/
+│   ├── interim/
+│   ├── processed/
+│   └── stats/
+├── notebooks/          # <-- not added yet
+├── tests/              # <-- not added yet
+├── configs/            # <-- not added yet
+├── docs/               # <-- not added yet
+├── .gitignore          # <-- not added yet
+├── README.md
+├── CODE_OF_CONDUCT.md
+├── LICENSE
+└── requirements.txt    # <-- not added yet
 ```
 
 1. `src/`: This directory contains all the source code for your project.
@@ -82,7 +82,8 @@ To improve this process, I propose the following approach:
 - Incorporate prompt engineering techniques alongside heuristics as inputs. 
 - Utilize and balance between prompt engineering to evaluate output accuracy (low fidelity), and employ human evaluators for a thorough accuracy (high fidelity).
 
-![BO](images/bayesopt.png)
+![bayesopt](https://github.com/user-attachments/assets/a95ce254-8a57-49cc-b302-f3e112581486)
+
 Reference image from Bayesian Optimization in Action by Quan Nguyen
 
 ### Extraction
