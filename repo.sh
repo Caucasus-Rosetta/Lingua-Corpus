@@ -18,25 +18,17 @@ initial_clone() {
 # Function to download specific subfolder from data/raw
 download_subfolder() {
   SUBFOLDER=$1
-
-  # Enable sparse-checkout for the specified subfolder within data/raw
   git sparse-checkout add "data/raw/$SUBFOLDER"
   git checkout
-
-  # Add the subfolder to .gitignore to prevent tracking
-  echo "data/raw/$SUBFOLDER" >> .gitignore
-  git rm -r --cached "data/raw/$SUBFOLDER"
 }
 
 # Function to clean up downloaded subfolder after processing
 cleanup_subfolder() {
   SUBFOLDER=$1
-
-  # Remove the subfolder from the working directory
+  escaped_path=$(echo $SUBFOLDER | sed 's/\//\\\//g')
+  sed -i /$escaped_path/d .git/info/sparse-checkout
   rm -rf "data/raw/$SUBFOLDER"
-  
-  # Optional: Remove the subfolder from .gitignore
-  sed -i "/data\/raw\/$SUBFOLDER/d" .gitignore
+  git sparse-checkout reapply
 }
 
 # Main script logic
