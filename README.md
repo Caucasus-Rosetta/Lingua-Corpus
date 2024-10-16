@@ -1,5 +1,15 @@
 # Caucasus focused Data Pipeline for Natural Language Processing(NLP)
 
+How to use sparse checkout to exclude `data/raw` due to it's huge size, and selectively download subfolders later:
+1. Initial clone: When running in Ubuntu terminal, run `bash repo.sh clone https://github.com/Caucasus-Rosetta/Lingua-Corpus.git <target_dir>`
+The repository is cloned to `<target_dir>`, excluding `data/raw`.
+2. Selective download: To download a specific subfolder, run `bash repo.sh download <subfolder>`. This downloads the subfolder in `data/raw` to your local machine.
+3. Cleanup: Run `bash repo.sh cleanup <subfolder>` to remove the subfolder after processing.
+
+To add a new subfolder to `data/raw`, you need to use the `--sparse` option when adding the subfolder, i.e `git add -A --sparse`
+
+## Lingua-Corpus Structure
+
 ```
 Lingua-Corpus/
 ├── src/
