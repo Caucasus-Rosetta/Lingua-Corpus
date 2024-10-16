@@ -94,7 +94,7 @@ For web content, a web scraping methodology is implemented, leveraging Scrapy sp
 
 Furthermore, the content from ebooks is directly extracted from PDF documents.
 
-### Transformation
+### Processing
 
 The text is cleaned up to remove noise and identify outliers using Python and Shell scripts. This process involves feedback from 3 human evaluators and the implementation of random sampling for inferential statistics to identify outliers and potential sources of noise. Statistics can be found in the `data/LANG_CODE/stats` folder.
 
