@@ -98,11 +98,22 @@ Reference image from Bayesian Optimization in Action by Quan Nguyen
 
 ### Extraction
 
-The data acquisition process involves extracting information from various sources, employing diverse techniques to ensure comprehensive coverage. Specifically, the data is obtained through dictionary parsing using the `parse_dictionary.py` script.
+The data acquisition process involves extracting information from various sources, employing diverse techniques to ensure comprehensive coverage. 
 
-For web content, a web scraping methodology is implemented, leveraging Scrapy spiders to simultaneously extract data from parallel web pages. Additionally, [`hunalign`](https://github.com/danielvarga/hunalign) is employed to perform heuristic text alignment across pages, optimizing the alignment process, the scripts can be found in the `extraction/web` folder.
+- Dictionary parsing using the `parse_dictionary.py` script.
+- For web content, a web scraping methodology is implemented, leveraging Scrapy spiders to simultaneously extract data from parallel web pages.
+- Additionally, [`hunalign`](https://github.com/danielvarga/hunalign) is employed to perform heuristic text alignment across pages, optimizing the alignment process.
+- The content from ebooks is directly extracted from PDF documents.
 
-Furthermore, the content from ebooks is directly extracted from PDF documents.
+Extraction acquires data in it's raw form, then semi-processes and moves it to interim
+
+The folders that matter in this stage:
+├── src/
+│   └── extraction/    # code acquires data in it's raw form,
+│                      # then semi-processes and moves it to interim
+└── data/
+    ├── raw/           # raw data
+    └── interim/       # semi-processed data
 
 ### Processing
 
