@@ -108,12 +108,14 @@ The data acquisition process involves extracting information from various source
 Extraction acquires data in it's raw form, then semi-processes and moves it to interim
 
 The folders that matter in this stage:
+```
 ├── src/
 │   └── extraction/    # code acquires data in it's raw form,
 │                      # then semi-processes and moves it to interim
 └── data/
     ├── raw/           # raw data
     └── interim/       # semi-processed data
+```
 
 ### Processing
 
