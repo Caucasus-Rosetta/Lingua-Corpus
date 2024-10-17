@@ -82,19 +82,7 @@ This repository contains a data pipeline for monolingual and parallel corpuses u
 
 ## Data Pipeline
 
-### Methodology
-
-I employ Bayesian with multifidelity Optimization methodology in my work. Currently, The black box function involves the process of extraction, transformation, and processing to prepare the data for training neural network models, then validate accuracy by human evaluators (high fidelity). Inputs are derived from heuristics. The Gaussian processes and acquisition score policy are done manually, the desired global optimum is 95% accuracy.
-
-To improve this process, I propose the following approach:
-
-- Implement Gaussian processes and acquisition policy properly.
-- Incorporate prompt engineering techniques alongside heuristics as inputs. 
-- Utilize and balance between prompt engineering to evaluate output accuracy (low fidelity), and employ human evaluators for a thorough accuracy (high fidelity).
-
-![bayesopt](https://github.com/user-attachments/assets/a95ce254-8a57-49cc-b302-f3e112581486)
-
-Reference image from Bayesian Optimization in Action by Quan Nguyen
+The data pipeline consists of two stages, extraction and processing.
 
 ### Extraction
 
@@ -132,3 +120,18 @@ The folders that matter in the processing stage:
 └── data/
     ├── processed/     # processed data
     └── stats/         # statistics of the processed data
+```
+    
+## Methodology
+
+I propose utilizing Bayesian with multifidelity Optimization methodology. The black box function involves the process of extraction, transformation, and processing to prepare the data for training neural network models, then validate accuracy by human evaluators (high fidelity). Inputs are derived from heuristics. The Gaussian processes and acquisition score policy are done manually, the desired global optimum is 95% accuracy.
+
+I propose the following approach:
+
+- Implement Gaussian processes and acquisition policy.
+- Incorporate prompt engineering techniques alongside heuristics as inputs. 
+- Utilize and balance between prompt engineering to evaluate output accuracy (low fidelity), and employ human evaluators for a thorough accuracy (high fidelity).
+
+![bayesopt](https://github.com/user-attachments/assets/a95ce254-8a57-49cc-b302-f3e112581486)
+
+Reference image from Bayesian Optimization in Action by Quan Nguyen
