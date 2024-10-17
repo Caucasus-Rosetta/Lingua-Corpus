@@ -11,14 +11,14 @@ initial_clone() {
 
   # Enable sparse checkout and exclude the data/raw folder
   git sparse-checkout init --cone
-  git sparse-checkout set '/src' '/data/interim' '/data/processed' '/data/stats' '!data/raw'
+  git sparse-checkout set 'src'
   git checkout
 }
 
 # Function to download specific subfolder from data/raw
 download_subfolder() {
   SUBFOLDER=$1
-  git sparse-checkout add "data/raw/$SUBFOLDER"
+  git sparse-checkout add $SUBFOLDER
   git checkout
 }
 
@@ -27,7 +27,7 @@ cleanup_subfolder() {
   SUBFOLDER=$1
   escaped_path=$(echo $SUBFOLDER | sed 's/\//\\\//g')
   sed -i /$escaped_path/d .git/info/sparse-checkout
-  rm -rf "data/raw/$SUBFOLDER"
+  rm -rf $SUBFOLDER
   git sparse-checkout reapply
 }
 
