@@ -107,7 +107,7 @@ The data acquisition process involves extracting information from various source
 
 Extraction acquires data in it's raw form, then semi-processes and moves it to interim
 
-The folders that matter in this stage:
+The folders that matter in the extraction stage:
 ```
 ├── src/
 │   └── extraction/    # code acquires data in it's raw form,
@@ -119,6 +119,16 @@ The folders that matter in this stage:
 
 ### Processing
 
-The text is cleaned up to remove noise and identify outliers using Python and Shell scripts. This process involves feedback from 3 human evaluators and the implementation of random sampling for inferential statistics to identify outliers and potential sources of noise. Statistics can be found in the `data/LANG_CODE/stats` folder.
+Data Refinement:
+- Implement various heuristics to remove noise, identify outliers and filter interim data.
+- Apply random sampling for inferential statistics and incorporate feedback from human evaluators.
+- Repeat process iteratively until target accuracy of 95% (Error types considered: syntactical, grammatical, and semantic).
 
-Different hyperparameters such as sentence length are used to filter out sentences. This process is repeated until a 95% accuracy is reached, meaning the sentences contain less than 5% error rate, including syntactical, grammatical, and semantical errors.
+The folders that matter in the processing stage:
+```
+├── src/
+│   └── processing/    # code for processing, cleaning and transforming
+│                      # interim data into processed data along with analysis
+└── data/
+    ├── processed/     # processed data
+    └── stats/         # statistics of the processed data
