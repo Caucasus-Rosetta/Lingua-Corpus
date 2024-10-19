@@ -344,3 +344,5 @@ resources/ady/2010/06.10_2010.pdf filter=lfs diff=lfs merge=lfs -text
 resources/ady/2010/08.144_2010.pdf filter=lfs diff=lfs merge=lfs -text
 resources/ady/2010/10.16_2010.pdf filter=lfs diff=lfs merge=lfs -text
 data/processed/ab/ab/train.txt filter=lfs diff=lfs merge=lfs -text
+data/raw/kbd/ap/*.pdf filter=lfs diff=lfs merge=lfs -text
+
