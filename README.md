@@ -110,7 +110,7 @@ The folders that matter in the processing stage:
     └── stats/         # statistics of the processed data
 ```
     
-## Methodology
+## Methodology (proposed)
 
 I propose utilizing Bayesian with multifidelity Optimization methodology. The black box function involves the process of extraction, transformation, and processing to prepare the data for training neural network models, then validate accuracy by human evaluators (high fidelity). Inputs are derived from heuristics. The Gaussian processes and acquisition score policy are done manually, the desired global optimum is 95% accuracy.
 
