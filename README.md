@@ -58,7 +58,15 @@ This structure is particularly well-suited for data pipeline projects because it
 
 ## Description
 
-This repository contains a data pipeline for monolingual and parallel corpuses used for Neural Machine Translation (NMT) and Speech To Text Tasks (STT). The data, which includes around 100 thousand parallel sentences, 100 thousand parallel words for Abkhazian-Russian pairs, and around 1.4 million sentences monolingual Abkhazian corpus, is sourced from various websites, ebooks, and a dictionary. Our team has obtained permissions from the content owners to open source all the text.
+This repository contains a data pipeline that processes text into monolingual and parallel corpora for Natural Language Processing (NLP) applications. 
+
+| language | monolingual corpus | parallel corpus |
+|----------|:----------:|:----------:|
+| Abkhaz (ab) |  1,470,480 | 205,665 |
+| West Circassian (ady) | - | - |
+| East Circassian (kbd) | - | - |
+
+The corpuses are located at `data/processed/<LANG_CODE>`
 
 ## Data Pipeline
 
