@@ -15,28 +15,20 @@ Lingua-Corpus/
 ├── src/
 │   ├── extraction/
 │   ├── processing/
-│   ├── analysis/        # <-- not added yet
 │   └── utils/
 ├── data/
 │   ├── raw/
 │   ├── interim/
 │   ├── processed/
 │   └── stats/
-├── notebooks/          # <-- not added yet
-├── tests/              # <-- not added yet
-├── configs/            # <-- not added yet
-├── docs/               # <-- not added yet
-├── .gitignore          # <-- not added yet
 ├── README.md
 ├── CODE_OF_CONDUCT.md
-├── LICENSE
-└── requirements.txt    # <-- not added yet
+└── LICENSE
 ```
 
 1. `src/`: This directory contains all the source code for your project.
    - `extraction/`: Code for extracting text from PDFs and HTML files.
    - `processing/`: Scripts for cleaning and preprocessing the extracted text.
-   - `analysis/`: Code for analyzing the processed data.
    - `utils/`: Utility functions used across different parts of the project.
 
    This separation allows for better organization and modularity of your code.
@@ -49,23 +41,11 @@ Lingua-Corpus/
    
    This structure clearly separates data at different stages of your pipeline.
 
-3. `notebooks/`: For Jupyter notebooks used in exploration, prototyping, or presenting results.
+3. `README.md`: Provides an overview of the project, setup instructions, and other essential information.
 
-4. `tests/`: Contains unit tests and integration tests for your code, promoting reliability and easier maintenance.
+4. `CODE_OF_CONDUCT.md`: Provides an overview of code of conduct for the project.
 
-5. `configs/`: For configuration files (e.g., parameters for your pipeline stages).
-
-6. `docs/`: Project documentation, beyond what's in the README.
-
-7. `.gitignore`: Specifies which files Git should ignore.
-
-8. `README.md`: Provides an overview of the project, setup instructions, and other essential information.
-
-9. `CODE_OF_CONDUCT.md`: Provides an overview of code of conduct for the project.
-
-10. `LICENSE`: The license of the code of the project.
-
-11. `requirements.txt`: Lists all Python dependencies for easy environment setup.
+5. `LICENSE`: The license of the code of the project.
 
 This structure follows several best practices:
 
@@ -74,7 +54,7 @@ This structure follows several best practices:
 - Scalability: As your project grows, this structure can accommodate more modules and data.
 - Collaboration-friendly: Clear organization makes it easier for team members to navigate and contribute.
 
-This structure is particularly well-suited for data pipeline projects because it accommodates the different stages of data processing (raw, interim, processed) and separates the code for each stage of the pipeline (extraction, processing, analysis).
+This structure is particularly well-suited for data pipeline projects because it accommodates the different stages of data processing (raw, interim, processed) and separates the code for each stage of the pipeline (extraction, processing).
 
 ## Description
 
