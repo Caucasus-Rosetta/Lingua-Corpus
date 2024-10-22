@@ -1,5 +1,16 @@
-# Caucasus focused Data Pipeline for Natural Language Processing(NLP)
+## Description
 
+This repository contains a data pipeline that processes text into monolingual and parallel corpora for Natural Language Processing (NLP) applications. 
+
+| language | monolingual corpus | parallel corpus |
+|----------|:----------:|:----------:|
+| Abkhaz (ab) |  1,470,480 | 205,665 |
+| West Circassian (ady) | - | - |
+| East Circassian (kbd) | - | - |
+
+The corpuses are located at `data/processed/<LANG_CODE>`
+
+## Selective Download
 How to use sparse checkout to exclude `data/` due to it's huge size, and selectively download folders later:
 1. Initial clone: run `bash repo.sh clone https://github.com/Caucasus-Rosetta/Lingua-Corpus.git <target_dir>`
 The repository is cloned to `<target_dir>`, excluding `data/`.
@@ -55,18 +66,6 @@ This structure follows several best practices:
 - Collaboration-friendly: Clear organization makes it easier for team members to navigate and contribute.
 
 This structure is particularly well-suited for data pipeline projects because it accommodates the different stages of data processing (raw, interim, processed) and separates the code for each stage of the pipeline (extraction, processing).
-
-## Description
-
-This repository contains a data pipeline that processes text into monolingual and parallel corpora for Natural Language Processing (NLP) applications. 
-
-| language | monolingual corpus | parallel corpus |
-|----------|:----------:|:----------:|
-| Abkhaz (ab) |  1,470,480 | 205,665 |
-| West Circassian (ady) | - | - |
-| East Circassian (kbd) | - | - |
-
-The corpuses are located at `data/processed/<LANG_CODE>`
 
 ## Data Pipeline
 
