@@ -32,6 +32,7 @@ Lingua-Corpus/
 │   ├── interim/
 │   ├── processed/
 │   └── stats/
+├── .gitignore
 ├── README.md
 ├── CODE_OF_CONDUCT.md
 └── LICENSE
@@ -52,11 +53,13 @@ Lingua-Corpus/
    
    This structure clearly separates data at different stages of your pipeline.
 
-3. `README.md`: Provides an overview of the project, setup instructions, and other essential information.
+3. `.gitignore`: Files and directories that typically we want to exclude.
 
-4. `CODE_OF_CONDUCT.md`: Provides an overview of code of conduct for the project.
+4. `README.md`: Provides an overview of the project, setup instructions, and other essential information.
 
-5. `LICENSE`: The license of the code of the project.
+5. `CODE_OF_CONDUCT.md`: Provides an overview of code of conduct for the project.
+
+6. `LICENSE`: The license of the code of the project.
 
 This structure follows several best practices:
 
