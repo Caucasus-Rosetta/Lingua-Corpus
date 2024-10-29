@@ -39,7 +39,12 @@ def extract_pdf(pdf_path):
     doc = fitz.open(pdf_path)
     text = ""
     for page in doc:
-        fixed_text = page.get_text().encode('latin1', errors='ignore').decode('cp1251')
+        fixed_text = page.get_text()
+        cyrillic_count = sum(1 for c in fixed_text if 0x400 <= ord(c) <= 0x4FF)
+        text_length = len(''.join(fixed_text.split()))+1
+        cyrillic_percentage = (cyrillic_count / text_length) * 100
+        if cyrillic_percentage < 80:
+             fixed_text = fixed_text.encode('latin1', errors='replace').decode('cp1251')
         text += fixed_text + "\n"
     doc.close()
     return text
