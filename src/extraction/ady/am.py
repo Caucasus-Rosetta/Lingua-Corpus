@@ -4,6 +4,10 @@ from tqdm import tqdm
 def root_dir():
     return subprocess.check_output(["git", "rev-parse", "--show-toplevel"], universal_newlines=True).strip()
 
+def get_all_files_in_directory(directory):
+    pattern = os.path.join(directory, '**', '*')
+    return [f for f in glob.glob(pattern, recursive=True) if os.path.isfile(f)]
+    
 def create_file(file_path):
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, 'w', encoding='utf-8') as f: 
@@ -34,6 +38,7 @@ def extract_pdf(pdf_path):
     doc = fitz.open(pdf_path)
     text = ""
     for page in doc:
+        import pdb; pdb.set_trace()
         fixed_text = page.get_text().encode('latin1', errors='ignore').decode('cp1251')
         text += fixed_text + "\n"
     doc.close()
@@ -48,8 +53,8 @@ def print_unique_chars(filename):
     
     print("Unique characters in the file:")
     print(sorted(unique_chars))
-        
-files = glob.glob(root_dir()+'/data/raw/ady/2009/*')
+    
+files = get_all_files_in_directory(root_dir()+'/data/raw/ady/')
 output = root_dir()+"/data/interim/ady/ady/1.txt"
 create_file(output)
 with open(output, 'a', encoding='utf-8') as f:
