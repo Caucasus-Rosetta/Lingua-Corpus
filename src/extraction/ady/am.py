@@ -26,9 +26,10 @@ def replace_no_letters_after(target_letter, replacement, text):
     return re.sub(pattern, replacement, text, flags=re.UNICODE)
     
 def clean_text(text):
-    text = re.sub(r' +', ' ', text)
-    text = re.sub(r'\n\s*\n', '\n', text)
-    text = re.sub(r'-\n', '', text)
+    text = re.sub(r' +', ' ', text) # remove extra white spaces
+    text = re.sub(r'\n\s*\n', '\n', text) # remove extra line breaks
+    text = re.sub(r'[-\xad]\n', '', text) # remove line break hyphens
+    text = re.sub(r'\xad', '', text) # remove soft hyphens
     text = replace_between_letters('I', 'ӏ', text) # u04CF cyrillic letter small palocka
     text = replace_no_letters_before('I', 'Ӏ', text) # u04C0 cyrillic letter capital palocka
     text = replace_no_letters_after('I', 'ӏ', text) # u04CF cyrillic letter small palocka
@@ -38,7 +39,6 @@ def extract_pdf(pdf_path):
     doc = fitz.open(pdf_path)
     text = ""
     for page in doc:
-        import pdb; pdb.set_trace()
         fixed_text = page.get_text().encode('latin1', errors='ignore').decode('cp1251')
         text += fixed_text + "\n"
     doc.close()
