@@ -1,5 +1,6 @@
 import subprocess, os, glob, fitz, re
 from tqdm import tqdm
+from multi_column import column_boxes
 
 def root_dir():
     return subprocess.check_output(["git", "rev-parse", "--show-toplevel"], universal_newlines=True).strip()
@@ -28,8 +29,7 @@ def replace_no_letters_after(target_letter, replacement, text):
 def clean_text(text):
     text = re.sub(r' +', ' ', text) # remove extra white spaces
     text = re.sub(r'\n\s*\n', '\n', text) # remove extra line breaks
-    text = re.sub(r'[-\xad]\n', '', text) # remove line break hyphens
-    text = re.sub(r'\xad', '', text) # remove soft hyphens
+    text = re.sub(r'\xad', '-', text) # replace soft with hard hyphens
     text = replace_between_letters('I', 'ӏ', text) # u04CF cyrillic letter small palocka
     text = replace_no_letters_before('I', 'Ӏ', text) # u04C0 cyrillic letter capital palocka
     text = replace_no_letters_after('I', 'ӏ', text) # u04CF cyrillic letter small palocka
@@ -39,13 +39,20 @@ def extract_pdf(pdf_path):
     doc = fitz.open(pdf_path)
     text = ""
     for page in doc:
-        fixed_text = page.get_text()
-        cyrillic_count = sum(1 for c in fixed_text if 0x400 <= ord(c) <= 0x4FF)
-        text_length = len(''.join(fixed_text.split()))+1
-        cyrillic_percentage = (cyrillic_count / text_length) * 100
-        if cyrillic_percentage < 80:
-             fixed_text = fixed_text.encode('latin1', errors='replace').decode('cp1251')
-        text += fixed_text + "\n"
+        if page.number != 1: continue
+        bboxes = column_boxes(page, footer_margin=50, no_image_text=True)
+        for rect in bboxes:
+            fixed_text = page.get_text(clip=rect, sort=True)
+            cyrillic_count = sum(1 for c in fixed_text if 0x400 <= ord(c) <= 0x4FF)
+            text_length = len(''.join(fixed_text.split()))+1
+            cyrillic_percentage = (cyrillic_count / text_length) * 100
+            if cyrillic_percentage < 80:
+                try:
+                    fixed_text = fixed_text.encode('latin1', errors='replace').decode('cp1251')
+                except:
+                    pass
+            text += fixed_text + "\n ==================== \n"
+        text += "\n"
     doc.close()
     return text
 
