@@ -29,7 +29,8 @@ def replace_no_letters_after(target_letter, replacement, text):
 def clean_text(text):
     text = re.sub(r' +', ' ', text) # remove extra white spaces
     text = re.sub(r'\n\s*\n', '\n', text) # remove extra line breaks
-    text = re.sub(r'\xad', '-', text) # replace soft with hard hyphens
+    text = re.sub(r'[-\xad]+\n', '-\n', text) # replace soft with hard hyphens
+    text = re.sub(r'\xad', '', text) # remove soft hyphens
     text = replace_between_letters('I', 'ӏ', text) # u04CF cyrillic letter small palocka
     text = replace_no_letters_before('I', 'Ӏ', text) # u04C0 cyrillic letter capital palocka
     text = replace_no_letters_after('I', 'ӏ', text) # u04CF cyrillic letter small palocka
