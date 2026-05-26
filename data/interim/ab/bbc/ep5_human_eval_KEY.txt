@@ -1,0 +1,5 @@
+BLIND KEY — keep private, do NOT share with evaluators.
+Generated 2026-05-26  (seed=42)
+
+Модель A = google/gemini-3.1-pro-preview
+Модель B = anthropic/claude-opus-4.7
