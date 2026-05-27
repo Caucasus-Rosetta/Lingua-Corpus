@@ -28,14 +28,16 @@ OUT_DIR = REPO / "data" / "interim" / "ab" / "bbc"
 
 # episode -> (ab filename, ru filename) of the already-extracted plain-text pair.
 # Produced by extract.py. ep5 keeps its original (manually-curated) filenames.
-# ep7/9/10 are NOT registered: their Abkhaz .doc uses a legacy non-Unicode font that
-# extracts as garbage (digits/symbols for Abkhaz letters) and needs a transliteration
-# table first. ep3/6/8 have no Abkhaz source at all.
+# ep7/9/10 use a legacy non-Unicode Abkhaz font, recovered by extract.py's
+# decode_legacy_apsua (see legacy_abkhaz_font.md). ep3/6/8 have no Abkhaz source.
 EPISODES = {
     1: ("ВВС 1 ab", "ВВС 1 ru"),
     2: ("ВВС 2 ab", "ВВС 2 ru"),
     4: ("ВВС 4 ab", "ВВС 4 ru"),
     5: ("ВВС 5. Ашьхақәа ab", "ВВС 5. Ашьхақәа ru"),
+    7: ("ВВС 7 ab", "ВВС 7 ru"),
+    9: ("ВВС 9 ab", "ВВС 9 ru"),
+    10: ("ВВС 10 ab", "ВВС 10 ru"),
 }
 
 DEFAULT_MODELS = [

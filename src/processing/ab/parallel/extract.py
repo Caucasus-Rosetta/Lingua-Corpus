@@ -65,6 +65,43 @@ _DROP = {
     "\u00a0": " ",   # no-break space -> normal space
 }
 
+# --- Legacy non-Unicode Abkhaz font ("Apsua"-style) recovery -----------------
+# Some Abkhaz .doc files (BBC ep7/9/10) were typed in a pre-Unicode font that drew
+# the Abkhaz special letters at ordinary code points. Extractors return those bytes,
+# not the intended letters. This monoalphabetic table was reverse-engineered by
+# dictionary crib-dragging against data/interim/ab/ab/*.txt — see legacy_abkhaz_font.md.
+#
+# Two classes:
+#  - digit glyphs map to letters ONLY inside a Cyrillic-bearing token; in a pure-number
+#    token (e.g. "150", "2,5") the same digit is a real digit and is left alone.
+#  - the reused Cyrillic letters (щ ъ ё э — not native single Abkhaz letters) are always
+#    the substituted letter.
+LEGACY_APSUA_DIGIT = {"0": "ҭ", "3": "ҷ", "5": "џ", "6": "қ", "7": "ҵ", "8": "ԥ"}
+LEGACY_APSUA_ALWAYS = {"=": "ҿ", "щ": "ҳ", "ъ": "ә", "ё": "ӡ", "э": "ҽ"}
+_CYR_RE = re.compile(r"[Ѐ-ԯ]")  # Cyrillic + Cyrillic Supplement (ԥ ҿ ҩ …)
+
+
+def looks_legacy_apsua(text: str) -> bool:
+    """True if the text is dominated by the legacy-font signature: digit glyphs sitting
+    inside Cyrillic words (clean Unicode docs score ~0 and are left untouched)."""
+    toks = text.split()
+    if not toks:
+        return False
+    bad = sum(1 for t in toks if _CYR_RE.search(t) and any(c in LEGACY_APSUA_DIGIT for c in t))
+    return bad / len(toks) > 0.01
+
+
+def decode_legacy_apsua(text: str) -> str:
+    """Transliterate legacy-font bytes back to Unicode Abkhaz (token-aware, see table)."""
+    def fix(tok: str) -> str:
+        cyr = bool(_CYR_RE.search(tok))
+        return "".join(
+            LEGACY_APSUA_ALWAYS.get(c)
+            or (LEGACY_APSUA_DIGIT[c] if cyr and c in LEGACY_APSUA_DIGIT else c)
+            for c in tok
+        )
+    return re.sub(r"\S+", lambda m: fix(m.group()), text)
+
 
 def strip_srt(text: str) -> str:
     """Drop SubRip cue indices and timestamp lines; keep cue text + blank lines."""
@@ -135,7 +172,10 @@ def normalize(text: str, lang: str | None = None) -> str:
 
 
 def extract(path: Path, lang: str) -> str:
-    return normalize(raw_text(path), lang=lang)
+    raw = raw_text(path)
+    if lang == "ab" and looks_legacy_apsua(raw):  # recover pre-Unicode Abkhaz font docs
+        raw = decode_legacy_apsua(raw)
+    return normalize(raw, lang=lang)
 
 
 def discover() -> dict[int, dict]:
