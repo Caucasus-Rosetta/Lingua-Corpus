@@ -74,10 +74,15 @@ _DROP = {
 # Two classes:
 #  - digit glyphs map to letters ONLY inside a Cyrillic-bearing token; in a pure-number
 #    token (e.g. "150", "2,5") the same digit is a real digit and is left alone.
-#  - the reused Cyrillic letters (щ ъ ё э — not native single Abkhaz letters) are always
-#    the substituted letter.
+#  - the reused Cyrillic letters are always the substituted letter. None (щ ъ ё э й ю) is a
+#    native Abkhaz letter, so they are always font glyphs. й->ҟ and ю->ҩ also mean the йь
+#    cluster decodes to the real digraph ҟь with no special case. Capitals (sentence starts)
+#    map to the capital Abkhaz letter.
 LEGACY_APSUA_DIGIT = {"0": "ҭ", "3": "ҷ", "5": "џ", "6": "қ", "7": "ҵ", "8": "ԥ"}
-LEGACY_APSUA_ALWAYS = {"=": "ҿ", "щ": "ҳ", "ъ": "ә", "ё": "ӡ", "э": "ҽ"}
+LEGACY_APSUA_ALWAYS = {
+    "=": "ҿ", "щ": "ҳ", "ъ": "ә", "ё": "ӡ", "э": "ҽ", "й": "ҟ", "ю": "ҩ",
+    "Щ": "Ҳ", "Ъ": "Ә", "Ё": "Ӡ", "Э": "Ҽ", "Й": "Ҟ", "Ю": "Ҩ",
+}
 _CYR_RE = re.compile(r"[Ѐ-ԯ]")  # Cyrillic + Cyrillic Supplement (ԥ ҿ ҩ …)
 
 
