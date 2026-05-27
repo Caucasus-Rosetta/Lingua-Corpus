@@ -52,8 +52,12 @@ RU_SRC_DIR = RAW_BBC / "ru"
 # Container formats LibreOffice can flatten to text. Add suffixes here to extend.
 LIBRE_SUFFIXES = {".doc", ".docx", ".odt", ".rtf", ".html", ".htm", ".pdf"}
 
-# Abkhaz homoglyphs: legacy codepoints (in many .doc files) -> canonical corpus form.
-AB_HOMOGLYPHS = {"ҧ": "ԥ", "Ҧ": "Ԥ", "ҕ": "ӷ", "Ҕ": "Ӷ"}
+# Abkhaz homoglyphs: legacy/look-alike codepoints -> canonical corpus form. The last two
+# pairs fold the LATIN schwa Ə/ə (U+018F/U+0259) onto the Cyrillic schwa Ә/ә (U+04D8/U+04D9):
+# per the 2017 Abkhazia Cabinet Unicode-migration doc (Note 1), some keyboard drivers and
+# PDFs (e.g. the Kasландзия dictionary) store the schwa as the visually identical Latin
+# letter, which silently breaks search/matching. The canonical Abkhaz codepoint is Cyrillic.
+AB_HOMOGLYPHS = {"ҧ": "ԥ", "Ҧ": "Ԥ", "ҕ": "ӷ", "Ҕ": "Ӷ", "ə": "ә", "Ə": "Ә"}
 
 # Characters to drop / fold regardless of language.
 _DROP = {

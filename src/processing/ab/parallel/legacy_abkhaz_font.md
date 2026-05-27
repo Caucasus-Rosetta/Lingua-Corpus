@@ -72,6 +72,29 @@ e.g.:
 
 Confirmed letters appear in known words (`џьоукы`, `иџьаушьаратәы`, `аҵаулараҿы`, `даҽа`).
 
+### Corroborated by the official standard
+
+The reverse-engineered table is independently confirmed by the **2017 Abkhazia Cabinet of
+Ministers Unicode-migration document** (`Рекомендации по переходу на стандарт Unicode`). Its
+worked example prints the *same bytes* under the legacy font and a Unicode font; decoding
+those bytes with this table reproduces the intended Abkhaz exactly:
+
+    bytes:   Ща0ыр з6ъу аюызцъа, щфорум иалахъу зегьы, абзиара шъы6ъзааит!
+    decoded: Ҳаҭыр зқәу аҩызцәа, ҳфорум иалахәу зегьы, абзиара шәықәзааит!
+             ("Respected friends, all who take part in our forum, may you be well!")
+
+This single line confirms `Щ→Ҳ`, `0→ҭ`, `6→қ`, `ъ→ә`, `ю→ҩ`, `щ→ҳ` against the official
+mapping. The doc's code table also fixes the canonical Abkhaz codepoints (`ӷ`=U+04F7,
+`ԥ`=U+0525, `ҩ`=U+04A9, `ҟ`=U+049F, schwa `ә`=U+04D9 …), all matched by `extract.py`'s
+`AB_HOMOGLYPHS`/decoder. The official `ArialAB.otf` (Unicode replacement font) carries all 32
+of these codepoints — including both the Cyrillic and Latin schwa (see below).
+
+**Latin-schwa fold (doc Note 1):** some keyboard drivers and PDFs store the schwa as the
+visually identical **Latin** `ə`/`Ə` (U+0259/U+018F) instead of Cyrillic `ә`/`Ә`
+(U+04D9/U+04D8), silently breaking search. `AB_HOMOGLYPHS` now folds Latin→Cyrillic. (The
+BBC ep7/9/10 docs use the digit-glyph font, not this variant, so current output is unchanged
+— this guards future PDF/DOCX sources, per the generic-extraction goal.)
+
 ## Caveats / remaining limitations
 
 - Derived without a native speaker. Recommend an Abkhaz speaker spot-check ep7/9/10
