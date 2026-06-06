@@ -1,0 +1,24 @@
+# Oversize originals (>50MB) — excluded from git; committed as .zip.part-NN instead.
+# Run ./REASSEMBLE.sh after cloning to rebuild these from their parts.
+/Aamta/Aamta_10_11_12_2013.pdf
+/Amtsabz/Амцабз 4-5, 2025 ш..pdf
+/Amtsabz/Амцабз №_4-5_2023.pdf
+/Amtsabz/Amcabz_4-5_2021.pdf
+/Amtsabz/амцабз4_5.pdf
+/Russian/9. argun_a_kh_gory_smotriatsia_v_more_1986.pdf
+/Russian/6. Anshba_A_Abkhazsky_folklor_i_deystvitelnost.pdf
+/Russian/90. Papaskir_M_Nesgibaemy_Eshsou_1983.pdf
+/Russian/110. Chachkhalia_D_Abkhazskaya_Pravoslavnaya_Tserkov_1997.pdf
+/Russian/104. tsvinaria_v_abkhazskoe_stikhoslozhenie_1987.pdf
+/Russian/27. Biguaa_V_A_Zhurnal_Alashara_2017.pdf
+/Abkhazian/tarba-2.pdf
+/Abkhazian/Ahuba-1.pdf
+/Abkhazian/24. bebia_e_tvoi_slavnye_syny_kutol_abh_1996.pdf
+/Abkhazian/53. inal_ipa_sh_tropami_k_vershinam_1975_abh.pdf
+/Abkhazian/106. chanba_s_seidyk_1935.pdf
+/Abkhazian/tarba-4.pdf
+/Abkhazian/45. darsalia_d_iz_zhizni_1982_abh.pdf
+/Abkhazian/65. Kapba_R_V_mire_dukhovnosti_2014_abh.pdf
+/Abkhazian/Lomia-1.pdf
+/Abkhazian/44. darsalia_d_v_gluhoi_starine_1981_abh.pdf
+/Abkhazian/70. Lasuria_M_Tebe_potomok_2011_abh.pdf
